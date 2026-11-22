@@ -1,6 +1,7 @@
 """Convert versioned machine records to the static site's view model."""
 
 from math import isfinite
+from .work_check import motion_work_check
 from .curves import fit_curve
 from .mechanics import estimate, G
 
@@ -56,4 +57,8 @@ def machine_view(record):
     if "resistance_curve" in record and record["resistance_curve"] != curve:
         raise ValueError("Stored curve differs from the source. Refresh it with the fit command.")
     view.update(resistance_curve=curve, points=points, geometry=geometry, gravity=G)
+    if "motion_check" in record:
+        check = record["motion_check"]
+        view["motion_check"] = dict(motion_work_check(check["poses"]), url=check["url"],
+                                    uncertainty=check["uncertainty"])
     return view

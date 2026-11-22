@@ -23,3 +23,15 @@ class CatalogTests(unittest.TestCase):
         v = machine_view(data)
         self.assertEqual(len(v["points"]), 2)
         self.assertEqual(v["geometry"], [])
+
+
+    def test_video_work_is_invariant_to_camera_translation(self):
+        from resistance_curves.work_check import motion_work_check
+
+        poses = [
+            dict(anchor=[50, 60], plates=[10, 80], hand=[100, 30], handle_cap=[100, 30]),
+            dict(anchor=[55, 70], plates=[15, 70], hand=[105, 15], handle_cap=[105, 10]),
+        ]
+        result = motion_work_check(poses)
+        self.assertAlmostEqual(result["hand_kgf_per_kg"], 20/25)
+        self.assertAlmostEqual(result["handle_cap_kgf_per_kg"], 20/30)

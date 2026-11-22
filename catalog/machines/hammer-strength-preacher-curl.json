@@ -29,5 +29,130 @@
     "output": "kgf_per_kg",
     "sample_count": 2,
     "max_sample_error_kgf_per_kg": 0.0
+  },
+  "motion_check": {
+    "source": "Hammer Strength Plate Loaded Seated Biceps demonstration, 1920 × 1080. Near-side view of a single lifting stroke. Original frames have no analysis overlays.",
+    "url": "https://www.youtube.com/watch?v=B27-cHMnlPE&t=17s",
+    "gallery_url": "https://shop.lifefitness.com/products/hammer-strength-plate-loaded-seated-biceps",
+    "extraction": "Seek to 17.00 s, apply ffmpeg fps=4 for 5.8 s, use output frames 2–6 (1-based). Crop x=499, y=0, width=1080, height=1080 and resize to 1000 × 1000. Coordinates use top-left origin and y down.",
+    "landmarks": "anchor = near-side load-arm bearing cap. plates = estimated added-mass center between two plates. hand = estimated grip contact hidden by the hand. handle_cap = visible rigid end of the handle. rocker_pin = visible silver pin on the cam rocker.",
+    "uncertainty": "Anchor ±2 px, plate center approximately ±5 to 10 px, hand contact ±8 to 10 px, handle cap ±3 px. This calculation assumes a level, nearly side-on camera and comparable image scales at the hand and plates. The bearing corrects image translation. Parallax, rotating grips, unknown plate mass sharing and the chord approximation affect the result. The handle cap provides a sensitivity check. The rocker pin and grip cap sweep about different apparent centers. The work estimate follows the contact path directly because using grip radius about the cam axle would assume a rigid grip attachment.",
+    "poses": [
+      {
+        "frame": 2,
+        "anchor": [
+          530,
+          622
+        ],
+        "plates": [
+          185,
+          857
+        ],
+        "hand": [
+          292,
+          449
+        ],
+        "handle_cap": [
+          266,
+          456
+        ],
+        "rocker_pin": [
+          375,
+          541
+        ]
+      },
+      {
+        "frame": 3,
+        "anchor": [
+          530,
+          621
+        ],
+        "plates": [
+          161,
+          816
+        ],
+        "hand": [
+          277,
+          403
+        ],
+        "handle_cap": [
+          253,
+          403
+        ],
+        "rocker_pin": [
+          330,
+          515
+        ]
+      },
+      {
+        "frame": 4,
+        "anchor": [
+          530,
+          620
+        ],
+        "plates": [
+          119,
+          725
+        ],
+        "hand": [
+          284,
+          283
+        ],
+        "handle_cap": [
+          262,
+          277
+        ],
+        "rocker_pin": [
+          257,
+          404
+        ]
+      },
+      {
+        "frame": 5,
+        "anchor": [
+          529,
+          619
+        ],
+        "plates": [
+          106,
+          629
+        ],
+        "hand": [
+          341,
+          182
+        ],
+        "handle_cap": [
+          328,
+          166
+        ],
+        "rocker_pin": [
+          268,
+          275
+        ]
+      },
+      {
+        "frame": 6,
+        "anchor": [
+          529,
+          619
+        ],
+        "plates": [
+          104,
+          572
+        ],
+        "hand": [
+          396,
+          134
+        ],
+        "handle_cap": [
+          392,
+          116
+        ],
+        "rocker_pin": [
+          313,
+          207
+        ]
+      }
+    ]
   }
 }

@@ -75,6 +75,8 @@ Pixel landmarks are estimates. Small changes to a short perpendicular moment arm
 
 The figures supplied for the @juandsamudio analysis correspond to **31.75 kg of plates**, **22.68 kgf (222.4 N)** at the bottom and **25.85 kgf (253.5 N)** at the top. The top value is 14% higher. Those endpoints alone leave the middle of the curve undetermined. The screenshot's separate worked pose gives about 533.8 N belt tension, a 0.1016 m cam moment arm and an assumed 0.254 m effective hand arm, yielding about 213.5 N (21.77 kgf). The slide does not identify this as either quoted endpoint.
 
+A separate check in the machine record uses five unannotated frames from the manufacturer's demonstration. A coding agent identified the plate center, hand contact, handle end and fixed bearing directly in these frames. Dividing the registered vertical plate rise by the hand path length estimates mean tangential force per kilogram over the filmed lift by conservation of work. The model treats the moving assembly as quasi-static and omits its unloaded weight. The result can check the scale of the reported resistance, while resolving endpoint forces needs better local measurements. The record includes frame extraction instructions and pixel coordinates. [Original footage](https://www.youtube.com/watch?v=B27-cHMnlPE&t=17s)
+
 The converted reference is in `examples/hammer-strength-preacher-reference.json` for comparison with an independent photo run. Check that added load, contact point, side and treatment of the unloaded mechanism match before comparing.
 
 ## Library

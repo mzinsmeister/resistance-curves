@@ -14,6 +14,11 @@
 {{ if not $m.geometry }}<fieldset><legend>Assumed joint geometry</legend><label>Start flexion (°)<input id="start" type="number" min="0" max="180" value="20"></label><label>Finish flexion (°)<input id="finish" type="number" min="0" max="180" value="120"></label><label>Perpendicular contact arm (m)<input id="arm" type="number" step="any" min="0.001" value="0.254"></label></fieldset>{{ end }}
 </div></aside></section>
 <section class="details"><div><h2>Evidence &amp; assumptions</h2><p>{{ $m.source }}</p><p id="comparison-source"></p><p>Plate-induced force scales with added mass in the model. Unloaded machine torque, limb weight, momentum and changes in technique can shift the actual sticking point.</p>
+{{ with $m.motion_check }}
+<h2>Independent video estimate</h2>
+<p>Across five unmarked frames the plate center rose {{ printf "%.0f" (float .plate_rise_px) }} pixels as the hand moved {{ printf "%.0f" (float .hand_path_px) }} pixels along its path. At {{ printf "%.2f" (float $m.plate_kg) }} kg of plates, this implies an average of <strong>{{ printf "%.1f" (float (mul $m.plate_kg .hand_kgf_per_kg)) }} kgf</strong> across the filmed stroke. Tracking the visible handle end instead gives {{ printf "%.1f" (float (mul $m.plate_kg .handle_cap_kgf_per_kg)) }} kgf. These estimates leave the endpoint forces unresolved. <a href="{{ .url }}">Original demonstration</a></p>
+<details><summary>Video measurement assumptions</summary><p>{{ .uncertainty }}</p></details>
+{{ end }}
 <h2>Resistance function</h2>
 {{ if eq $m.resistance_curve.type "polynomial" }}<p><code>F(t) ≈ L × ({{ $m.formula }})</code></p>{{ else }}<p>Shape-preserving cubic spline with {{ sub (len $m.resistance_curve.knots) 1 }} segments. The machine record contains the knots and each segment’s coefficients.</p>{{ end }}
 <p>F is contact force in kgf, L is plate mass in kg and t runs from 0 to 1 over the lifting stroke. Maximum difference at the {{ $m.resistance_curve.sample_count }} reference samples is {{ printf "%.3g" (float (mul $m.plate_kg $m.resistance_curve.max_sample_error_kgf_per_kg)) }} kgf at the reference load.</p>
