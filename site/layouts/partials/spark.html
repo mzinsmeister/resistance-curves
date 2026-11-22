@@ -1,3 +1,5 @@
-{{ if or (eq .mechanism "reported") (eq .mechanism "belt_cam") }}
+{{ if eq .mechanism "motion_intervals" }}
+{{ range .segments }}<line x1="{{ index . 0 }}" x2="{{ index . 1 }}" y1="{{ index . 2 }}" y2="{{ index . 2 }}" stroke="currentColor" stroke-width="3" vector-effect="non-scaling-stroke"/>{{ end }}
+{{ else if or (eq .mechanism "reported") (eq .mechanism "belt_cam") }}
 {{ range .markers }}<line x1="{{ index . 0 }}" x2="{{ index . 0 }}" y1="{{ index . 1 }}" y2="{{ index . 1 }}" stroke="currentColor" stroke-width="8" stroke-linecap="round" vector-effect="non-scaling-stroke"/>{{ end }}
 {{ else }}<polyline points="{{ .trace }}" fill="none" stroke="currentColor" stroke-width="3" vector-effect="non-scaling-stroke"/>{{ end }}

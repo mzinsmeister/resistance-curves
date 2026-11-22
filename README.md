@@ -117,6 +117,14 @@ A separate check in the machine record uses five unannotated frames from the man
 
 The converted reference is in `examples/hammer-strength-preacher-reference.json` for comparison with an independent photo run. Check that added load, contact point, side and treatment of the unloaded mechanism match before comparing.
 
+## Life Fitness Signature Series Biceps Curl
+
+For the SPLBC, the camera shows the grips and moving plates through one repetition. The catalog contains the source frame identifiers, registration and pixel coordinates for both hands and the plate center. The ratio of plate rise to midpoint-of-grips path length gives 0.679 kgf per added kg over the filmed stroke. A check based on the orientation of the floor rails gives about 0.70. Perspective and the uncertain relative depth of the hands and plates limit the accuracy of both estimates. [Manufacturer demonstration](https://www.youtube.com/watch?v=fuMn3ukena4&t=52s)
+
+The `motion_observation` input yields one interval mean for each pair of successive poses. Its `interval_mean` curve stores travel knots and a constant polynomial per interval. Each horizontal segment represents a travel-weighted average. Exact endpoint forces and a failure angle would require finer measurements. The website lets readers vary plates and unloaded force.
+
+At 31.75 kg of plates, the SPLBC averages about 26.6 kgf in projection, or 27.2 kgf with the approximate camera correction. The Hammer PL-BI averages 27.2 kgf using its filmed hand path or 26.3 kgf if its two reported plate-only endpoints are joined linearly. These are combined handle forces with the specified starting resistances held constant. The comparison puts the machines within about 1 kgf under these assumptions. Neither filming setup resolves a difference that small. [Life Fitness SPLBC specifications](https://www.lifefitness.com.au/commercial/signature-series-bicep-curl-splbc) · [Hammer Strength PL-BI specifications](https://shop.lifefitness.com/products/hammer-strength-plate-loaded-seated-biceps)
+
 ## Library
 
 ```python

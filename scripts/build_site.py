@@ -61,18 +61,29 @@ def build(out):
                     sign = " − " if coefficient < 0 else (" + " if power else "")
                     terms.append(f"{sign}{abs(coefficient):.6g}{('', 't', 't²', 't³')[power]}")
                 data["formula"] = "".join(terms)
-            trace = data["points"]
-            if data["mechanism"] not in ("reported", "belt_cam"):
-                trace = [(i, evaluate_curve(curve, i / 100) * data["plate_kg"]) for i in range(101)]
-            if not data.get("reference_includes_base", False):
-                base = data.get("base_resistance", {})
-                start = base.get("starting_kgf", 0)
-                finish = base.get("finish_kgf", start)
-                trace = [(pct, force + start + (finish - start) * pct / 100) for pct, force in trace]
-            data["default_start_kgf"] = trace[0][1]
-            data["default_finish_kgf"] = trace[-1][1]
-            data["trace"] = chart(trace)
-            data["markers"] = [p.split(",") for p in data["trace"].split()] if data["mechanism"] in ("reported", "belt_cam") else []
+            base = data.get("base_resistance", {})
+            start = base.get("starting_kgf", 0)
+            finish = base.get("finish_kgf", start)
+            if data["mechanism"] == "motion_intervals":
+                knots = curve["knots"]
+                bands = []
+                for a, b, (ratio,) in zip(knots, knots[1:], curve["coefficients"]):
+                    force = data["plate_kg"] * ratio + start + (finish-start) * (a+b)/2
+                    bands.append([100*a, 100*b, force])
+                data["bands"] = bands
+                data["default_mean_kgf"] = sum((b-a)*force/100 for a, b, force in bands)
+                top = max(1, *(force for a, b, force in bands))
+                data["segments"] = [[a, b, 96 - 88*force/top] for a, b, force in bands]
+            else:
+                trace = data["points"]
+                if data["mechanism"] not in ("reported", "belt_cam"):
+                    trace = [(i, evaluate_curve(curve, i / 100) * data["plate_kg"]) for i in range(101)]
+                if not data.get("reference_includes_base", False):
+                    trace = [(pct, force + start + (finish - start) * pct / 100) for pct, force in trace]
+                data["default_start_kgf"] = trace[0][1]
+                data["default_finish_kgf"] = trace[-1][1]
+                data["trace"] = chart(trace)
+                data["markers"] = [p.split(",") for p in data["trace"].split()] if data["mechanism"] in ("reported", "belt_cam") else []
             metadata = {"title": data["name"], "params": {"machine": data, "slugid": path.stem}}
             (content / f"{path.stem}.md").write_text(json.dumps(metadata, allow_nan=False) + "\n")
             # Older input records can omit the derived function. Export it for all consumers.

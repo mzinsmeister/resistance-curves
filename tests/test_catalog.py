@@ -36,6 +36,23 @@ class CatalogTests(unittest.TestCase):
         self.assertAlmostEqual(result["hand_kgf_per_kg"], 20/25)
         self.assertAlmostEqual(result["handle_cap_kgf_per_kg"], 20/30)
 
+    def test_splbc_interval_means_preserve_total_work(self):
+        from resistance_curves.curves import evaluate_curve
+
+        record = json.loads((ROOT / "catalog/machines/life-fitness-signature-biceps-curl.json").read_text())
+        data = machine_view(record)
+        self.assertEqual(data["points"], [])
+        curve = data["resistance_curve"]
+        self.assertEqual(curve["type"], "interval_mean")
+        mean = sum((b-a) * evaluate_curve(curve, (a+b)/2)
+                   for a, b in zip(curve["knots"], curve["knots"][1:]))
+        self.assertAlmostEqual(mean, 110/162.07112629)
+        self.assertAlmostEqual(mean, data["motion_evidence"]["mean_kgf_per_kg"])
+        self.assertAlmostEqual(evaluate_curve(curve, 1), curve["coefficients"][-1][0])
+        record["motion_observation"]["poses"].reverse()
+        with self.assertRaisesRegex(ValueError, "ascending"):
+            machine_view(record)
+
     def test_catalog_starting_resistance(self):
         record = json.loads((ROOT / "catalog/machines/hammer-strength-preacher-curl.json").read_text())
         self.assertFalse(machine_view(record)["reference_includes_base"])

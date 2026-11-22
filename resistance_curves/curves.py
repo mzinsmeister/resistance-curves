@@ -18,7 +18,7 @@ def evaluate_curve(curve, travel):
     if not isfinite(travel) or not 0 <= travel <= 1:
         raise ValueError("Travel must be a finite fraction from 0 to 1.")
     coefficients = curve["coefficients"]
-    if curve["type"] == "pchip":
+    if curve["type"] in ("pchip", "interval_mean"):
         knots = curve["knots"]
         i = min(bisect_right(knots, travel) - 1, len(knots) - 2)
         coefficients = coefficients[i]

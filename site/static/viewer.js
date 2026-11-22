@@ -32,7 +32,7 @@
     for(const s of series) {
       if(s.line) add('polyline',{points:s.points.map(([x,y])=>X(x)+','+Y(y)).join(' '),
         fill:'none',stroke:s.color,'stroke-width':3,'stroke-dasharray':s.dashed?'7 5':'none'});
-      if(!s.line || s.points.length<=15) for(const [x,y] of s.points) {
+      if(s.markers !== false && (!s.line || s.points.length<=15)) for(const [x,y] of s.points) {
         const point = svgNode('circle',{cx:X(x),cy:Y(y),r:5,fill:s.color});
         point.append(svgNode('title',{},fmt(x)+' · '+fmt(y)+' '+ylabel));
         svg.append(point);
@@ -73,6 +73,21 @@
         load, baseStart, baseFinish: varyBase ? number('base-finish', 0) : baseStart,
         referenceIncludesBase: el('reference-basis')?.value === 'included'
       };
+      if (m.mechanism === 'motion_intervals') {
+        const curve = m.resistance_curve;
+        const series = curve.knots.slice(1).map((end, i) => {
+          const start = curve.knots[i];
+          const force = AtlasModel.contactForce(m, 50*(start+end), loading, true);
+          return {points:[[100*start, force], [100*end, force]], color:teal, line:true, markers:false};
+        });
+        const mean = m.motion_evidence.mean_kgf_per_kg*load + (baseStart+loading.baseFinish)/2;
+        el('load-summary').textContent = fmt(load)+' kg of plates · Average handle force '+fmt(mean)+' kgf.';
+        el('graph-title').textContent = 'Average handle force by interval';
+        chart(series, 'Travel through filmed stroke (%)', 'Interval mean (kgf)', null, false);
+        el('legend').textContent = 'Each segment shows the mean force over that part of the stroke.';
+        el('result').textContent = 'The oblique video leaves endpoint forces and the failure angle unresolved.';
+        return;
+      }
       const continuous = !sparse || el('interpolate').checked;
       const start = AtlasModel.contactForce(m, 0, loading, continuous);
       const finish = AtlasModel.contactForce(m, 100, loading, continuous);

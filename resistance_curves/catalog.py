@@ -1,7 +1,7 @@
 """Convert versioned machine records to the static site's view model."""
 
 from math import isfinite
-from .work_check import motion_work_check
+from .work_check import motion_work_check, motion_intervals
 from .curves import fit_curve
 from .mechanics import estimate, G
 
@@ -29,8 +29,8 @@ def machine_view(record):
     if not number(mass, 0.000001):
         raise ValueError("plate_kg must be positive.")
     view = {key: record[key] for key in ("name", "manufacturer", "source", "kind", "movement", "plate_kg")}
-    if ("observation" in record) == ("reference_kgf" in record):
-        raise ValueError("Choose a photo observation or a reported force curve.")
+    if sum(key in record for key in ("observation", "reference_kgf", "motion_observation")) != 1:
+        raise ValueError("Choose one geometry observation, motion observation or reported curve.")
     geometry = []
     if "observation" in record:
         profile = estimate(record["observation"], mass)
@@ -42,6 +42,13 @@ def machine_view(record):
         for p in profile["poses"]:
             if "angle_deg" in p:
                 geometry.append([p["travel_pct"], p["angle_deg"], p["joint_arm_m"]])
+    elif "motion_observation" in record:
+        motion = record["motion_observation"]
+        result = motion_intervals(motion["poses"])
+        curve = result.pop("resistance_curve")
+        view.update(mechanism="motion_intervals", motion_evidence=dict(result, url=motion["url"],
+                    uncertainty=motion["uncertainty"], projection_check=motion.get("projection_check", "")))
+        points = []
     else:
         points = record["reference_kgf"]
         view["mechanism"] = "reported"
@@ -49,9 +56,10 @@ def machine_view(record):
         if type(includes_base) is not bool:
             raise ValueError("reference_includes_base must be a JSON boolean.")
         view["reference_includes_base"] = includes_base
-    check_pairs(points, 0, 100)
-    if points[0][0] != 0 or points[-1][0] != 100:
-        raise ValueError("Travel must span 0 to 100 percent.")
+    if "motion_observation" not in record:
+        check_pairs(points, 0, 100)
+        if points[0][0] != 0 or points[-1][0] != 100:
+            raise ValueError("Travel must span 0 to 100 percent.")
     if geometry:
         angles = [row[1] for row in geometry]
         if not (all(a < b for a, b in zip(angles, angles[1:])) or
@@ -59,7 +67,7 @@ def machine_view(record):
             raise ValueError("Joint angle must progress monotonically through the lifting stroke.")
     if "observation" in record:
         curve = profile["resistance_curve"]
-    else:
+    elif "reference_kgf" in record:
         curve = fit_curve([(pct / 100, force / mass) for pct, force in points])
     if "resistance_curve" in record and record["resistance_curve"] != curve:
         raise ValueError("Stored curve differs from the source. Refresh it with the fit command.")
@@ -74,5 +82,5 @@ def machine_view(record):
     if "motion_check" in record:
         check = record["motion_check"]
         view["motion_check"] = dict(motion_work_check(check["poses"]), url=check["url"],
-                                    uncertainty=check["uncertainty"])
+                                    uncertainty=check["uncertainty"], frame_count=len(check["poses"]))
     return view

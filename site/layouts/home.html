@@ -6,5 +6,5 @@
 <h2>{{ .Title }}</h2><p>{{ humanize $m.movement }}</p>
 <svg aria-hidden="true" viewBox="0 0 100 100" preserveAspectRatio="none" class="spark">
 {{ partial "spark.html" $m }}</svg>
-<div class="cardfoot"><span>Start <b>{{ printf "%.1f" (float $m.default_start_kgf) }} kgf</b></span><span>Finish <b>{{ printf "%.1f" (float $m.default_finish_kgf) }} kgf</b></span></div>
+<div class="cardfoot">{{ if eq $m.mechanism "motion_intervals" }}<span>Stroke average <b>{{ printf "%.1f" (float $m.default_mean_kgf) }} kgf</b></span>{{ else }}<span>Start <b>{{ printf "%.1f" (float $m.default_start_kgf) }} kgf</b></span><span>Finish <b>{{ printf "%.1f" (float $m.default_finish_kgf) }} kgf</b></span>{{ end }}</div>
 </a>{{ end }}</div>{{ end }}

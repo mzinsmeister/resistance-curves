@@ -1,0 +1,125 @@
+{
+  "name": "Signature Series Biceps Curl (SPLBC)",
+  "manufacturer": "Life Fitness",
+  "movement": "elbow-flexion",
+  "kind": "Video interval estimates",
+  "plate_kg": 31.7514659,
+  "source": "Four unmarked frames from the Life Fitness SPLBC demonstration show both hands on the coupled grips and the moving plate stack. The estimate uses total added plate mass on the moving assembly and describes combined tangential hand force. Percent travel follows the midpoint of the grips over the filmed range.",
+  "base_resistance": {
+    "starting_kgf": 5,
+    "source": "Life Fitness lists 5 kg starting resistance per workarm. The default applies it once to the shared workarm and holds it constant through the rep. The unloaded curve has not been measured.",
+    "url": "https://www.lifefitness.com.au/commercial/signature-series-bicep-curl-splbc"
+  },
+  "motion_observation": {
+    "url": "https://www.youtube.com/watch?v=fuMn3ukena4&t=52s",
+    "parts_manual": "https://fitnesssuperstore.info/pdfs/Life%20Fitness%20SPLBC%20Signature%20Plate%20Loaded%20Series%20Biceps%20Curl%20Owner%27s%20Manual.pdf",
+    "extraction": "YouTube storyboard sb0, sheet index 6 (zero based), tiles 5, 4, 3, 0 in lifting order. Crop each tile from the 3-column sheet at its original 320 by 180 pixels and enlarge to 960 by 540. Coordinates use top-left origin with y down. These lowering frames are read in reverse under quasi-static balance.",
+    "registration": "The anchor follows global frame translation, estimated by matching fixed frame features relative to the front base at (563, 514) in frame 54. Plates mark the center of the visible black plate face. The near and far hands mark the centers of the two grips.",
+    "uncertainty": "The camera looks across the movement at an oblique angle. Image vertical rise and grip travel have different foreshortening and the plates and grips are at different depths. Registration corrects translation. Picking the plate center is uncertain by roughly 6\u20138 enlarged pixels, each grip by 4\u20135 and the registration by 2. These errors matter most for the shorter intervals. Chords approximate the hand path. Exact endpoint forces and the sticking angle remain unresolved.",
+    "poses": [
+      {
+        "frame": 59,
+        "anchor": [
+          590,
+          508
+        ],
+        "plates": [
+          677,
+          350
+        ],
+        "near_hand": [
+          518,
+          216
+        ],
+        "far_hand": [
+          587,
+          205
+        ]
+      },
+      {
+        "frame": 58,
+        "anchor": [
+          584,
+          509
+        ],
+        "plates": [
+          681,
+          329
+        ],
+        "near_hand": [
+          506,
+          175
+        ],
+        "far_hand": [
+          574,
+          165
+        ]
+      },
+      {
+        "frame": 57,
+        "anchor": [
+          578,
+          511
+        ],
+        "plates": [
+          683,
+          284
+        ],
+        "near_hand": [
+          465,
+          120
+        ],
+        "far_hand": [
+          538,
+          114
+        ]
+      },
+      {
+        "frame": 54,
+        "anchor": [
+          563,
+          514
+        ],
+        "plates": [
+          667,
+          246
+        ],
+        "near_hand": [
+          397,
+          103
+        ],
+        "far_hand": [
+          471,
+          97
+        ]
+      }
+    ],
+    "projection_check": "As a sensitivity check, the transverse floor tube runs from (595,517) to (710,459) in frame 59 and the fore-aft tube from about (373,464) to (481,483). Using rounded slopes of \u22120.50 and +0.17, orthogonal level rails, negligible camera roll and equal magnification gives 30\u00b0 yaw from side-on and 17\u00b0 elevation. For registered pixel changes dx and dy, use longitudinal travel dx/cos(yaw) and downward travel (dy \u2212 0.17 \u00d7 dx)/cos(elevation). This gives about 0.70 kgf/kg for the stroke average. The rail and paired hands have different apparent transverse slopes, so the catalog displays the directly tracked projection and treats this correction as a sensitivity check."
+  },
+  "resistance_curve": {
+    "type": "interval_mean",
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "knots": [
+      0.0,
+      0.259182205496,
+      0.653358905307,
+      1.0
+    ],
+    "coefficients": [
+      [
+        0.523735303544
+      ],
+      [
+        0.735700851383
+      ],
+      [
+        0.729790421564
+      ]
+    ]
+  }
+}

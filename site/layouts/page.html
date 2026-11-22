@@ -1,7 +1,7 @@
 {{ define "main" }}{{ $m := .Params.machine }}
 <section class="intro"><small>{{ $m.manufacturer }} / {{ humanize $m.movement }}</small><h1>{{ .Title }}</h1><p>{{ $m.kind }} · {{ printf "%.2f" (float $m.plate_kg) }} kg reference load</p></section>
-<section class="workbench"><div class="plotpanel"><div class="tabs"><button id="force" aria-pressed="true">Resistance</button>{{ if ne $m.movement "compound" }}<button id="compare" aria-pressed="false">Strength comparison</button>{{ end }}</div>
-<h2 id="graph-title">Contact force through the rep</h2>
+<section class="workbench"><div class="plotpanel"><div class="tabs"><button id="force" aria-pressed="true">Resistance</button>{{ if and (ne $m.movement "compound") (ne $m.mechanism "motion_intervals") }}<button id="compare" aria-pressed="false">Strength comparison</button>{{ end }}</div>
+<h2 id="graph-title">{{ if $m.motion_evidence }}Average handle force by interval{{ else }}Contact force through the rep{{ end }}</h2>
 <div id="chart"><svg class="spark" role="img" aria-label="Contact force across the lifting stroke, full values in reference samples" viewBox="-2 0 104 100" preserveAspectRatio="none">{{ partial "spark.html" $m }}</svg></div><p class="legend" id="legend"></p><p class="note" id="result" role="status"></p>
 <noscript><p>Interactive comparisons require JavaScript. The curve samples are listed below.</p></noscript></div>
 <aside><h2>Your load</h2>
@@ -33,13 +33,20 @@
 {{ end }}
 {{ with $m.motion_check }}
 <h2>Independent video estimate</h2>
-<p>Across five unmarked frames the plate center rose {{ printf "%.0f" (float .plate_rise_px) }} pixels as the hand moved {{ printf "%.0f" (float .hand_path_px) }} pixels along its path. At {{ printf "%.2f" (float $m.plate_kg) }} kg of plates, this implies an average of <strong>{{ printf "%.1f" (float (mul $m.plate_kg .hand_kgf_per_kg)) }} kgf</strong> across the filmed stroke. Tracking the visible handle end instead gives {{ printf "%.1f" (float (mul $m.plate_kg .handle_cap_kgf_per_kg)) }} kgf. These estimates leave the endpoint forces unresolved. <a href="{{ .url }}">Original demonstration</a></p>
+<p>Across {{ .frame_count }} unmarked frames the plate center rose {{ printf "%.0f" (float .plate_rise_px) }} pixels as the hand moved {{ printf "%.0f" (float .hand_path_px) }} pixels along its path. At {{ printf "%.2f" (float $m.plate_kg) }} kg of plates, this implies an average of <strong>{{ printf "%.1f" (float (mul $m.plate_kg .hand_kgf_per_kg)) }} kgf</strong> across the filmed stroke. Tracking the visible handle end instead gives {{ printf "%.1f" (float (mul $m.plate_kg .handle_cap_kgf_per_kg)) }} kgf. These estimates leave the endpoint forces unresolved. <a href="{{ .url }}">Original demonstration</a></p>
 <details><summary>Video measurement assumptions</summary><p>{{ .uncertainty }}</p></details>
 {{ end }}
-<h2>Reference fit</h2>
+{{ with $m.motion_evidence }}
+<h2>Stroke average</h2>
+<p>The plate center rose {{ printf "%.0f" (float .plate_rise_px) }} image pixels as the midpoint of the hands traveled {{ printf "%.0f" (float .hand_path_px) }} pixels. Their ratio gives an estimated {{ printf "%.2f" (float .mean_kgf_per_kg) }} kgf per kg of added plates across this stroke. <a href="{{ .url }}">Original demonstration</a></p>
+<p>{{ .uncertainty }}</p>{{ with .projection_check }}<details><summary>Camera angle sensitivity</summary><p>{{ . }}</p></details>{{ end }}
+{{ else }}<h2>Reference fit</h2>
 {{ if eq $m.resistance_curve.type "polynomial" }}<p><code>R(t) ≈ Lref × ({{ $m.formula }})</code></p>{{ else }}<p>Shape-preserving cubic spline with {{ sub (len $m.resistance_curve.knots) 1 }} segments. The machine record contains the knots and each segment’s coefficients.</p>{{ end }}
 <p>R is reference contact force in kgf, Lref is the recorded plate mass in kg and t runs from 0 to 1 over the lifting stroke. Maximum difference at the {{ $m.resistance_curve.sample_count }} reference samples is {{ printf "%.3g" (float (mul $m.plate_kg $m.resistance_curve.max_sample_error_kgf_per_kg)) }} kgf at the reference load.</p>
+{{ end }}
 <a href="{{ printf "records/%s.json" .Params.slugid | relURL }}">View machine record (JSON)</a></div>
-<details><summary>Reference curve samples</summary><table><thead><tr><th>Travel</th><th>Contact force</th></tr></thead><tbody>{{ range $m.points }}<tr><td>{{ printf "%.1f" (float (index . 0)) }}%</td><td>{{ printf "%.2f" (float (index . 1)) }} kgf</td></tr>{{ end }}</tbody></table></details></section>
+{{ if $m.motion_evidence }}<details open><summary>Interval means at reference load</summary>
+<table><thead><tr><th>Filmed travel</th><th>Handle force with base</th></tr></thead><tbody>{{ range $m.bands }}<tr><td>{{ printf "%.0f" (float (index . 0)) }}–{{ printf "%.0f" (float (index . 1)) }}%</td><td>{{ printf "%.1f" (float (index . 2)) }} kgf</td></tr>{{ end }}</tbody></table></details>
+{{ else }}<details><summary>Reference curve samples</summary><table><thead><tr><th>Travel</th><th>Contact force</th></tr></thead><tbody>{{ range $m.points }}<tr><td>{{ printf "%.1f" (float (index . 0)) }}%</td><td>{{ printf "%.2f" (float (index . 1)) }} kgf</td></tr>{{ end }}</tbody></table></details>{{ end }}</section>
 <script type="application/json" id="record">{{ $m | jsonify | safeJS }}</script><script defer src="{{ "model.js" | relURL }}"></script><script defer src="{{ "viewer.js" | relURL }}"></script>
 {{ end }}

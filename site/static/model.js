@@ -13,7 +13,7 @@ const AtlasModel = (() => {
       throw Error('Travel must be a finite fraction from 0 to 1.');
     }
     let coefficients = curve.coefficients;
-    if (curve.type === 'pchip') {
+    if (['pchip', 'interval_mean'].includes(curve.type)) {
       let i = 0;
       while (i < curve.knots.length - 2 && travel >= curve.knots[i + 1]) i++;
       travel -= curve.knots[i];
