@@ -49,6 +49,14 @@ midpoint_kgf = machine["plate_kg"] * evaluate_curve(machine["resistance_curve"],
 
 Use `python -m resistance_curves fit catalog/machines/MACHINE-ID.json` to inspect a fit. Add `--write` to refresh it after editing source data. Hugo builds also derive fits for older records and flag stale stored coefficients.
 
+## Custom plates and unloaded resistance
+
+On a machine page enter total added kilograms or list individual plates on one moving assembly (for example, `20, 10, 2.5`). Zero plates shows the unloaded handle force. Both the resistance chart and predicted strength limit use the selected load. Strength comparisons apply limb share to the combined force.
+
+The optional machine record field `base_resistance` holds `starting_kgf`, a `source` and optionally `url` and `finish_kgf`. One value assumes constant unloaded force. A different finish value gives a linear estimate between the two. The site starts unknown machines at zero and allows either endpoint to be edited. Hammer Strength specifies approximately 2 kg starting resistance per workarm for the PL-BI. Its change across travel is unknown. [Manufacturer specifications](https://shop.lifefitness.com/products/hammer-strength-plate-loaded-seated-biceps)
+
+For a plate-only reference force R, total force at each position is B + R × L/Lref, with unloaded handle force B and custom plate mass L. For a reported force that already includes B, use B + (R − B) × L/Lref. The page defaults reported records to the second interpretation so their reference values are preserved. The selector makes this assumption editable. The Git record and its fitted coefficients always describe the original reference.
+
 ## Comparing resistance and strength
 
 For a single-joint movement, the site compares external joint torque to an angle-specific capacity in N·m. It multiplies contact force in newtons by the limb’s share of the load and the perpendicular joint-to-force-line distance in metres. A scaled side view determines this arm for tangential rotary contact. Joint flexion is zero at full extension. Without calibrated anatomy the controls expose an assumed angle range and constant arm. The reported preacher curl has this limitation.

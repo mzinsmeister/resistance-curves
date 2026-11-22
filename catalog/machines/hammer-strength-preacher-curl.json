@@ -154,5 +154,10 @@
         ]
       }
     ]
+  },
+  "base_resistance": {
+    "starting_kgf": 2,
+    "source": "Hammer Strength lists 2 kg starting resistance per workarm for the PL-BI. The full unloaded curve is unknown. The default holds this force constant across the stroke.",
+    "url": "https://shop.lifefitness.com/products/hammer-strength-plate-loaded-seated-biceps"
   }
 }

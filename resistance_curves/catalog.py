@@ -57,6 +57,13 @@ def machine_view(record):
     if "resistance_curve" in record and record["resistance_curve"] != curve:
         raise ValueError("Stored curve differs from the source. Refresh it with the fit command.")
     view.update(resistance_curve=curve, points=points, geometry=geometry, gravity=G)
+    if "base_resistance" in record:
+        base = record["base_resistance"]
+        if not isinstance(base, dict) or not number(base.get("starting_kgf"), 0) or not base.get("source"):
+            raise ValueError("Base resistance needs nonnegative starting_kgf and a source.")
+        if "finish_kgf" in base and not number(base["finish_kgf"], 0):
+            raise ValueError("finish_kgf must be finite and nonnegative.")
+        view["base_resistance"] = base
     if "motion_check" in record:
         check = record["motion_check"]
         view["motion_check"] = dict(motion_work_check(check["poses"]), url=check["url"],

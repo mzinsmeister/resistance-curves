@@ -35,3 +35,10 @@ class CatalogTests(unittest.TestCase):
         result = motion_work_check(poses)
         self.assertAlmostEqual(result["hand_kgf_per_kg"], 20/25)
         self.assertAlmostEqual(result["handle_cap_kgf_per_kg"], 20/30)
+
+    def test_catalog_starting_resistance(self):
+        record = json.loads((ROOT / "catalog/machines/hammer-strength-preacher-curl.json").read_text())
+        self.assertEqual(machine_view(record)["base_resistance"]["starting_kgf"], 2)
+        record["base_resistance"]["starting_kgf"] = -1
+        with self.assertRaisesRegex(ValueError, "Base resistance"):
+            machine_view(record)

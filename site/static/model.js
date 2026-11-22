@@ -34,8 +34,32 @@ const AtlasModel = (() => {
     return positions;
   }
 
+  function plateTotal(text) {
+    const entries = text.split(',').map(entry => entry.trim());
+    if (entries.some(entry => !/^(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+)$/.test(entry))) {
+      throw Error('Enter each plate mass in kg, separated by commas. Use 0 for an empty machine.');
+    }
+    const total = entries.reduce((sum, entry) => sum + Number(entry), 0);
+    if (!Number.isFinite(total)) throw Error('The total plate mass is too large.');
+    return total;
+  }
+
+  function contactForce(record, position, settings, fitted) {
+    const {load, baseStart = 0, baseFinish = baseStart, referenceIncludesBase = false} = settings;
+    const t = position / 100;
+    const base = baseStart + (baseFinish - baseStart) * t;
+    const reference = fitted && record.resistance_curve
+      ? evaluateCurve(record.resistance_curve, t) * record.plate_kg
+      : interpolate(record.points, position);
+    const plateContribution = referenceIncludesBase ? reference - base : reference;
+    if (plateContribution < -1e-9) {
+      throw Error('The unloaded handle force exceeds the reported reference force. Check the base or the reference assumption.');
+    }
+    return base + Math.max(0, plateContribution) * load / record.plate_kg;
+  }
+
   function compare(record, settings) {
-    const {load, strength, fraction, share, geometry, continuous} = settings;
+    const {strength, fraction, share, geometry, continuous} = settings;
     const order = Math.sign(geometry.at(-1)[1] - geometry[0][1]);
     if (!order) throw Error('Start and finish angles must differ.');
     const angles = geometry.map(([p, a]) => [p, a]);
@@ -44,12 +68,9 @@ const AtlasModel = (() => {
     const samples = record.points.map(row => row[0]);
     if (curve) samples.push(...curvePositions(curve), ...geometry.map(row => row[0]));
     const positions = [...new Set(samples)].sort((a,b) => a-b);
-    const referenceForce = p => curve
-      ? evaluateCurve(curve, p / 100) * record.plate_kg
-      : interpolate(record.points, p);
     const demand = positions.map(p => [
       interpolate(angles, p),
-      referenceForce(p) * record.gravity * load / record.plate_kg * share * interpolate(arms, p)
+      contactForce(record, p, settings, continuous) * record.gravity * share * interpolate(arms, p)
     ]);
     const sorted = [...demand].sort((a,b) => a[0]-b[0]);
     let knots = demand.map(row => row[0]);
@@ -74,6 +95,6 @@ const AtlasModel = (() => {
     }
     return {demand, capacity: strength.map(([x,c]) => [x,c*fraction]), crossing, hardest, common};
   }
-  return {compare, evaluateCurve, curvePositions};
+  return {compare, evaluateCurve, curvePositions, contactForce, plateTotal};
 })();
 if (typeof module !== 'undefined') module.exports = AtlasModel;

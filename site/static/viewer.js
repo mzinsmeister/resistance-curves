@@ -62,16 +62,30 @@
     el('comparison-source').replaceChildren();
     const sparse=['reported','belt_cam'].includes(m.mechanism);
     try {
-      const load=number('load',0);
+      const individual = el('load-mode').value === 'plates';
+      el('total-panel').hidden = individual;
+      el('plates-panel').hidden = !individual;
+      const varyBase = el('vary-base').checked;
+      el('finish-base-panel').hidden = !varyBase;
+      const load = individual ? AtlasModel.plateTotal(el('plates').value) : number('load', 0);
+      const baseStart = number('base-start', 0);
+      const loading = {
+        load, baseStart, baseFinish: varyBase ? number('base-finish', 0) : baseStart,
+        referenceIncludesBase: el('reference-basis')?.value === 'included'
+      };
       const continuous = !sparse || el('interpolate').checked;
+      const start = AtlasModel.contactForce(m, 0, loading, continuous);
+      const finish = AtlasModel.contactForce(m, 100, loading, continuous);
+      el('load-summary').textContent = load.toLocaleString(undefined, {maximumFractionDigits:3}) +
+        ' kg of plates · Handle force: ' + fmt(start) + ' kgf at start, ' + fmt(finish) + ' kgf at finish.';
       if(!comparing) {
         const series = [];
         if (continuous) {
           const curve = m.resistance_curve;
-          const points = AtlasModel.curvePositions(curve).map(p => [p, load * AtlasModel.evaluateCurve(curve, p / 100)]);
+          const points = AtlasModel.curvePositions(curve).map(p => [p, AtlasModel.contactForce(m, p, loading, true)]);
           series.push({points, color:teal, line:true, dashed:sparse});
         }
-        if (sparse) series.push({points:m.points.map(([x,y])=>[x,y*load/m.plate_kg]),color:teal,line:false});
+        if (sparse) series.push({points:m.points.map(([x])=>[x, AtlasModel.contactForce(m, x, loading, false)]),color:teal,line:false});
         chart(series,
           'Travel through lifting stroke (%)','Contact force (kgf)',null,false);
         el('legend').textContent='●  Machine resistance';
@@ -86,7 +100,7 @@
         const arm=number('arm',0.001);
         geometry=[[0,number('start',0,180),arm],[100,number('finish',0,180),arm]];
       }
-      const r=AtlasModel.compare(m,{load,strength,fraction,share,geometry,continuous});
+      const r=AtlasModel.compare(m,{...loading,strength,fraction,share,geometry,continuous});
       chart([{points:r.demand,line:continuous,color:teal,dashed:sparse},
              {points:r.capacity,line:true,color:gold}],
         'Joint flexion angle (°) · lifting direction','Joint torque (N·m)',r.crossing,geometry[0][1]>geometry.at(-1)[1]);
@@ -109,6 +123,7 @@
         (continuous?'Modeled strength limit reached by ':'First recorded position at or above capacity: ')+fmt(r.crossing)+'°. ';
       el('result').textContent=limit+' Highest demand relative to strength: '+fmt(100*r.hardest.d/r.hardest.c)+'% at '+fmt(r.hardest.x)+'°. Comparison covers '+range+'.';
     } catch(err) {
+      el('load-summary').textContent = '';
       el('chart').replaceChildren(); el('legend').textContent=''; el('result').textContent=err.message;
     }
   }
