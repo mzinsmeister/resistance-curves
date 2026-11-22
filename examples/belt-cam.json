@@ -1,0 +1,8 @@
+{
+  "mechanism": "belt_cam",
+  "evidence": "Synthetic side-view landmarks for exercising the two-axis solver. These coordinates are illustrative.",
+  "poses": [
+    {"pivot":[500,700],"plates":[260,800],"belt_load":[350,680],"belt_cam":[350,340],"cam_pivot":[410,340],"grip":[260,340]},
+    {"pivot":[500,700],"plates":[240,700],"belt_load":[370,680],"belt_cam":[370,340],"cam_pivot":[410,340],"grip":[280,265]}
+  ]
+}

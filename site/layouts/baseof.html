@@ -1,0 +1,7 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ if .IsHome }}Machine library{{ else }}{{ .Title }}{{ end }} · Resistance Atlas</title>
+<link rel="stylesheet" href="{{ "atlas.css" | relURL }}"></head><body>
+<header><div class="wrap"><a class="brand" href="{{ "index.html" | relURL }}"><span class="logo" aria-hidden="true">∿</span> Resistance Atlas</a><a href="{{ "index.html" | relURL }}">Machine library</a></div></header>
+<main class="wrap">{{ block "main" . }}{{ end }}</main>
+<footer class="wrap">Resistance Atlas <span>Plate-loaded machine mechanics</span></footer></body></html>

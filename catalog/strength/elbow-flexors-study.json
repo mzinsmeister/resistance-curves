@@ -1,0 +1,7 @@
+{
+  "name": "Elbow flexors · study mean",
+  "movement": "elbow-flexion",
+  "source": "Yang et al. (2014), Table 1. Mean maximum isometric flexion torque across 30 participants. The tested shoulder position and group mean may differ from the lifter.",
+  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4135202/",
+  "points": [[56, 34.2], [70, 32.4], [84, 31.4]]
+}

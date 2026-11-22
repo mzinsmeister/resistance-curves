@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "resistance-curves"
+version = "0.1.0"
+description = "Estimate quasi-static plate-loaded machine profiles from photo landmarks"
+requires-python = ">=3.10"
+dependencies = ["Pillow>=10", "matplotlib>=3.7"]
+
+[project.scripts]
+resistance-curves = "resistance_curves.__main__:main"
+
+[tool.setuptools]
+packages = ["resistance_curves"]

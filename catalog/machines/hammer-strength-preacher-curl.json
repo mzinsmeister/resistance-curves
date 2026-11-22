@@ -1,0 +1,18 @@
+{
+  "name": "Preacher curl",
+  "manufacturer": "Hammer Strength",
+  "movement": "elbow-flexion",
+  "kind": "Reported endpoints",
+  "source": "@juandsamudio on Instagram. Endpoint figures supplied by the user and converted to metric. Reported hand resistance. Load sharing and the contribution of the unloaded machine have not been independently established.",
+  "plate_kg": 31.7514659,
+  "reference_kgf": [
+    [
+      0,
+      22.6796185
+    ],
+    [
+      100,
+      25.85476509
+    ]
+  ]
+}

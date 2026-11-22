@@ -1,0 +1,10 @@
+{{ define "main" }}
+<section class="intro"><small>Resistance profiles</small><h1>Machine library</h1><p>Explore how the load changes through a rep and where it approaches a lifter’s strength limit.</p></section>
+<div class="listhead"><h2>Machines</h2><span>{{ len .Site.RegularPages }} records</span></div>
+<div class="cards">{{ range .Site.RegularPages.ByTitle }}{{ $m := .Params.machine }}
+<a class="card" href="{{ .RelPermalink }}index.html"><div class="cardtop"><small>{{ $m.manufacturer }}</small><span class="tag">{{ $m.kind }}</span></div>
+<h2>{{ .Title }}</h2><p>{{ humanize $m.movement }}</p>
+<svg aria-hidden="true" viewBox="0 0 100 100" preserveAspectRatio="none" class="spark">
+{{ partial "spark.html" $m }}</svg>
+<div class="cardfoot"><span>Start <b>{{ printf "%.1f" (float (index (index $m.points 0) 1)) }} kgf</b></span><span>Finish <b>{{ printf "%.1f" (float (index (index (last 1 $m.points) 0) 1)) }} kgf</b></span></div>
+</a>{{ end }}</div>{{ end }}

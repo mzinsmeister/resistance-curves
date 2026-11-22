@@ -1,0 +1,158 @@
+{
+  "name": "Single-arm lever curl",
+  "manufacturer": "Geometry example",
+  "movement": "elbow-flexion",
+  "kind": "Synthetic model",
+  "plate_kg": 32,
+  "source": "Constructed single-arm lever with aligned elbow and machine axes. Its four pose records use a 0.30 m hand radius.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "The added plates rotate on a rigid arm with the handle. The prescribed motion lifts the plates.",
+    "poses": [
+      {
+        "pivot": [
+          500,
+          500
+        ],
+        "plates": [
+          561.56,
+          669.14
+        ],
+        "grip": [
+          585.51,
+          734.92
+        ],
+        "joint": [
+          500,
+          500
+        ],
+        "proximal": [
+          500,
+          300
+        ],
+        "distal": [
+          571.82,
+          697.34
+        ],
+        "scale_start": [
+          100,
+          800
+        ],
+        "scale_end": [
+          350,
+          800
+        ],
+        "scale_m": 0.3,
+        "scale_source": "Known construction dimensions in this synthetic geometry."
+      },
+      {
+        "pivot": [
+          500,
+          500
+        ],
+        "plates": [
+          647.45,
+          603.24
+        ],
+        "grip": [
+          704.79,
+          643.39
+        ],
+        "joint": [
+          500,
+          500
+        ],
+        "proximal": [
+          500,
+          300
+        ],
+        "distal": [
+          672.02,
+          620.45
+        ],
+        "scale_start": [
+          100,
+          800
+        ],
+        "scale_end": [
+          350,
+          800
+        ],
+        "scale_m": 0.3,
+        "scale_source": "Known construction dimensions in this synthetic geometry."
+      },
+      {
+        "pivot": [
+          500,
+          500
+        ],
+        "plates": [
+          680.0,
+          500.0
+        ],
+        "grip": [
+          750.0,
+          500.0
+        ],
+        "joint": [
+          500,
+          500
+        ],
+        "proximal": [
+          500,
+          300
+        ],
+        "distal": [
+          710.0,
+          500.0
+        ],
+        "scale_start": [
+          100,
+          800
+        ],
+        "scale_end": [
+          350,
+          800
+        ],
+        "scale_m": 0.3,
+        "scale_source": "Known construction dimensions in this synthetic geometry."
+      },
+      {
+        "pivot": [
+          500,
+          500
+        ],
+        "plates": [
+          647.45,
+          396.76
+        ],
+        "grip": [
+          704.79,
+          356.61
+        ],
+        "joint": [
+          500,
+          500
+        ],
+        "proximal": [
+          500,
+          300
+        ],
+        "distal": [
+          672.02,
+          379.55
+        ],
+        "scale_start": [
+          100,
+          800
+        ],
+        "scale_end": [
+          350,
+          800
+        ],
+        "scale_m": 0.3,
+        "scale_source": "Known construction dimensions in this synthetic geometry."
+      }
+    ]
+  }
+}
