@@ -4,7 +4,7 @@
   "movement": "elbow-flexion",
   "kind": "Video interval estimates",
   "plate_kg": 31.7514659,
-  "source": "Four unmarked frames from the Life Fitness SPLBC demonstration show both hands on the coupled grips and the moving plate stack. The estimate uses total added plate mass on the moving assembly and describes combined tangential hand force. Percent travel follows the midpoint of the grips over the filmed range.",
+  "source": "Four unmarked frames from the Life Fitness SPLBC demonstration show both hands on the coupled grips and the moving plate stack. The estimate uses total added plate mass on the moving assembly and describes combined tangential hand force. Percent travel follows the midpoint of the grips over the filmed range. At 40 kg of added plates and the default base, the first 26% of filmed travel averages about 26 kgf. This estimate comes from only about 7 original pixels of plate rise. A stroke average can conceal how light the beginning of the curl feels.",
   "base_resistance": {
     "starting_kgf": 5,
     "source": "Life Fitness lists 5 kg starting resistance per workarm. The default applies it once to the shared workarm and holds it constant through the rep. The unloaded curve has not been measured.",
