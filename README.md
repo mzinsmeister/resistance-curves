@@ -30,13 +30,32 @@ python -m resistance_curves record work/poses/observation.json --slug machine-id
 python scripts/build_site.py
 ```
 
+## Resistance functions
+
+Every new machine record and estimate includes a `resistance_curve` object. Its input `t` is lifting travel divided by 100%, from bottom (0) to top (1) for a bottom-to-top lift. Its output is contact force in kgf per kilogram of plates. Multiply by plate mass for kgf, then by 9.80665 for newtons. Evaluate only inside the fitted stroke.
+
+The fitter tries an endpoint-preserving polynomial of degree 0 through 3 in order of increasing complexity. At every reference sample, the absolute error must be at most 1% of the peak sampled resistance. It also checks interior extrema for negative resistance and overshoot beyond neighboring sample values by more than that tolerance. If those checks fail, it uses a shape-preserving piecewise cubic Hermite interpolator (PCHIP) through the samples. The tolerance describes approximation of the input data. Photo error and uncertainty between sparse observations are separate.
+
+Polynomial coefficients are ordered constant first. For a spline, interval `i` has its own coefficient array in powers of `t - knots[i]`. The record includes the domain, units, sample count and maximum residual at the reference positions. A rigid lever’s samples come from its geometry model. A cam’s samples come from photographed positions. Two endpoints yield at most a line, with no independent evidence about the middle.
+
+```python
+import json
+from pathlib import Path
+from resistance_curves import evaluate_curve
+
+machine = json.loads(Path("catalog/machines/hammer-strength-preacher-curl.json").read_text())
+midpoint_kgf = machine["plate_kg"] * evaluate_curve(machine["resistance_curve"], 0.5)
+```
+
+Use `python -m resistance_curves fit catalog/machines/MACHINE-ID.json` to inspect a fit. Add `--write` to refresh it after editing source data. Hugo builds also derive fits for older records and flag stale stored coefficients.
+
 ## Comparing resistance and strength
 
 For a single-joint movement, the site compares external joint torque to an angle-specific capacity in N·m. It multiplies contact force in newtons by the limb’s share of the load and the perpendicular joint-to-force-line distance in metres. A scaled side view determines this arm for tangential rotary contact. Joint flexion is zero at full extension. Without calibrated anatomy the controls expose an assumed angle range and constant arm. The reported preacher curl has this limitation.
 
 Add measurements as ordered `[flexion_degrees, torque_Nm]` pairs in a strength record with matching `movement`, `name`, and `source`. A lifter can also enter personal readings directly in the browser. Use the same joint action, posture, grip, and unilateral or bilateral basis. The study profile uses group-mean maximum elbow-flexion torque at 56°, 70° and 84°. The other included profile is explicitly synthetic. [Yang et al., Table 1](https://pmc.ncbi.nlm.nih.gov/articles/PMC4135202/)
 
-The first position at which demand reaches available capacity estimates a quasi-static limit for the selected load and strength settings. Highest demand divided by capacity identifies the likeliest sticking position under proportional strength loss. Available strength (%) is a scenario input. The model does not forecast fatigue over repetitions. It compares only overlapping angles. For sparse reports and cam poses it evaluates recorded positions by default. Opting into piecewise-linear interpolation estimates a crossing between poses. A crossing already exceeded at the beginning of the covered interval is reported as reached by that position. Compound movements have a force view only.
+The first position at which demand reaches available capacity estimates a quasi-static limit for the selected load and strength settings. Highest demand divided by capacity identifies the likeliest sticking position under proportional strength loss. Available strength (%) is a scenario input. The model does not forecast fatigue over repetitions. It compares only overlapping angles. For sparse reports and cam poses it evaluates recorded positions by default. Enabling the fitted resistance function estimates demand between poses. For the crossing calculation the browser samples this function, includes the anatomical and strength knots, and linearly locates the crossing between adjacent compared positions. A crossing already exceeded at the beginning of the covered interval is reported as reached by that position. Compound movements have a force view only.
 
 ## Reading the result
 

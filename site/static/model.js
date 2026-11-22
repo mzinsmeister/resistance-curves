@@ -8,16 +8,48 @@ const AtlasModel = (() => {
     }
   }
 
+  function evaluateCurve(curve, travel) {
+    if (!Number.isFinite(travel) || travel < 0 || travel > 1) {
+      throw Error('Travel must be a finite fraction from 0 to 1.');
+    }
+    let coefficients = curve.coefficients;
+    if (curve.type === 'pchip') {
+      let i = 0;
+      while (i < curve.knots.length - 2 && travel >= curve.knots[i + 1]) i++;
+      travel -= curve.knots[i];
+      coefficients = coefficients[i];
+    }
+    return Math.max(0, coefficients.reduceRight((sum, c) => sum * travel + c, 0));
+  }
+
+  function curvePositions(curve) {
+    const knots = curve.knots || [0, 1];
+    const positions = [0];
+    for (let i = 1; i < knots.length; i++) {
+      const width = knots[i] - knots[i - 1];
+      const steps = Math.max(12, Math.ceil(width * 200));
+      for (let j = 1; j < steps; j++) positions.push(100 * (knots[i-1] + width * j / steps));
+      positions.push(100 * knots[i]);
+    }
+    return positions;
+  }
+
   function compare(record, settings) {
     const {load, strength, fraction, share, geometry, continuous} = settings;
     const order = Math.sign(geometry.at(-1)[1] - geometry[0][1]);
     if (!order) throw Error('Start and finish angles must differ.');
     const angles = geometry.map(([p, a]) => [p, a]);
     const arms = geometry.map(([p, a, r]) => [p, r]);
-    const positions = [...new Set([...record.points, ...geometry].map(row => row[0]))].sort((a,b) => a-b);
+    const curve = continuous && record.resistance_curve;
+    const samples = record.points.map(row => row[0]);
+    if (curve) samples.push(...curvePositions(curve), ...geometry.map(row => row[0]));
+    const positions = [...new Set(samples)].sort((a,b) => a-b);
+    const referenceForce = p => curve
+      ? evaluateCurve(curve, p / 100) * record.plate_kg
+      : interpolate(record.points, p);
     const demand = positions.map(p => [
       interpolate(angles, p),
-      interpolate(record.points, p) * record.gravity * load / record.plate_kg * share * interpolate(arms, p)
+      referenceForce(p) * record.gravity * load / record.plate_kg * share * interpolate(arms, p)
     ]);
     const sorted = [...demand].sort((a,b) => a[0]-b[0]);
     let knots = demand.map(row => row[0]);
@@ -42,6 +74,6 @@ const AtlasModel = (() => {
     }
     return {demand, capacity: strength.map(([x,c]) => [x,c*fraction]), crossing, hardest, common};
   }
-  return {compare};
+  return {compare, evaluateCurve, curvePositions};
 })();
 if (typeof module !== 'undefined') module.exports = AtlasModel;

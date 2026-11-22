@@ -23,3 +23,21 @@ test('no extrapolation beyond strength measurements',()=>{
   assert.equal(r.hardest.x,30);
   assert.equal(compare(machine,{...settings,strength:[[110,100],[130,100]]}).hardest,null);
 });
+
+test('continuous comparison uses the polynomial peak between observations', () => {
+  const record = {...machine, points:[[0,5],[100,5]],
+    resistance_curve:{type:'polynomial',coefficients:[0.5,4,-4]}};
+  const result = compare(record, settings);
+  assert.equal(result.hardest.x, 50);
+  assert.ok(Math.abs(result.crossing - 14.645) < 0.01);
+  assert.equal(compare(record,{...settings,continuous:false}).crossing,null);
+});
+
+test('local spline coefficients and a narrow interval', () => {
+  const {evaluateCurve,curvePositions} = require('../site/static/model.js');
+  const curve = {type:'pchip', knots:[0,.001,1], coefficients:[[0,1000],[1,0]]};
+  assert.equal(evaluateCurve(curve,.0005),.5);
+  assert.equal(evaluateCurve(curve,1),1);
+  assert.throws(()=>evaluateCurve(curve,-.1));
+  assert.ok(curvePositions(curve).filter(p=>p>0 && p<.1).length >= 10);
+});

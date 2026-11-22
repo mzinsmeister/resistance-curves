@@ -32,7 +32,7 @@
     for(const s of series) {
       if(s.line) add('polyline',{points:s.points.map(([x,y])=>X(x)+','+Y(y)).join(' '),
         fill:'none',stroke:s.color,'stroke-width':3,'stroke-dasharray':s.dashed?'7 5':'none'});
-      if(s.points.length<=15) for(const [x,y] of s.points) {
+      if(!s.line || s.points.length<=15) for(const [x,y] of s.points) {
         const point = svgNode('circle',{cx:X(x),cy:Y(y),r:5,fill:s.color});
         point.append(svgNode('title',{},fmt(x)+' · '+fmt(y)+' '+ylabel));
         svg.append(point);
@@ -63,11 +63,21 @@
     const sparse=['reported','belt_cam'].includes(m.mechanism);
     try {
       const load=number('load',0);
+      const continuous = !sparse || el('interpolate').checked;
       if(!comparing) {
-        chart([{points:m.points.map(([x,y])=>[x,y*load/m.plate_kg]),color:teal,line:!sparse}],
+        const series = [];
+        if (continuous) {
+          const curve = m.resistance_curve;
+          const points = AtlasModel.curvePositions(curve).map(p => [p, load * AtlasModel.evaluateCurve(curve, p / 100)]);
+          series.push({points, color:teal, line:true, dashed:sparse});
+        }
+        if (sparse) series.push({points:m.points.map(([x,y])=>[x,y*load/m.plate_kg]),color:teal,line:false});
+        chart(series,
           'Travel through lifting stroke (%)','Contact force (kgf)',null,false);
         el('legend').textContent='●  Machine resistance';
-        el('result').textContent=sparse?'Markers show recorded positions. Resistance between them is unknown.':'Calculated from the rigid geometry through the lifting stroke.';
+        el('result').textContent = sparse
+          ? (continuous ? 'The dashed line estimates resistance between recorded positions.' : 'Markers show recorded positions. Enable the fit to estimate the intervening stroke.')
+          : 'The fitted curve approximates the calculated machine resistance.';
         return;
       }
       const strength=strengthPoints(), fraction=number('capacity',1,100)/100, share=number('share',1,100)/100;
@@ -76,7 +86,6 @@
         const arm=number('arm',0.001);
         geometry=[[0,number('start',0,180),arm],[100,number('finish',0,180),arm]];
       }
-      const continuous=!sparse||el('interpolate').checked;
       const r=AtlasModel.compare(m,{load,strength,fraction,share,geometry,continuous});
       chart([{points:r.demand,line:continuous,color:teal,dashed:sparse},
              {points:r.capacity,line:true,color:gold}],

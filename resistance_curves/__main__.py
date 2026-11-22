@@ -45,8 +45,29 @@ def main():
     record.add_argument("--plate-kg", required=True, type=float)
     record.add_argument("--source", required=True)
     record.add_argument("--catalog", default=Path("catalog/machines"), type=Path)
+    fit = commands.add_parser("fit", help="Calculate a machine's polynomial or cubic spline")
+    fit.add_argument("machine", type=Path)
+    fit.add_argument("--write", action="store_true", help="Refresh resistance_curve in the record")
     args = parser.parse_args()
     try:
+        if args.command == "fit":
+            from .catalog import machine_view
+
+            data = json.loads(args.machine.read_text())
+            data.pop("resistance_curve", None)
+            curve = machine_view(data)["resistance_curve"]
+            if args.write:
+                data["resistance_curve"] = curve
+                from tempfile import NamedTemporaryFile
+
+                with NamedTemporaryFile(mode="w", dir=args.machine.parent, delete=False) as output:
+                    json.dump(data, output, indent=2, allow_nan=False)
+                    output.write("\n")
+                replacement = Path(output.name)
+                replacement.chmod(args.machine.stat().st_mode)
+                replacement.replace(args.machine)
+            print(json.dumps(curve, indent=2))
+            return
         if args.command == "record":
             from .catalog import machine_view
 
@@ -55,7 +76,7 @@ def main():
             data = dict(name=args.name, manufacturer=args.manufacturer, movement=args.movement,
                         kind="Photo estimate", plate_kg=args.plate_kg, source=args.source,
                         observation=json.loads(args.observation.read_text()))
-            machine_view(data)
+            data["resistance_curve"] = machine_view(data)["resistance_curve"]
             path = args.catalog / f"{args.slug}.json"
             serialized = json.dumps(data, indent=2, allow_nan=False) + "\n"
             with path.open("x") as file:

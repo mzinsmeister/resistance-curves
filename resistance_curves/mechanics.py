@@ -2,6 +2,8 @@
 
 from math import atan2, cos, degrees, dist, hypot, isfinite, radians, remainder
 
+from .curves import fit_curve
+
 G = 9.80665
 FIELDS = {
     "lever": ("pivot", "plates", "grip"),
@@ -122,7 +124,7 @@ def estimate(observation, plate_kg=None):
                 raise ValueError("Grip positions must progress in one direction with an unambiguous sweep.")
             travel.append(travel[-1] + step)
         for m, position in zip(measured, travel):
-            m["travel_pct"] = 100 * position / travel[-1]
+            m["travel_pct"] = (position / travel[-1]) * 100
         curve = [(m["travel_pct"], m["force_ratio"]) for m in measured]
         if kind == "lever":
             ratios = [m["radius_ratio"] for m in measured]
@@ -146,4 +148,5 @@ def estimate(observation, plate_kg=None):
             sample["force_N"] = sample["force_kgf"] * G
         samples.append(sample)
     return {"mechanism": kind, "evidence": observation.get("evidence", ""), "plate_kg": plate_kg,
-            "poses": measured, "samples": samples}
+            "poses": measured, "samples": samples,
+            "resistance_curve": fit_curve([(pct / 100, ratio) for pct, ratio in curve])}

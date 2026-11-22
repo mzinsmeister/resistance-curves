@@ -7,7 +7,7 @@ name = "resistance-curves"
 version = "0.1.0"
 description = "Estimate quasi-static plate-loaded machine profiles from photo landmarks"
 requires-python = ">=3.10"
-dependencies = ["Pillow>=10", "matplotlib>=3.7"]
+dependencies = ["Pillow>=10", "matplotlib>=3.7", "numpy>=1.23", "scipy>=1.9"]
 
 [project.scripts]
 resistance-curves = "resistance_curves.__main__:main"

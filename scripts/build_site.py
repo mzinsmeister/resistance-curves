@@ -13,6 +13,7 @@ import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
+from resistance_curves.curves import evaluate_curve
 from resistance_curves.catalog import check_pairs, machine_view
 
 
@@ -53,11 +54,22 @@ def build(out):
             except ValueError as exc:
                 raise ValueError(f"{path.name}: {exc}") from exc
             data["strength"] = [s for s in strength if s["movement"] == data["movement"]]
-            data["trace"] = chart(data["points"])
-            data["markers"] = [p.split(",") for p in data["trace"].split()] if len(data["points"]) <= 15 else []
+            curve = data["resistance_curve"]
+            if curve["type"] == "polynomial":
+                terms = []
+                for power, coefficient in enumerate(curve["coefficients"]):
+                    sign = " − " if coefficient < 0 else (" + " if power else "")
+                    terms.append(f"{sign}{abs(coefficient):.6g}{('', 't', 't²', 't³')[power]}")
+                data["formula"] = "".join(terms)
+            trace = data["points"]
+            if data["mechanism"] not in ("reported", "belt_cam"):
+                trace = [(i, evaluate_curve(curve, i / 100) * data["plate_kg"]) for i in range(101)]
+            data["trace"] = chart(trace)
+            data["markers"] = [p.split(",") for p in data["trace"].split()] if data["mechanism"] in ("reported", "belt_cam") else []
             metadata = {"title": data["name"], "params": {"machine": data, "slugid": path.stem}}
             (content / f"{path.stem}.md").write_text(json.dumps(metadata, allow_nan=False) + "\n")
-            shutil.copy(path, downloads)
+            # Older input records can omit the derived function. Export it for all consumers.
+            (downloads / path.name).write_text(json.dumps(dict(raw, resistance_curve=curve), indent=2) + "\n")
         subprocess.run([os.environ.get("HUGO", "hugo"), "--source", str(stage),
                         "--destination", str(out.resolve()), "--cleanDestinationDir"], check=True)
         marker.touch()

@@ -1,6 +1,7 @@
 """Convert versioned machine records to the static site's view model."""
 
 from math import isfinite
+from .curves import fit_curve
 from .mechanics import estimate, G
 
 
@@ -48,5 +49,11 @@ def machine_view(record):
         if not (all(a < b for a, b in zip(angles, angles[1:])) or
                 all(a > b for a, b in zip(angles, angles[1:]))):
             raise ValueError("Joint angle must progress monotonically through the lifting stroke.")
-    view.update(points=points, geometry=geometry, gravity=G)
+    if "observation" in record:
+        curve = profile["resistance_curve"]
+    else:
+        curve = fit_curve([(pct / 100, force / mass) for pct, force in points])
+    if "resistance_curve" in record and record["resistance_curve"] != curve:
+        raise ValueError("Stored curve differs from the source. Refresh it with the fit command.")
+    view.update(resistance_curve=curve, points=points, geometry=geometry, gravity=G)
     return view

@@ -5,15 +5,18 @@
 <div id="chart"><svg class="spark" role="img" aria-label="Contact force across the lifting stroke, full values in reference samples" viewBox="-2 0 104 100" preserveAspectRatio="none">{{ partial "spark.html" $m }}</svg></div><p class="legend" id="legend"></p><p class="note" id="result" role="status"></p>
 <noscript><p>Interactive comparisons require JavaScript. The curve samples are listed below.</p></noscript></div>
 <aside><h2>Model settings</h2><label>Plate load (kg)<input id="load" type="number" min="0" step="any" value="{{ printf "%.5f" (float $m.plate_kg) }}"></label>
+{{ if or (eq $m.mechanism "reported") (eq $m.mechanism "belt_cam") }}<label class="check"><input id="interpolate" type="checkbox"> Use the fitted resistance curve between recorded positions</label>{{ end }}
 <div id="controls" hidden>
 <label>Strength profile<select id="strength"></select></label>
 <label id="custom-panel" hidden>Flexion angle °, torque N·m<textarea id="custom" rows="5" placeholder="20, 48&#10;60, 70&#10;110, 55"></textarea></label>
 <label>Available strength (%)<input id="capacity" type="number" min="1" max="100" value="100"></label>
 <label>Load carried by modeled limb (%)<input id="share" type="number" min="1" max="100" value="100"></label>
 {{ if not $m.geometry }}<fieldset><legend>Assumed joint geometry</legend><label>Start flexion (°)<input id="start" type="number" min="0" max="180" value="20"></label><label>Finish flexion (°)<input id="finish" type="number" min="0" max="180" value="120"></label><label>Perpendicular contact arm (m)<input id="arm" type="number" step="any" min="0.001" value="0.254"></label></fieldset>{{ end }}
-{{ if or (eq $m.mechanism "reported") (eq $m.mechanism "belt_cam") }}<label class="check"><input id="interpolate" type="checkbox"> Assume linear torque between recorded positions</label>{{ end }}
 </div></aside></section>
 <section class="details"><div><h2>Evidence &amp; assumptions</h2><p>{{ $m.source }}</p><p id="comparison-source"></p><p>Plate-induced force scales with added mass in the model. Unloaded machine torque, limb weight, momentum and changes in technique can shift the actual sticking point.</p>
+<h2>Resistance function</h2>
+{{ if eq $m.resistance_curve.type "polynomial" }}<p><code>F(t) ≈ L × ({{ $m.formula }})</code></p>{{ else }}<p>Shape-preserving cubic spline with {{ sub (len $m.resistance_curve.knots) 1 }} segments. The machine record contains the knots and each segment’s coefficients.</p>{{ end }}
+<p>F is contact force in kgf, L is plate mass in kg and t runs from 0 to 1 over the lifting stroke. Maximum difference at the {{ $m.resistance_curve.sample_count }} reference samples is {{ printf "%.3g" (float (mul $m.plate_kg $m.resistance_curve.max_sample_error_kgf_per_kg)) }} kgf at the reference load.</p>
 <a href="{{ printf "records/%s.json" .Params.slugid | relURL }}">View machine record (JSON)</a></div>
 <details><summary>Reference curve samples</summary><table><thead><tr><th>Travel</th><th>Contact force</th></tr></thead><tbody>{{ range $m.points }}<tr><td>{{ printf "%.1f" (float (index . 0)) }}%</td><td>{{ printf "%.2f" (float (index . 1)) }} kgf</td></tr>{{ end }}</tbody></table></details></section>
 <script type="application/json" id="record">{{ $m | jsonify | safeJS }}</script><script defer src="{{ "model.js" | relURL }}"></script><script defer src="{{ "viewer.js" | relURL }}"></script>
