@@ -26,6 +26,11 @@
 {{ if not $m.geometry }}<fieldset><legend>Assumed joint geometry</legend><label>Start flexion (°)<input id="start" type="number" min="0" max="180" value="20"></label><label>Finish flexion (°)<input id="finish" type="number" min="0" max="180" value="120"></label><label>Perpendicular contact arm (m)<input id="arm" type="number" step="any" min="0.001" value="0.254"></label></fieldset>{{ end }}
 </div></aside></section>
 <section class="details"><div><h2>Evidence &amp; assumptions</h2><p>{{ $m.source }}</p><p id="comparison-source"></p><p>Plate-induced force scales with added mass in the model. The unloaded-force setting applies to the same moving assembly. Different start and finish values are interpolated linearly. Limb weight, momentum and technique can shift the actual sticking point.</p>
+{{ with $m.model_origin }}
+<h2>3D model geometry</h2>
+<p>{{ $m.model_evidence }} {{ if or (hasPrefix . "https://") (hasPrefix . "http://") }}<a href="{{ . }}">Source model</a>{{ else }}{{ . }}{{ end }}</p>
+{{ $preview := printf "model-views/%s.jpg" $.Params.slugid }}{{ if fileExists (printf "static/%s" $preview) }}<img src="{{ $preview | relURL }}" width="1000" height="1000" style="width:100%;max-width:420px;height:auto" alt="Orthographic side view of {{ $.Title }} from the source 3D model">{{ end }}
+{{ end }}
 {{ with $m.motion_check }}
 <h2>Independent video estimate</h2>
 <p>Across five unmarked frames the plate center rose {{ printf "%.0f" (float .plate_rise_px) }} pixels as the hand moved {{ printf "%.0f" (float .hand_path_px) }} pixels along its path. At {{ printf "%.2f" (float $m.plate_kg) }} kg of plates, this implies an average of <strong>{{ printf "%.1f" (float (mul $m.plate_kg .hand_kgf_per_kg)) }} kgf</strong> across the filmed stroke. Tracking the visible handle end instead gives {{ printf "%.1f" (float (mul $m.plate_kg .handle_cap_kgf_per_kg)) }} kgf. These estimates leave the endpoint forces unresolved. <a href="{{ .url }}">Original demonstration</a></p>

@@ -35,6 +35,9 @@ def machine_view(record):
     if "observation" in record:
         profile = estimate(record["observation"], mass)
         view["mechanism"] = profile["mechanism"]
+        if "model_source" in record["observation"]:
+            view["model_origin"] = record["observation"]["model_source"]["source"]
+            view["model_evidence"] = record["observation"]["evidence"]
         points = [[s["travel_pct"], s["force_kgf"]] for s in profile["samples"]]
         for p in profile["poses"]:
             if "angle_deg" in p:

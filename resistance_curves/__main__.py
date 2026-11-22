@@ -36,6 +36,18 @@ def main():
             sub.add_argument("observation", type=Path)
         else:
             sub.add_argument("photos", type=Path, nargs="+")
+    prepare_model = commands.add_parser("prepare-model", help="Render orthographic views and inspect metric mesh parts")
+    prepare_model.add_argument("models", type=Path, nargs="+", help="One local mesh per position in lifting order")
+    prepare_model.add_argument("--out", type=Path, required=True)
+    prepare_model.add_argument("--source", required=True, help="Manufacturer URL or source identifier")
+    axes = ("x", "y", "z", "-x", "-y", "-z")
+    prepare_model.add_argument("--right", choices=axes, default="x")
+    prepare_model.add_argument("--up", choices=axes, default="y")
+    prepare_model.add_argument("--units", choices=("m", "cm", "mm", "in"))
+    annotate = commands.add_parser("model-observation", help="Project reviewed 3D landmarks for the force solver")
+    annotate.add_argument("manifest", type=Path)
+    annotate.add_argument("landmarks", type=Path)
+    annotate.add_argument("--out", type=Path, required=True)
     record = commands.add_parser("record", help="Validate and save a reviewed machine to the Git catalog")
     record.add_argument("observation", type=Path)
     record.add_argument("--slug", required=True)
@@ -50,6 +62,27 @@ def main():
     fit.add_argument("--write", action="store_true", help="Refresh resistance_curve in the record")
     args = parser.parse_args()
     try:
+        if args.command == "prepare-model":
+            from .models3d import prepare_models
+            try:
+                manifest = prepare_models(args.models, args.out, right=args.right, up=args.up,
+                                          units=args.units, source=args.source)
+            except ModuleNotFoundError as exc:
+                if exc.name == "cascadio":
+                    raise ValueError("Install STEP support with python -m pip install '.[step]'") from exc
+                if exc.name != "trimesh":
+                    raise
+                raise ValueError("Install mesh support with python -m pip install '.[models]'") from exc
+            print(f"Prepared {len(manifest['assets'])} model pose(s) in {args.out}")
+            return
+        if args.command == "model-observation":
+            from .models3d import model_observation
+            observation = model_observation(json.loads(args.manifest.read_text()), json.loads(args.landmarks.read_text()))
+            with args.out.open("x") as output:
+                json.dump(observation, output, indent=2, allow_nan=False)
+                output.write("\n")
+            print(args.out)
+            return
         if args.command == "fit":
             from .catalog import machine_view
 
@@ -76,6 +109,8 @@ def main():
             data = dict(name=args.name, manufacturer=args.manufacturer, movement=args.movement,
                         kind="Photo estimate", plate_kg=args.plate_kg, source=args.source,
                         observation=json.loads(args.observation.read_text()))
+            if data["observation"].get("model_source"):
+                data["kind"] = "3D model estimate"
             data["resistance_curve"] = machine_view(data)["resistance_curve"]
             path = args.catalog / f"{args.slug}.json"
             serialized = json.dumps(data, indent=2, allow_nan=False) + "\n"

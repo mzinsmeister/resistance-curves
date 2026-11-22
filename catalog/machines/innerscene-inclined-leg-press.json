@@ -1,0 +1,86 @@
+{
+  "name": "Inclined leg press",
+  "manufacturer": "Innerscene CAD library",
+  "movement": "compound",
+  "kind": "3D model estimate",
+  "plate_kg": 20.0,
+  "source": "Unbranded, public-domain Innerscene layout model. Rail end-face centers give a vertical rise of 1.03 m over 1.21 m of horizontal travel. The modeled sled and plate horns move together. Added plate resistance only.",
+  "observation": {
+    "mechanism": "sled",
+    "poses": [
+      {
+        "rail_low": [
+          348.3186334397397,
+          632.353160612915
+        ],
+        "rail_high": [
+          881.3075333623381,
+          178.6518656374799
+        ]
+      }
+    ],
+    "evidence": "Rail end-face centers on part 003_Inclined press rail, cross-checked against its parallel twin 008. The footplate and added plates travel on the sliding carriage. Z points up. The 20 kg plate load is a comparison setting. Unloaded sled mass and friction are unknown.",
+    "model_source": {
+      "source": "https://www.innerscene.com/tools/library/3d-parts/leg-press-gym-equipment-75e948fb",
+      "center_m": [
+        0.0,
+        -0.10565051436424255,
+        0.7504702806472778
+      ],
+      "px_per_m": 440.4866941509078,
+      "right": "y",
+      "up": "z",
+      "assets": [
+        {
+          "file": "leg-press-gym-equipment.step",
+          "units": "m",
+          "sha256": "2f6179b3cae0946832f01b94a4939d44751d8c08a9fa2ae241eb56cd7c2e1808",
+          "world_geometry_sha256": "aa89e2f3df4a78c7dc92c79e693f4e16d0afd63779cbf43ac8dd404e6bd70ef7"
+        }
+      ],
+      "space": "world_m",
+      "landmarks": [
+        {
+          "rail_low": [
+            -0.44,
+            -0.45,
+            0.45
+          ],
+          "rail_high": [
+            -0.44,
+            0.76,
+            1.48
+          ]
+        }
+      ],
+      "world_m": [
+        {
+          "rail_low": [
+            -0.44,
+            -0.45,
+            0.45
+          ],
+          "rail_high": [
+            -0.44,
+            0.76,
+            1.48
+          ]
+        }
+      ]
+    }
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.648196278793
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 2,
+    "max_sample_error_kgf_per_kg": 0.0
+  }
+}

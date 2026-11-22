@@ -30,6 +30,36 @@ python -m resistance_curves record work/poses/observation.json --slug machine-id
 python scripts/build_site.py
 ```
 
+## Manufacturer 3D models
+
+Install `python -m pip install '.[models]'` for GLB, glTF 2.0, OBJ and STL, or `python -m pip install '.[step]'` to also read STEP/STP assemblies. Supply the model downloaded from the manufacturer or a local export from its CAD viewer. Keep glTF sidecar buffers alongside the main file. Keep licensed assets in the ignored work directory.
+
+```sh
+python -m resistance_curves prepare-model work/leg-press.step --up z --right y --source 'Manufacturer product URL' --out work/cad
+python -m resistance_curves model-observation work/cad/model.json work/landmarks.json --out work/cad/observation.json
+python -m resistance_curves estimate work/cad/observation.json --plate-kg 20 --out work/cad-review
+```
+
+Use the existing `record` command on that observation to add a **3D model estimate**. The generated record preserves the source, asset and geometry hashes, coordinate frame, landmark selections, and projected points. The static site builds without the optional import dependencies. A redistributable side-view image can be included at `site/static/model-views/<machine-slug>.jpg`.
+
+The preparer makes three clean orthographic views per pose, all at one scale. The side image is `pose-001.jpg`; `end-001.jpg` and `top-001.jpg` help identify obscured parts. The manifest lists each mesh instance's transformed metric bounds and local-to-world matrix. Verify the bounds against published dimensions. Imported STEP and glTF geometry use metres; provide `--units mm`, `cm`, `m` or `in` for unitless OBJ/STL. Select the actual vertical and side-view horizontal axes, for example `--right=-x --up=z`.
+
+For the included Innerscene leg press, the agent's landmark file can be written as:
+
+```json
+{
+  "mechanism": "sled",
+  "evidence": "End-face centers of the inclined press rail, Z up; the footplate and plates move together.",
+  "poses": [{"rail_low": [-0.44, -0.45, 0.45], "rail_high": [-0.44, 0.76, 1.48]}]
+}
+```
+
+These points are in metres in the imported world frame. A landmark can instead identify a mesh node and a point in native mesh-local coordinates, e.g. `{"node":"rail","local":[0,0,0]}`. If only image landmarks can be identified, set `"space":"side_pixels"` and use the 1000-pixel side images and the same landmark names as the photo workflow.
+
+A straight sled requires one pose. With metric points the solver uses vertical rise divided by full 3D rail length. For a single rigid lever, supply `pivot`, `plates`, `grip`, and a signed `sweep_deg` at the top level with its justification in `evidence`. The model pose is the start of the lift and positive sweep is clockwise in the side view. For multiple poses, give `prepare-model` one mesh file per pose in movement order with consistent gravity and camera axes. A belt cam requires at least two distinct poses and the belt landmarks in each. The importer reads static triangle geometry and node transforms; export animation keyframes or CAD configurations as separate files. Meshes alone do not establish masses, counterweights, kinematic constraints or hidden cam profiles.
+
+The sample leg press is an unbranded layout model. The catalog contains its derived curve and a side render under its public-domain license. [Original model and STEP download](https://www.innerscene.com/tools/library/3d-parts/leg-press-gym-equipment-75e948fb)
+
 ## Resistance functions
 
 Every new machine record and estimate includes a `resistance_curve` object. Its input `t` is lifting travel divided by 100%, from bottom (0) to top (1) for a bottom-to-top lift. Its output is contact force in kgf per kilogram of plates. Multiply by plate mass for kgf, then by 9.80665 for newtons. Evaluate only inside the fitted stroke.

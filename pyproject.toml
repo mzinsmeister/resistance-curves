@@ -9,6 +9,10 @@ description = "Estimate quasi-static plate-loaded machine profiles from photo la
 requires-python = ">=3.10"
 dependencies = ["Pillow>=10", "matplotlib>=3.7", "numpy>=1.23", "scipy>=1.9"]
 
+[project.optional-dependencies]
+models = ["trimesh>=4.5,<5"]
+step = ["trimesh>=4.5,<5", "cascadio>=0.1.1"]
+
 [project.scripts]
 resistance-curves = "resistance_curves.__main__:main"
 

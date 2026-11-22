@@ -1,6 +1,6 @@
 """Planar, quasi-static mechanics. Points use image coordinates (y down)."""
 
-from math import atan2, cos, degrees, dist, hypot, isfinite, radians, remainder
+from math import asin, atan2, cos, degrees, dist, hypot, isfinite, radians, remainder
 
 from .curves import fit_curve
 
@@ -38,8 +38,17 @@ def tangential_force(tension, cam_arm, grip_radius):
     return tension * abs(cam_arm) / grip_radius
 
 
-def _measure(kind, points):
+def _measure(kind, points, rail_3d=None, up="y"):
     if kind == "sled":
+        if rail_3d is not None:
+            low, high = rail_3d["rail_low"], rail_3d["rail_high"]
+            vertical = "xyz".index(up[-1])
+            rise = (high[vertical] - low[vertical]) * (-1 if up.startswith("-") else 1)
+            length = dist(low, high)
+            if length <= 0 or rise < 0:
+                raise ValueError("Check the direction of the 3D rail landmarks.")
+            ratio = rise / length
+            return {"force_ratio": ratio, "rail_inclination_deg": degrees(asin(min(1, ratio)))}
         direction(points["rail_low"], points["rail_high"])
         rise = points["rail_low"][1] - points["rail_high"][1]
         if rise < 0:
@@ -98,9 +107,21 @@ def estimate(observation, plate_kg=None):
     if not isinstance(kind, str) or kind not in FIELDS:
         raise ValueError("Unknown mechanism.")
     poses = observation.get("poses")
-    if not isinstance(poses, list) or len(poses) < 2:
+    static_model = bool(observation.get("model_source")) and isinstance(poses, list) and len(poses) == 1
+    sweep = observation.get("sweep_deg")
+    if sweep is not None and not (static_model and kind == "lever"):
+        raise ValueError("A declared sweep is only valid for a single rigid lever model.")
+    if static_model and kind == "lever":
+        if type(sweep) not in (float, int) or not 1 <= abs(sweep) < 175:
+            raise ValueError("A static lever requires an evidenced signed sweep_deg (1 to <175 degrees).")
+    if not isinstance(poses, list) or not poses or (len(poses) < 2 and not (static_model and kind in ("lever", "sled"))):
         raise ValueError("Supply at least two poses in movement order.")
-    measured = [_measure(kind, _points(p, kind)) for p in poses]
+    model = observation.get("model_source", {})
+    metric_poses = model.get("world_m", [None] * len(poses))
+    if len(metric_poses) != len(poses):
+        raise ValueError("Each model pose requires its own metric landmarks.")
+    measured = [_measure(kind, _points(p, kind), metric, model.get("up", "y"))
+                for p, metric in zip(poses, metric_poses)]
     if any("joint" in pose for pose in poses):
         from .anatomy import joint_geometry
 
@@ -123,6 +144,8 @@ def estimate(observation, plate_kg=None):
             if abs(step) < 1 or abs(step) >= 175 or travel[-1] * step < 0:
                 raise ValueError("Grip positions must progress in one direction with an unambiguous sweep.")
             travel.append(travel[-1] + step)
+        if static_model:
+            travel.append(sweep)
         for m, position in zip(measured, travel):
             m["travel_pct"] = (position / travel[-1]) * 100
         curve = [(m["travel_pct"], m["force_ratio"]) for m in measured]
