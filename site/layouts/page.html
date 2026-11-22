@@ -14,7 +14,7 @@
 <label class="check"><input id="vary-base" type="checkbox" {{ with $m.base_resistance }}{{ if isset . "finish_kgf" }}checked{{ end }}{{ end }}> Use a different finish value</label>
 <label id="finish-base-panel" hidden>Finish resistance (kgf)<input id="base-finish" type="number" min="0" step="any" value="{{ with $m.base_resistance }}{{ if isset . "finish_kgf" }}{{ .finish_kgf }}{{ else }}{{ .starting_kgf }}{{ end }}{{ else }}0{{ end }}"></label>
 <p>{{ with $m.base_resistance }}{{ .source }} {{ with .url }}<a href="{{ . }}">Specifications</a>{{ end }}{{ else }}Base resistance is unknown. Enter a measured value to include it.{{ end }}</p>
-{{ if eq $m.mechanism "reported" }}<label>Assumption for reported forces<select id="reference-basis"><option value="included">Already include the base</option><option value="excluded">Represent plates alone</option></select></label>{{ end }}
+{{ if eq $m.mechanism "reported" }}<label>Assumption for reported forces<select id="reference-basis"><option value="included" {{ if $m.reference_includes_base }}selected{{ end }}>Already include the base</option><option value="excluded" {{ if not $m.reference_includes_base }}selected{{ end }}>Represent plates alone</option></select></label>{{ end }}
 </fieldset>
 <output id="load-summary" aria-live="polite"></output>
 {{ if or (eq $m.mechanism "reported") (eq $m.mechanism "belt_cam") }}<label class="check"><input id="interpolate" type="checkbox"> Use the fitted resistance curve between recorded positions</label>{{ end }}

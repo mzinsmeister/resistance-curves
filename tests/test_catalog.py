@@ -38,6 +38,9 @@ class CatalogTests(unittest.TestCase):
 
     def test_catalog_starting_resistance(self):
         record = json.loads((ROOT / "catalog/machines/hammer-strength-preacher-curl.json").read_text())
+        self.assertFalse(machine_view(record)["reference_includes_base"])
+        del record["reference_includes_base"]
+        self.assertTrue(machine_view(record)["reference_includes_base"])
         self.assertEqual(machine_view(record)["base_resistance"]["starting_kgf"], 2)
         record["base_resistance"]["starting_kgf"] = -1
         with self.assertRaisesRegex(ValueError, "Base resistance"):

@@ -42,6 +42,10 @@ def machine_view(record):
     else:
         points = record["reference_kgf"]
         view["mechanism"] = "reported"
+        includes_base = record.get("reference_includes_base", True)
+        if type(includes_base) is not bool:
+            raise ValueError("reference_includes_base must be a JSON boolean.")
+        view["reference_includes_base"] = includes_base
     check_pairs(points, 0, 100)
     if points[0][0] != 0 or points[-1][0] != 100:
         raise ValueError("Travel must span 0 to 100 percent.")

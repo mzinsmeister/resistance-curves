@@ -3,7 +3,7 @@
   "manufacturer": "Hammer Strength",
   "movement": "elbow-flexion",
   "kind": "Reported endpoints",
-  "source": "@juandsamudio on Instagram. Endpoint figures supplied by the user and converted to metric. Reported hand resistance. Load sharing and the contribution of the unloaded machine have not been independently established.",
+  "source": "@juandsamudio on Instagram. Endpoint figures supplied by the user and converted to metric. The user believes the calculation covered added plates alone, so the default adds the unloaded handle force. The original calculation’s treatment of starting resistance and load sharing is unverified.",
   "plate_kg": 31.7514659,
   "reference_kgf": [
     [
@@ -159,5 +159,6 @@
     "starting_kgf": 2,
     "source": "Hammer Strength lists 2 kg starting resistance per workarm for the PL-BI. The full unloaded curve is unknown. The default holds this force constant across the stroke.",
     "url": "https://shop.lifefitness.com/products/hammer-strength-plate-loaded-seated-biceps"
-  }
+  },
+  "reference_includes_base": false
 }
