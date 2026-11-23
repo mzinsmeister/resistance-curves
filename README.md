@@ -16,6 +16,10 @@ python -m http.server 8080 --directory site/public
 
 Open <http://localhost:8080/>. Deploy the contents of `site/public/` to any static host, including a subdirectory. Each machine page ships HTML, a reference chart, sample table and the source record. JavaScript adjusts load, overlays strength and estimates the limiting position entirely in the browser. The build uses a temporary Hugo content tree and checks all records. Set `HUGO` to an executable path if needed.
 
+## GitHub Pages
+
+Select **GitHub Actions** as the source under **Settings → Pages**. Pushes to `main` build and publish the catalog. To redeploy the current revision, run **Publish Resistance Atlas** from the Actions tab. The workflow reads the site URL from Pages, including any custom domain configured there.
+
 ## Agent workflow
 
 Give a vision-capable coding agent the photos, the loaded plate mass, the stroke order and any known dimensions. Ask it to follow [AGENTS.md](AGENTS.md) and add the machine to the catalog. Take level side views with the pivots, contact, plates and any belt span visible. A middle photo matters for cams. The agent prepares the images, marks landmarks, estimates scale, reviews overlays, records its evidence and rebuilds the site. All commands run locally.
