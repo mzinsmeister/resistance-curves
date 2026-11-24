@@ -1,0 +1,97 @@
+{
+  "name": "Magnum Glute Trainer (MG-PL78)",
+  "manufacturer": "Matrix Fitness",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 20.0,
+  "source": "Matrix Fitness France demonstration (https://www.youtube.com/watch?v=ZPD9R6skKBk), lifting frames at 17.35, 17.6, 17.83, 18.08 s. Bilateral hip thrust with a shared floating pad. The reference is 20 kg of total added plates on the common workarm. The rear axle is partly obscured during the stroke and identified with the exit shot. The reference mass normalizes the force calculation.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "One fixed rear axle immediately above the red back support carries the black Matrix-branded workarm. The through-bolt is exposed in the 26 s exit shot of the same video and partially hidden by the user's shoulder in this level side shot. Its center is inferred in the lifting frames from the upper pivot position relative to the stationary back support and the circular path of the loading horn. The small plate at the foot end rises with the workarm. The large discs behind the seat stay fixed on storage horns. The floating red pelvis pad transmits the load through its hinge. Its circular end-cap center proxies the force line through the pad, with some uncertainty from its swivel and contact location. The tangent is downward at the pelvis through the lift. Both feet drive the shared pad and both hips bear its resistance. The trajectory is for the demonstrated bilateral hip thrust with no elastic bands. The plate center is partially covered by the shin at the bottom and is estimated from the visible plate rim and horn bracket. The fit is for the added plate load. Shifting the obscured pivot within a plausible image region ([740, 420] to [790, 425]) gives peak ratios of 2.17\u20132.42 kgf/kg and preserves an interior peak. This placement uncertainty is larger than the curve fit residual. The force diagram shows the exerciser\u2019s effort on the machine. The machine reaction acts in the opposite direction.",
+    "photos": [
+      "frame-17.35s.jpg",
+      "frame-17.6s.jpg",
+      "frame-17.83s.jpg",
+      "frame-18.08s.jpg"
+    ],
+    "poses": [
+      {
+        "pivot": [
+          768,
+          405
+        ],
+        "plates": [
+          239,
+          611
+        ],
+        "grip": [
+          530,
+          487
+        ]
+      },
+      {
+        "pivot": [
+          768,
+          405
+        ],
+        "plates": [
+          218,
+          563
+        ],
+        "grip": [
+          524,
+          462
+        ]
+      },
+      {
+        "pivot": [
+          768,
+          405
+        ],
+        "plates": [
+          196,
+          405
+        ],
+        "grip": [
+          517,
+          382
+        ]
+      },
+      {
+        "pivot": [
+          768,
+          405
+        ],
+        "plates": [
+          206,
+          305
+        ],
+        "grip": [
+          527,
+          335
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 22.7,
+    "source": "Matrix Fitness lists 22.7 kg (50 lb) starting resistance for the shared workarm at the hip pad. The unloaded finish force is unpublished.",
+    "url": "https://uk.matrixfitness.com/eng/strength/plate-loaded/mg-pl78-glute-trainer"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      2.11595087471,
+      0.511970491409,
+      -0.423980905772
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.0003991
+  }
+}

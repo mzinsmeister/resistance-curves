@@ -51,7 +51,7 @@
       <div class="tabs" role="tablist">
         <button type="button" id="force" aria-pressed="true">Resistance Curve</button>
         {{ if gt (len $m.strength) 0 }}
-        <button type="button" id="compare" aria-pressed="false">Strength Comparison</button>
+        <button type="button" id="compare" aria-pressed="false">Strength Comparison ({{ len $m.strength }})</button>
         {{ end }}
       </div>
     </div>
@@ -192,6 +192,13 @@
         <h2>Normal lifter strength</h2>
         <span class="mini-tag">Empirical</span>
       </div>
+      <div class="strength-actions">
+        <button type="button" class="btn-primary btn-full" id="match-strength">Match plates to lifter limit (100%)</button>
+        <label class="check">
+          <input id="normalize-strength" type="checkbox">
+          <span>Compare curve shapes (% of peak)</span>
+        </label>
+      </div>
       <label class="field">
         <span>Strength profile</span>
         <select id="strength"></select>
@@ -236,9 +243,9 @@
     </div>
     <div class="diagram-legend" aria-label="Diagram color key">
       <span><i class="swatch swatch-load"></i>Load arm &amp; Mg</span>
-      <span><i class="swatch swatch-out"></i>Output arm &amp; F_hand</span>
+      <span><i class="swatch swatch-out"></i>Output arm &amp; force F</span>
       <span><i class="swatch swatch-belt"></i>Belt span &amp; arms</span>
-      <span><i class="swatch swatch-anat"></i>Joint &amp; scale</span>
+      <span><i class="swatch swatch-anat"></i>Joint anatomy</span>
     </div>
   </div>
   <div class="evidence-grid">
@@ -288,6 +295,7 @@
 
     <div class="detail-actions">
       <a class="btn-secondary" href="{{ printf "records/%s.json" .Params.slugid | relURL }}">View machine record (JSON) ↗</a>
+      <a class="btn-secondary" href="https://github.com/mzinsmeister/resistance-curves" target="_blank" rel="noopener">Improve or contribute on GitHub ↗</a>
     </div>
   </div>
 

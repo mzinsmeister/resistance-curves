@@ -1,0 +1,112 @@
+{
+  "name": "Signature Series Plate-Loaded Seated Dip (SPLDIP)",
+  "manufacturer": "Life Fitness",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 20.0,
+  "source": "Life Fitness instructional demonstration hosted by Gfitness (https://www.youtube.com/watch?v=yChPr1k-kJQ&t=63s, 63.900\u201364.900 s). Five frames of a forward-facing dip on the linked workarms, following the near arm. Reference is 20 kg of added plates across the coupled assembly (10 kg per horn with symmetric loading), chosen to scale the video-derived ratio. The plotted force sums both hands and includes the added-plate contribution only. The rear-side view limits the precision of the projected geometry.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "This near-level rear-side shot follows the exerciser's left hand, the loading horn on the same side, and the axle cap at the top of the diagonal red frame support. Use the inside end of the silver horn where it meets the dark moving plate, and the center of palm contact on the near handle at its silver-capped end. The plate horn and handle ride on the same rotary arm, and the two sides are connected by the workarm bridge, consistent with the manufacturer's dependent-workarm specification. Both horns rise as the hands press down, with counterclockwise plate torque opposing the clockwise press. Mirrored sides with equal plate loading and equal hand effort give the same geometric ratio for the sum of both hand forces per total plate mass as for one side. The reference uses that bilateral basis. A small camera shift and the rearward angle make the dark plate center and short load-side radius the least certain measurements. Moving the bearing center by 5 px along either direction of the image diagonal gave finish ratios of 0.566-0.629 kgf/kg and preserved the initial increase toward a late plateau. The test quantifies sensitivity to the mark in this view.",
+    "photo_ids": [
+      "YouTube yChPr1k-kJQ @ 63.900 s (frame-63.900.jpg)",
+      "YouTube yChPr1k-kJQ @ 64.200 s (frame-64.200.jpg)",
+      "YouTube yChPr1k-kJQ @ 64.433 s (frame-64.433.jpg)",
+      "YouTube yChPr1k-kJQ @ 64.633 s (frame-64.633.jpg)",
+      "YouTube yChPr1k-kJQ @ 64.900 s (frame-64.900.jpg)"
+    ],
+    "poses": [
+      {
+        "pivot": [
+          315,
+          480
+        ],
+        "plates": [
+          170,
+          532
+        ],
+        "grip": [
+          567,
+          505
+        ]
+      },
+      {
+        "pivot": [
+          315,
+          478
+        ],
+        "plates": [
+          165,
+          509
+        ],
+        "grip": [
+          566,
+          533
+        ]
+      },
+      {
+        "pivot": [
+          314,
+          476
+        ],
+        "plates": [
+          162,
+          490
+        ],
+        "grip": [
+          563,
+          556
+        ]
+      },
+      {
+        "pivot": [
+          315,
+          477
+        ],
+        "plates": [
+          159,
+          479
+        ],
+        "grip": [
+          560,
+          571
+        ]
+      },
+      {
+        "pivot": [
+          315,
+          476
+        ],
+        "plates": [
+          155,
+          466
+        ],
+        "grip": [
+          557,
+          585
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 2.8,
+    "source": "The Life Fitness Signature Series Plate Loaded owner's manual, page 29, specifies 6 lb (2.8 kg) for the SPLDIP coupled assembly. This is total starting resistance at the two handles. The unloaded force at the end of the stroke has not been measured.",
+    "url": "https://www.lftechsupport.com/c/document_library/get_file?folderId=1625922&name=DLFE-91973.pdf&p_l_id=1691375"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.562251262565,
+      0.06575789983,
+      -0.0308155922936
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 3.183e-05
+  }
+}

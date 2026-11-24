@@ -1,0 +1,112 @@
+{
+  "name": "Iso-Lateral Wide Chest (IL-WC)",
+  "manufacturer": "Hammer Strength",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 20.0,
+  "source": "Live Lean TV Daily Exercises single-arm Wide Chest demonstration (https://www.youtube.com/watch?v=KTqfnBj6MC8, 3.16\u20133.92 s). Plate force per independent near-side workarm. Reference mass 20 kg. Hammer Strength model and starting resistance verified against the product page and owner\u2019s manual.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Single-arm press shown by Live Lean TV Daily Exercises, with the near workarm viewed nearly along its axle. The shaft is inside the top bracket. Its projection is marked midway between the paired fasteners, where the moving tube joins the bracket. Independently fitting arcs to the plate hub and handle after registering the bracket puts both centers within 11 pixels of this mark. Using the forward or rear fastener itself shifts the force ratio by about 0.06 kgf/kg while preserving the rising curve. The loaded horn and bent handle move with the same rigid workarm. The plate weight produces opposite torque to the forward press at the hand. The stationary far workarm and its plate do not participate. Slight handheld camera drift and the converging workarm's projection affect the apparent radii. The reference calculation uses 20 kg on the moving horn for normalization, since the filmed plate's mass is not conclusively legible.",
+    "inputs": [
+      "YouTube KTqfnBj6MC8 at 3.16 s (wide-3.16.jpg)",
+      "YouTube KTqfnBj6MC8 at 3.36 s (wide-3.36.jpg)",
+      "YouTube KTqfnBj6MC8 at 3.52 s (wide-3.52.jpg)",
+      "YouTube KTqfnBj6MC8 at 3.67 s (wide-3.67.jpg)",
+      "YouTube KTqfnBj6MC8 at 3.92 s (wide-3.92.jpg)"
+    ],
+    "poses": [
+      {
+        "pivot": [
+          646,
+          101
+        ],
+        "plates": [
+          470,
+          296
+        ],
+        "grip": [
+          688,
+          542
+        ]
+      },
+      {
+        "pivot": [
+          655,
+          106
+        ],
+        "plates": [
+          452,
+          270
+        ],
+        "grip": [
+          620,
+          549
+        ]
+      },
+      {
+        "pivot": [
+          664,
+          111
+        ],
+        "plates": [
+          430,
+          229
+        ],
+        "grip": [
+          547,
+          535
+        ]
+      },
+      {
+        "pivot": [
+          672,
+          114
+        ],
+        "plates": [
+          424,
+          197
+        ],
+        "grip": [
+          489,
+          516
+        ]
+      },
+      {
+        "pivot": [
+          686,
+          117
+        ],
+        "plates": [
+          427,
+          156
+        ],
+        "grip": [
+          441,
+          483
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 0.9,
+    "source": "Hammer Strength Iso-Lateral Owner\u2019s Manual, section 2.19, lists 2 lb (0.9 kg) unloaded starting resistance per workarm for IL-WC.",
+    "url": "https://resources.lifefitness.com/hub/life-fitness/en-US/1000419-0001-xd_32ce9968be620066-6b5ac64-1817a3e5ec1--7f3d.ditamap?onepage=true"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.397027424819,
+      0.309705485232,
+      -0.120975840499
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.0007577
+  }
+}

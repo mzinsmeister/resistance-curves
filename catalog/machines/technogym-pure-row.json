@@ -1,0 +1,112 @@
+{
+  "name": "Pure Strength Row (MG30)",
+  "manufacturer": "Technogym",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 20.0,
+  "source": "COMBI KUNTOKESKUS, TechnoGym Pure Strength Row, https://www.youtube.com/watch?v=hKJt7oHsLi0 (15.100\u201316.150 s). Near-side neutral grip, one independent workarm. The fixed side-view camera and low native resolution limit landmark precision.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "COMBI KUNTOKESKUS gym demonstration hKJt7oHsLi0, 15.100\u201316.150 s, bilateral neutral-grip pull. The near gray workarm joins the handgrip to the moving yellow plate horn and turns about the circular lower axle cap at the black frame bracket beside the foot platform. Track the center of the near yellow plate at its horn and the middle of the near hand on the neutral grip. As this arm turns counterclockwise in the displayed image, the near plate rises on the right of the axle and gravity tends to turn the arm clockwise, opposing the pull. Each hand bears its own independent arm; 20 kg is a reference load on that arm. The camera is fixed and close to a side view, with residual perspective from the lateral offset of the plate and grip and low native video resolution. The fit spans the observed neutral-grip repetition. This is a compound exercise involving elbow and shoulder motion. Moving the axle pick 3 pixels right and 3 pixels up gives fitted start and finish ratios of 0.536 and 0.512 kgf/kg, compared with 0.550 and 0.512. Both fits peak in midstroke.",
+    "photo_ids": [
+      "frame-15.100s.jpg",
+      "frame-15.420s.jpg",
+      "frame-15.650s.jpg",
+      "frame-15.880s.jpg",
+      "frame-16.150s.jpg"
+    ],
+    "poses": [
+      {
+        "pivot": [
+          550,
+          649
+        ],
+        "plates": [
+          664,
+          688
+        ],
+        "grip": [
+          627,
+          446
+        ]
+      },
+      {
+        "pivot": [
+          550,
+          649
+        ],
+        "plates": [
+          681,
+          655
+        ],
+        "grip": [
+          568,
+          426
+        ]
+      },
+      {
+        "pivot": [
+          550,
+          649
+        ],
+        "plates": [
+          687,
+          621
+        ],
+        "grip": [
+          490,
+          420
+        ]
+      },
+      {
+        "pivot": [
+          550,
+          649
+        ],
+        "plates": [
+          683,
+          597
+        ],
+        "grip": [
+          453,
+          430
+        ]
+      },
+      {
+        "pivot": [
+          550,
+          649
+        ],
+        "plates": [
+          679,
+          593
+        ],
+        "grip": [
+          442,
+          430
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 4.3,
+    "source": "Technogym MG30 specifications list 4.3 kg without plates. The product page does not specify the workarm basis; this one-arm model interprets it as 4.3 kgf per independent workarm. The finish resistance is unmeasured.",
+    "url": "https://www.technogym.com/en-INT/product/pure-strength-row_MG30.html"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.549516474771,
+      0.15448090203,
+      -0.191846546786
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.0003112
+  }
+}

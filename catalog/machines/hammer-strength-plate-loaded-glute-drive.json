@@ -1,0 +1,112 @@
+{
+  "name": "Plate-Loaded Glute Drive (PL-GLD)",
+  "manufacturer": "Hammer Strength",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 40.8233133,
+  "source": "Official Life Fitness / Hammer Strength exercise demonstration (https://www.youtube.com/watch?v=EAdDjw-k3ow, 24.05\u201324.56 s). Two 45 lb plates on the shared workarm, one per horn. Combined tangential force at the pelvic belt across the observed hip thrust. The rear bearing is partly obscured by the storage plates.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Official Hammer Strength footage shows the hip belt attached to both sides of one rigid U-shaped workarm. The PL-GLD assembly instructions, document 1028244-0001 step 5 (https://kb.cybexintl.com/Assembly_Manuals/Strength/1028244-0001.pdf), locate its axle on the rear frame above and inboard of the top storage horn. The near storage stack partly hides the axle. The marked pivot uses that mounting location and a circular fit to the near moving plate hubs registered against the fixed top storage hub. The low plate near the hips rises clockwise against gravity. The upper and lower rear plates stay stationary. The frontal shot near 31.5 s shows a single moving 45 lb plate per side on the shared arm, with no visible resistance bands in the analyzed lift. The grip landmark is the loaded belt contact at the front of the pelvis. The curve estimates the combined equivalent tangential force from both horns at that contact. Actual belt force direction and contact position depend on belt fit and how the two legs share the effort. The final pose is near full hip extension in the demonstrated stroke. Shifting the inferred axle horizontally by 12 px in either direction changes the fitted ratio by less than 0.014 kgf/kg and preserves the ascending shape.",
+    "inputs": [
+      "YouTube EAdDjw-k3ow at 24.05 s (review-lift-24.05.jpg)",
+      "YouTube EAdDjw-k3ow at 24.27 s (review-lift-24.27.jpg)",
+      "YouTube EAdDjw-k3ow at 24.36 s (review-lift-24.36.jpg)",
+      "YouTube EAdDjw-k3ow at 24.45 s (review-lift-24.45.jpg)",
+      "YouTube EAdDjw-k3ow at 24.56 s (review-lift-24.56.jpg)"
+    ],
+    "poses": [
+      {
+        "pivot": [
+          774,
+          378
+        ],
+        "plates": [
+          529,
+          583
+        ],
+        "grip": [
+          461,
+          466
+        ]
+      },
+      {
+        "pivot": [
+          770,
+          380
+        ],
+        "plates": [
+          500,
+          546
+        ],
+        "grip": [
+          449,
+          425
+        ]
+      },
+      {
+        "pivot": [
+          767,
+          381
+        ],
+        "plates": [
+          473,
+          501
+        ],
+        "grip": [
+          442,
+          371
+        ]
+      },
+      {
+        "pivot": [
+          764,
+          382
+        ],
+        "plates": [
+          458,
+          470
+        ],
+        "grip": [
+          444,
+          344
+        ]
+      },
+      {
+        "pivot": [
+          763,
+          383
+        ],
+        "plates": [
+          451,
+          451
+        ],
+        "grip": [
+          443,
+          328
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 20.0,
+    "source": "Hammer Strength PL-GLD commercial specifications list 45 lb (20 kg) unloaded starting resistance for the single workarm shared by both legs.",
+    "url": "https://www.lifefitness.com/en-us/catalog/strength-training/plate-loaded/hammer-strength-plate-loaded-glute-drive"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.75289803267,
+      0.283455149508,
+      -0.0857759245061
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.000326
+  }
+}

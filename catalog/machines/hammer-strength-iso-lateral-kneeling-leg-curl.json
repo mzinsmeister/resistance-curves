@@ -1,0 +1,296 @@
+{
+  "name": "Iso-Lateral Kneeling Leg Curl (IL-KLC)",
+  "manufacturer": "Hammer Strength",
+  "movement": "knee-flexion",
+  "kind": "Photo estimate",
+  "plate_kg": 11.33980925,
+  "source": "Official Life Fitness / Hammer Strength exercise demonstration (https://www.youtube.com/watch?v=zFmKmtcZxB0, 21.47\u201321.78 s). One independent workarm, one 25 lb plate and one working leg. The near plate partly occludes the roller and anatomical landmarks.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Official Hammer Strength footage shows the near lower leg driving the posterior tibia roller while the far knee stays on the kneeling pad. The roller and the moving 25 lb plate are carried by the same silver workarm. The axle is inside the upper mounting plate, between the side fasteners, and its approximate location is consistent with the plate-hub arc. The working plate is marked at its hub and the plates on the front upright remain stationary. The 6.5 s setup close-up exposes the roller shaft partway between the load horn and the plate-size stop at the end of the workarm. The moving plate partly hides the pad in the workout view, so the pad contact is projected at a 245 px radius from the visible stop orientation, with a 15-degree offset toward the shin. The offset and radius approximate the roller shaft and shin-side surface seen in the setup close-up. Gravity opposes the counterclockwise curl and the working leg carries the near roller force. The knee is estimated from the near thigh and shank alignment by the axle, and the thigh and ankle landmarks are approximations through clothing and intermittent occlusion. Each scale uses a vertical diameter of the moving 25 lb plate. The plate is outboard of the leg in a parallel plane, so residual perspective affects the metric joint moment. The model covers the visible lifting arc. Changing the projected contact radius by 15 px in either direction changes the fitted ratio by at most 0.040 kgf/kg and preserves the mid-stroke peak. The reported knee-angle span is approximate.",
+    "inputs": [
+      "YouTube zFmKmtcZxB0 at 21.47 s (lift-21.47.jpg)",
+      "YouTube zFmKmtcZxB0 at 21.50 s (lift-21.50.jpg)",
+      "YouTube zFmKmtcZxB0 at 21.53 s (lift-21.53.jpg)",
+      "YouTube zFmKmtcZxB0 at 21.59 s (lift-21.59.jpg)",
+      "YouTube zFmKmtcZxB0 at 21.62 s (lift-21.62.jpg)",
+      "YouTube zFmKmtcZxB0 at 21.67 s (lift-21.67.jpg)",
+      "YouTube zFmKmtcZxB0 at 21.78 s (lift-21.78.jpg)"
+    ],
+    "poses": [
+      {
+        "pivot": [
+          552,
+          568
+        ],
+        "plates": [
+          646,
+          689
+        ],
+        "grip": [
+          658,
+          789
+        ],
+        "joint": [
+          565,
+          557
+        ],
+        "proximal": [
+          544,
+          325
+        ],
+        "distal": [
+          666,
+          799
+        ],
+        "scale_start": [
+          646,
+          595
+        ],
+        "scale_end": [
+          646,
+          787
+        ],
+        "scale_m": 0.32004,
+        "scale_source": "12.60 in outside diameter of the matching Hammer Strength 25 lb round urethane Olympic plate, from https://shop.lifefitness.com/products/hammer-strength-urethane-round-olympic-plates. Near plate face approximates the scale in the working leg sagittal plane."
+      },
+      {
+        "pivot": [
+          553,
+          568
+        ],
+        "plates": [
+          680,
+          655
+        ],
+        "grip": [
+          718,
+          749
+        ],
+        "joint": [
+          565,
+          557
+        ],
+        "proximal": [
+          544,
+          325
+        ],
+        "distal": [
+          726,
+          762
+        ],
+        "scale_start": [
+          680,
+          558
+        ],
+        "scale_end": [
+          680,
+          753
+        ],
+        "scale_m": 0.32004,
+        "scale_source": "12.60 in outside diameter of the matching Hammer Strength 25 lb round urethane Olympic plate, from https://shop.lifefitness.com/products/hammer-strength-urethane-round-olympic-plates. Near plate face approximates the scale in the working leg sagittal plane."
+      },
+      {
+        "pivot": [
+          554,
+          569
+        ],
+        "plates": [
+          702,
+          584
+        ],
+        "grip": [
+          775,
+          674
+        ],
+        "joint": [
+          567,
+          558
+        ],
+        "proximal": [
+          546,
+          326
+        ],
+        "distal": [
+          798,
+          695
+        ],
+        "scale_start": [
+          702,
+          486
+        ],
+        "scale_end": [
+          702,
+          678
+        ],
+        "scale_m": 0.32004,
+        "scale_source": "12.60 in outside diameter of the matching Hammer Strength 25 lb round urethane Olympic plate, from https://shop.lifefitness.com/products/hammer-strength-urethane-round-olympic-plates. Near plate face approximates the scale in the working leg sagittal plane."
+      },
+      {
+        "pivot": [
+          557,
+          569
+        ],
+        "plates": [
+          702,
+          540
+        ],
+        "grip": [
+          801,
+          595
+        ],
+        "joint": [
+          569,
+          558
+        ],
+        "proximal": [
+          548,
+          326
+        ],
+        "distal": [
+          821,
+          620
+        ],
+        "scale_start": [
+          702,
+          441
+        ],
+        "scale_end": [
+          702,
+          635
+        ],
+        "scale_m": 0.32004,
+        "scale_source": "12.60 in outside diameter of the matching Hammer Strength 25 lb round urethane Olympic plate, from https://shop.lifefitness.com/products/hammer-strength-urethane-round-olympic-plates. Near plate face approximates the scale in the working leg sagittal plane."
+      },
+      {
+        "pivot": [
+          558,
+          570
+        ],
+        "plates": [
+          681,
+          492
+        ],
+        "grip": [
+          792,
+          499
+        ],
+        "joint": [
+          571,
+          559
+        ],
+        "proximal": [
+          549,
+          326
+        ],
+        "distal": [
+          818,
+          521
+        ],
+        "scale_start": [
+          681,
+          391
+        ],
+        "scale_end": [
+          681,
+          590
+        ],
+        "scale_m": 0.32004,
+        "scale_source": "12.60 in outside diameter of the matching Hammer Strength 25 lb round urethane Olympic plate, from https://shop.lifefitness.com/products/hammer-strength-urethane-round-olympic-plates. Near plate face approximates the scale in the working leg sagittal plane."
+      },
+      {
+        "pivot": [
+          559,
+          571
+        ],
+        "plates": [
+          659,
+          461
+        ],
+        "grip": [
+          772,
+          450
+        ],
+        "joint": [
+          572,
+          560
+        ],
+        "proximal": [
+          550,
+          327
+        ],
+        "distal": [
+          812,
+          442
+        ],
+        "scale_start": [
+          659,
+          362
+        ],
+        "scale_end": [
+          659,
+          557
+        ],
+        "scale_m": 0.32004,
+        "scale_source": "12.60 in outside diameter of the matching Hammer Strength 25 lb round urethane Olympic plate, from https://shop.lifefitness.com/products/hammer-strength-urethane-round-olympic-plates. Near plate face approximates the scale in the working leg sagittal plane."
+      },
+      {
+        "pivot": [
+          560,
+          571
+        ],
+        "plates": [
+          642,
+          449
+        ],
+        "grip": [
+          748,
+          413
+        ],
+        "joint": [
+          573,
+          560
+        ],
+        "proximal": [
+          550,
+          328
+        ],
+        "distal": [
+          793,
+          405
+        ],
+        "scale_start": [
+          642,
+          352
+        ],
+        "scale_end": [
+          642,
+          547
+        ],
+        "scale_m": 0.32004,
+        "scale_source": "12.60 in outside diameter of the matching Hammer Strength 25 lb round urethane Olympic plate, from https://shop.lifefitness.com/products/hammer-strength-urethane-round-olympic-plates. Near plate face approximates the scale in the working leg sagittal plane."
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 3.6,
+    "source": "Hammer Strength IL-KLC commercial specifications list 8 lb (3.6 kg) unloaded starting resistance per workarm.",
+    "url": "https://www.lifefitness.com/en-us/catalog/strength-training/plate-loaded/plate-loaded-iso-lateral-kneeling-leg-curl"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.373816535316,
+      0.933290077531,
+      -0.934170666156
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.003091
+  }
+}

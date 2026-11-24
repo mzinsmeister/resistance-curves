@@ -1,4 +1,4 @@
-# Resistance Atlas
+# LoadCurve (Resistance Atlas)
 
 A Git catalog of plate-loaded gym machines, rendered as a static website by **Hugo**. Each machine has one reviewable JSON file under `catalog/machines/`. Each strength profile has one under `catalog/strength/`. A coding agent handles image interpretation and landmark placement. The Python library handles geometry, units and force calculations.
 
@@ -118,16 +118,6 @@ Pixel landmarks are estimates. Small changes to a short perpendicular moment arm
 The catalog models the Hammer Strength Plate-Loaded Seated Biceps (PL-BI) directly from side-view frames of the manufacturer's demonstration video, tracing the load arm, belt span, cam pivot, and grip across the stroke. [Original footage](https://www.youtube.com/watch?v=B27-cHMnlPE&t=17s)
 
 An independent metric reference example is in `examples/hammer-strength-preacher-reference.json` for cross-checking against photo runs. Check that added load, contact point, side, and treatment of the unloaded mechanism match before comparing.
-
-## Life Fitness Signature Series Biceps Curl
-
-For the SPLBC, the camera shows the grips and moving plates through one repetition. The catalog contains the source frame identifiers, registration and pixel coordinates for both hands and the plate center. The ratio of plate rise to midpoint-of-grips path length gives 0.679 kgf per added kg over the filmed stroke. A check based on the orientation of the floor rails gives about 0.70. Perspective and the uncertain relative depth of the hands and plates limit the accuracy of both estimates. [Manufacturer demonstration](https://www.youtube.com/watch?v=fuMn3ukena4&t=52s)
-
-The `motion_observation` input yields one interval mean for each pair of successive poses. Its `interval_mean` curve stores travel knots and a constant polynomial per interval. Each horizontal segment represents a travel-weighted average. Exact endpoint forces and a failure angle would require finer measurements. The website lets readers vary plates and unloaded force.
-
-At 31.75 kg of plates, the SPLBC averages about 26.6 kgf in projection, or 27.2 kgf with the approximate camera correction. The Hammer PL-BI averages 27.2 kgf using its filmed hand path or 26.3 kgf if its two reported plate-only endpoints are joined linearly. These are combined handle forces with the specified starting resistances held constant. These whole-stroke averages cannot establish how hard the two machines feel at a particular elbow angle. [Life Fitness SPLBC specifications](https://www.lifefitness.com.au/commercial/signature-series-bicep-curl-splbc) · [Hammer Strength PL-BI specifications](https://shop.lifefitness.com/products/hammer-strength-plate-loaded-seated-biceps)
-
-At 40 kg of plates, the first 26% of filmed hand travel gives about 26 kgf for the SPLBC. Over the same fraction of its own filmed travel, the Hammer gives about 34 kgf. To reproduce that comparison, register the Hammer plate and hand coordinates against its bearing, accumulate hand-path distance, interpolate plate height linearly at 25.918% of that distance and divide plate rise by distance traveled. Using the linear fit to the reported Hammer endpoints instead gives about 31 kgf averaged over the first 26%. The estimates use the catalog's constant unloaded forces. Both support a larger difference early in the lift than the stroke averages suggest. The first SPLBC interval spans only 22 enlarged pixels of registered rise (about 7 original pixels). The two videos also span different, uncalibrated elbow angles. The estimated gap is sensitive to landmark placement and cannot establish a personal load conversion.
 
 ## Library
 

@@ -1,0 +1,127 @@
+{
+  "name": "Ground Base Combo Twist (GB-CT), Pull-Side Loading",
+  "manufacturer": "Hammer Strength",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 20.41165665,
+  "source": "Life Fitness / Hammer Strength manufacturer demo, https://www.youtube.com/watch?v=A9eWnLannEc&t=29s (29.34\u201330.06 s). Standing alternating push-pull. One 45 lb plate on the lower working horn of the tracked workarm. Force per pulling hand for this loading configuration.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Near-level side view of an alternating push-pull repetition on the GB-CT. The tracked near hand draws the upright grip toward the body as the near lower working plate rises. The grip, welded triangular workarm and load horn turn together around the near lower shaft supported by the silver frame bracket. The projected axle is at the inner bearing beside the bracket face. The single near 45 lb plate is marked at its center of mass by the bore inside its rim. The other plates include an opposite loading position and a far workarm. The simultaneous far-hand action belongs to the separate far arm. Gravity at the near loaded hub opposes the near-hand pull. The result applies per hand with the demonstrated lower loading position. The alternate horn changes which direction lifts added plates. Slight lateral camera motion and perspective on the inward handle remain sources of geometric error. Moving the projected bearing point 5 pixels laterally provides a check on the sensitivity to the partially hidden shaft center. For the marked side, this changes the modeled start by roughly 0.01\u20130.02 kgf/kg.",
+    "inputs": [
+      "YouTube A9eWnLannEc at 29.34 s (lift-29.34.jpg)",
+      "YouTube A9eWnLannEc at 29.42 s (lift-29.42.jpg)",
+      "YouTube A9eWnLannEc at 29.49 s (lift-29.49.jpg)",
+      "YouTube A9eWnLannEc at 29.63 s (lift-29.63.jpg)",
+      "YouTube A9eWnLannEc at 29.77 s (lift-29.77.jpg)",
+      "YouTube A9eWnLannEc at 30.06 s (lift-30.06.jpg)"
+    ],
+    "poses": [
+      {
+        "pivot": [
+          465,
+          754
+        ],
+        "plates": [
+          297,
+          782
+        ],
+        "grip": [
+          434,
+          367
+        ]
+      },
+      {
+        "pivot": [
+          459,
+          754
+        ],
+        "plates": [
+          290,
+          760
+        ],
+        "grip": [
+          466,
+          369
+        ]
+      },
+      {
+        "pivot": [
+          459,
+          754
+        ],
+        "plates": [
+          281,
+          732
+        ],
+        "grip": [
+          513,
+          358
+        ]
+      },
+      {
+        "pivot": [
+          456,
+          754
+        ],
+        "plates": [
+          281,
+          710
+        ],
+        "grip": [
+          554,
+          368
+        ]
+      },
+      {
+        "pivot": [
+          451,
+          754
+        ],
+        "plates": [
+          281,
+          682
+        ],
+        "grip": [
+          604,
+          383
+        ]
+      },
+      {
+        "pivot": [
+          445,
+          757
+        ],
+        "plates": [
+          283,
+          654
+        ],
+        "grip": [
+          655,
+          412
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 3.6,
+    "source": "Life Fitness / Hammer Strength GB-CT product specifications list an unloaded starting resistance of 8 lb (3.6 kg) per independent workarm. The spec gives one per-arm value for the machine.",
+    "url": "https://www.lifefitness.com/en-us/catalog/strength-training/plate-loaded/ground-base-combo-twist"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.446354773888,
+      0.0458782367714,
+      -0.0870752615464
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.0001568
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "name": "Iso-Lateral Wide Pulldown (IL-WPD)",
+  "manufacturer": "Hammer Strength",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 20.0,
+  "source": "Life Fitness / Hammer Strength manufacturer demo, https://www.youtube.com/watch?v=QkyAbP1r8Nc&t=27s (27.56\u201328.57 s). Wide grip with independent workarms, force per hand. Reference load is 20 kg on the tracked workarm. The exact filmed plate mass is unconfirmed.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Six near-level near-side frames show the wide-grip pulldown on IL-WPD. The near hand pulls down on a grip rigidly attached to its black workarm. The same arm carries the moving horn on the other side of the fixed upper bearing. Its plate hubs rise, so gravity applies torque opposing the pull. The smaller outer plate and larger inner plate are visible on the near horn. The plate point is slightly inward from the outer plate bore toward the larger plate hub to approximate their combined center of mass. The far-side moving stack and the static storage plates below the bearing are excluded. The axle projection is marked on the near rotating spindle just inside the lower part of the fixed bearing bracket. Per-arm convergence, small lateral camera motion and the partially covered handle add projection and picking uncertainty. The per-hand curve uses 20 kg of reference load on the tracked arm because the filmed stack mass is not conclusively legible. Moving that pick 7 pixels toward the front cap or 5 pixels inward changes fitted start resistance from about 0.49 to 0.54 kgf/kg, with a shallow mid-stroke peak in each trial. Individual projected pose ratios span about 0.49\u20130.54, and their endpoint change is greater than the fitted curve's. The camera geometry does not resolve a small difference between the two endpoints reliably.",
+    "inputs": [
+      "YouTube QkyAbP1r8Nc at 27.56 s (lift-27.56.jpg)",
+      "YouTube QkyAbP1r8Nc at 27.76 s (lift-27.76.jpg)",
+      "YouTube QkyAbP1r8Nc at 27.93 s (lift-27.93.jpg)",
+      "YouTube QkyAbP1r8Nc at 28.10 s (lift-28.10.jpg)",
+      "YouTube QkyAbP1r8Nc at 28.28 s (lift-28.28.jpg)",
+      "YouTube QkyAbP1r8Nc at 28.57 s (end-28.57.jpg)"
+    ],
+    "poses": [
+      {
+        "pivot": [
+          418,
+          362
+        ],
+        "plates": [
+          223,
+          422
+        ],
+        "grip": [
+          738,
+          195
+        ]
+      },
+      {
+        "pivot": [
+          413,
+          362
+        ],
+        "plates": [
+          218,
+          410
+        ],
+        "grip": [
+          742,
+          211
+        ]
+      },
+      {
+        "pivot": [
+          409,
+          362
+        ],
+        "plates": [
+          216,
+          386
+        ],
+        "grip": [
+          754,
+          249
+        ]
+      },
+      {
+        "pivot": [
+          405,
+          363
+        ],
+        "plates": [
+          213,
+          352
+        ],
+        "grip": [
+          761,
+          300
+        ]
+      },
+      {
+        "pivot": [
+          401,
+          363
+        ],
+        "plates": [
+          218,
+          314
+        ],
+        "grip": [
+          756,
+          371
+        ]
+      },
+      {
+        "pivot": [
+          399,
+          363
+        ],
+        "plates": [
+          223,
+          282
+        ],
+        "grip": [
+          754,
+          426
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 0.9,
+    "source": "Life Fitness / Hammer Strength IL-WPD product specifications list an unloaded starting resistance of 2 lb (0.9 kg) per independent workarm.",
+    "url": "https://www.lifefitness.com/en-us/catalog/strength-training/plate-loaded/plate-loaded-iso-lateral-wide-pulldown"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.519073266742,
+      0.105389954077,
+      -0.115831138513
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 8.01e-05
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "name": "Iso-Lateral Bench Press (IL-BP)",
+  "manufacturer": "Hammer Strength",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 20.0,
+  "source": "Official Hammer Strength upright seated IL-BP demonstration (https://www.youtube.com/watch?v=yxGgZSMC8SU, 20.46\u201321.15 s). Plate force per independent near-side workarm. Reference mass 20 kg. IL-BP is the upright seated machine. Hammer Strength identifies the supine model separately as IL-HBP.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Official Hammer Strength upright IL-BP demonstration, near-side workarm, from the retracted position to the filmed press finish. Gravity on the moving horn at the top of the lever acts about the shaft centered between the two fasteners on the near top bracket, consistent with the two-bolt bearing in the ILBP-H movement-arm parts drawing (page 5, https://www.gympart.com/TSB/LifeFitness/Hammer_Iso-Lateral%20IL/ILBP-H-D04_Lateral_Bench_Press_Horizontal_Handles/S/ILBP-H-D04_Lateral_Bench_Press_Horizontal_Handles.pdf). Using either fastener in place of the bearing center gives a rising curve but shifts estimated endpoint ratios by roughly 0.06 kgf/kg. The rigid triangular workarm transmits that torque to the center of the hand on the fitted handle. The large plates behind the forearm remain fixed on storage horns. One hand drives this independent workarm. Gravity opposes the forward/upward press. The camera pans slightly, so the axle is marked separately in every frame. The plate face and hand are at different depths on the converging workarm. This planar projection varies by about 7% in apparent plate-radius to grip-radius ratio across the stroke. It limits force accuracy beyond the numerical curve-fit error. The reference calculation uses 20 kg on the moving horn for normalization, since the filmed plate's mass is not conclusively legible.",
+    "inputs": [
+      "YouTube yxGgZSMC8SU at 20.46 s (lift-20.46.jpg)",
+      "YouTube yxGgZSMC8SU at 20.66 s (lift-20.66.jpg)",
+      "YouTube yxGgZSMC8SU at 20.80 s (lift-20.80.jpg)",
+      "YouTube yxGgZSMC8SU at 20.93 s (lift-20.93.jpg)",
+      "YouTube yxGgZSMC8SU at 21.15 s (lift-21.15.jpg)"
+    ],
+    "poses": [
+      {
+        "pivot": [
+          497,
+          135
+        ],
+        "plates": [
+          232,
+          332
+        ],
+        "grip": [
+          397,
+          553
+        ]
+      },
+      {
+        "pivot": [
+          506,
+          135
+        ],
+        "plates": [
+          225,
+          301
+        ],
+        "grip": [
+          374,
+          531
+        ]
+      },
+      {
+        "pivot": [
+          513,
+          137
+        ],
+        "plates": [
+          213,
+          258
+        ],
+        "grip": [
+          338,
+          507
+        ]
+      },
+      {
+        "pivot": [
+          520,
+          137
+        ],
+        "plates": [
+          211,
+          205
+        ],
+        "grip": [
+          300,
+          463
+        ]
+      },
+      {
+        "pivot": [
+          539,
+          137
+        ],
+        "plates": [
+          227,
+          141
+        ],
+        "grip": [
+          271,
+          406
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 3.2,
+    "source": "Hammer Strength\u2019s IL-BP product specifications list 7 lb (3.2 kg) unloaded starting resistance per workarm.",
+    "url": "https://www.lifefitness.com/en-us/catalog/strength-training/plate-loaded/plate-loaded-iso-lateral-bench-press"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.636684539857,
+      0.264176863234,
+      -0.110771241336
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.0003965
+  }
+}

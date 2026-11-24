@@ -1,0 +1,112 @@
+{
+  "name": "Signature Series Plate-Loaded Row (SPLROW)",
+  "manufacturer": "Life Fitness",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 20.0,
+  "source": "Life Fitness / Hammer Strength, Signature Series Plate-Loaded Row Instructions (https://www.youtube.com/watch?v=Xnqc7wcYhb0&t=73s, 73.367\u201374.700 s). Five frames of the near left workarm using the taller grip. Reference is 20 kg of added plates on one independent workarm, chosen to scale the video-derived ratio. The plotted force is per hand and includes the added-plate contribution only.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "The camera stays on the exerciser's left side. The near black workarm rotates on the low axle at the fixed red frame beside the foot support. The axle center is partly masked by the near end of the lever and the shoe, so its location is checked against the arcs of the horn and grip. The plate center is the dark hub on the low forward end of this same workarm. Hand contact is the center of the left palm on the taller near grip. The same weldment connects the grip to the loading horn; the opposite arm has its own load path. The left horn rises as the near grip travels back toward the torso. Gravity on the left horn acts counterclockwise in the image and opposes the clockwise pull. The small remaining side-view perspective error and the dark lower hardware limit precision. Shifting the estimated pivot by 5 px along either direction of the image diagonal kept the late-midstroke crest, with peak ratios of 0.552-0.567 kgf/kg. The two-point center-of-rotation check placed the pivot near the selected point across the stroke.",
+    "photo_ids": [
+      "YouTube Xnqc7wcYhb0 @ 73.367 s (frame-73.367.jpg)",
+      "YouTube Xnqc7wcYhb0 @ 73.733 s (frame-73.733.jpg)",
+      "YouTube Xnqc7wcYhb0 @ 74.000 s (frame-74.000.jpg)",
+      "YouTube Xnqc7wcYhb0 @ 74.300 s (frame-74.300.jpg)",
+      "YouTube Xnqc7wcYhb0 @ 74.700 s (frame-74.700.jpg)"
+    ],
+    "poses": [
+      {
+        "pivot": [
+          439,
+          692
+        ],
+        "plates": [
+          260,
+          752
+        ],
+        "grip": [
+          433,
+          355
+        ]
+      },
+      {
+        "pivot": [
+          439,
+          692
+        ],
+        "plates": [
+          254,
+          730
+        ],
+        "grip": [
+          480,
+          357
+        ]
+      },
+      {
+        "pivot": [
+          439,
+          692
+        ],
+        "plates": [
+          251,
+          707
+        ],
+        "grip": [
+          515,
+          365
+        ]
+      },
+      {
+        "pivot": [
+          439,
+          692
+        ],
+        "plates": [
+          251,
+          681
+        ],
+        "grip": [
+          559,
+          376
+        ]
+      },
+      {
+        "pivot": [
+          439,
+          692
+        ],
+        "plates": [
+          254,
+          659
+        ],
+        "grip": [
+          589,
+          392
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 5,
+    "source": "Life Fitness lists 12 lb (5 kg) of starting resistance per independent SPLROW workarm. The unloaded force at the end of the stroke has not been measured.",
+    "url": "https://www.lifefitness.com.au/commercial/row-splrow"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.530754550306,
+      0.086347163231,
+      -0.0642987209156
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 5.274e-05
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "name": "Signature Series Plate-Loaded High Row (SPLHR)",
+  "manufacturer": "Life Fitness",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 20.0,
+  "source": "Life Fitness / Hammer Strength, Signature Series Plate-Loaded High Row Instructions (https://www.youtube.com/watch?v=_YMCT5AQUrA&t=68s, 68.433\u201370.233 s). Five frames of the near left independent workarm, ending shortly before the plate center exits the image. Reference is 20 kg of added plates on that arm, chosen to scale the video-derived ratio. The plotted force is per hand and includes the added-plate contribution only.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "The near workarm pivots on the bearing at the top of the red upright. The grip-bearing front span and the rear bent segment carrying the loading horn form one rigid workarm. The plate point is where the horn meets the moving plate face, and the grip point is the left palm on the outside handle. During the pull the grip descends and the horn rises; the gravity torque acts clockwise while the workarm lifts counterclockwise in the image. The left hand bears the load from the independent left workarm. The side view shows some depth offset between the horn and grip, and the bearing position is tracked for the small camera shift. The last sampled frame is near the end of the pull, before the center of the plate leaves the top of the video frame. The observed stroke ends at that frame. The 29 degree observed arc gives a near-finish peak. Moving the pivot by 5 px along either direction of the image diagonal gave peaks of 0.636-0.674 kgf/kg, preserving the initial increase and near-finish plateau.",
+    "photo_ids": [
+      "YouTube _YMCT5AQUrA @ 68.433 s (frame-68.433.jpg)",
+      "YouTube _YMCT5AQUrA @ 69.000 s (frame-69.000.jpg)",
+      "YouTube _YMCT5AQUrA @ 69.533 s (frame-69.533.jpg)",
+      "YouTube _YMCT5AQUrA @ 69.933 s (frame-69.933.jpg)",
+      "YouTube _YMCT5AQUrA @ 70.233 s (frame-70.233.jpg)"
+    ],
+    "poses": [
+      {
+        "pivot": [
+          734,
+          253
+        ],
+        "plates": [
+          927,
+          328
+        ],
+        "grip": [
+          442,
+          372
+        ]
+      },
+      {
+        "pivot": [
+          735,
+          252
+        ],
+        "plates": [
+          935,
+          305
+        ],
+        "grip": [
+          456,
+          406
+        ]
+      },
+      {
+        "pivot": [
+          735,
+          250
+        ],
+        "plates": [
+          942,
+          272
+        ],
+        "grip": [
+          486,
+          451
+        ]
+      },
+      {
+        "pivot": [
+          735,
+          249
+        ],
+        "plates": [
+          944,
+          246
+        ],
+        "grip": [
+          520,
+          479
+        ]
+      },
+      {
+        "pivot": [
+          735,
+          248
+        ],
+        "plates": [
+          941,
+          229
+        ],
+        "grip": [
+          537,
+          495
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 1,
+    "source": "Life Fitness lists 3 lb (1 kg) of starting resistance per independent SPLHR workarm. The unloaded force at the end of the stroke has not been measured.",
+    "url": "https://www.lifefitness.com.au/commercial/plate-loaded-high-row-splhr"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.610304184021,
+      0.121712115241,
+      -0.0834251412409
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 9.601e-05
+  }
+}

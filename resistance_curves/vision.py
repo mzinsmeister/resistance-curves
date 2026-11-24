@@ -8,7 +8,7 @@ explaining what is visible, assumptions and sources of error), and poses (one ob
 Use absolute [x,y] coordinates on each provided 1000 by 1000 padded image. Origin is top left.
 Do not infer mass, use published resistance values, or calculate force. Identify the SAME moving parts throughout.
 lever: one rigid rotating arm. Each pose needs pivot (fixed axle center), plates (center of mass
-of added plates, usually the loading horn axis), and grip (center of hand/pad contact on that arm).
+of the actual stacked plates at their hub midpoint — NEVER the tip or middle of an empty protruding loading pin), and grip (center of hand/pad contact on that arm).
 belt_cam: two fixed axles coupled by one taut, directly connecting belt span. Each pose needs pivot
 (load axle), plates, belt_load and belt_cam (two distinct points ON THE SAME straight belt span,
 ordered from load side toward hand side), cam_pivot (output axle), grip (output contact center).

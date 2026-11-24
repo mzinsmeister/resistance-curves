@@ -1,0 +1,112 @@
+{
+  "name": "Pure Strength Hip Thrust (MG80)",
+  "manufacturer": "Technogym",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 20.0,
+  "source": "Technogym-branded demonstration published by Bolton Arena, https://www.youtube.com/watch?v=xtIZ9pjcA_8. Frames at 30.640\u201331.320 s in the matching 720p mirror https://rutube.ru/video/fd96853c9b410a1bbf0504a066a91e6a/. Single shared pelvic pad. The contact point is estimated through partial occlusion.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Technogym-branded live Hip Thrust demonstration published by Bolton Arena, 30.640\u201331.320 s, using the matching 720p Rutube copy. The near circular axle cap at the bench end stays fixed. The yellow workarm carries the moving plate sleeve and the locked transverse pelvic pad support. The demonstration's earlier close-ups show the pad release and placement before the repetition. The plate landmark is at the center of its bore. The contact landmark estimates the force application point at the lower side of the compressed pelvic pad from the visible cushion, with the near beam obscuring part of the interface. The hands hold the pad assembly while the pelvis raises it. The single shared pad transfers load to both legs; 20 kg is total added mass on the moving assembly. The plate rises on the right of the axle under counterclockwise rotation in the frame, so gravity resists the thrust. The frame stays level with a near-side view; the angle of the sleeve and different depths of the plate and pad leave some foreshortening and uncertain pad location. This is a plate-only, quasi-static equivalent tangential force at the pad over the observed stroke. Hip and knee angles change in this compound movement. Shifting the estimated contact 6 pixels toward the bench and 3 pixels upward gives fitted start and finish ratios of 3.196 and 3.001 kgf/kg, compared with 3.082 and 2.921. Both fits peak around 35% travel. The pad contact and plate rotate about 35 and 32 degrees in projection.",
+    "photo_ids": [
+      "source-30.640s.jpg",
+      "source-30.860s.jpg",
+      "source-31.000s.jpg",
+      "source-31.135s.jpg",
+      "source-31.320s.jpg"
+    ],
+    "poses": [
+      {
+        "pivot": [
+          323,
+          388
+        ],
+        "plates": [
+          800,
+          494
+        ],
+        "grip": [
+          475,
+          423
+        ]
+      },
+      {
+        "pivot": [
+          323,
+          388
+        ],
+        "plates": [
+          811,
+          422
+        ],
+        "grip": [
+          477,
+          401
+        ]
+      },
+      {
+        "pivot": [
+          323,
+          388
+        ],
+        "plates": [
+          816,
+          362
+        ],
+        "grip": [
+          480,
+          382
+        ]
+      },
+      {
+        "pivot": [
+          323,
+          388
+        ],
+        "plates": [
+          810,
+          275
+        ],
+        "grip": [
+          477,
+          350
+        ]
+      },
+      {
+        "pivot": [
+          323,
+          388
+        ],
+        "plates": [
+          800,
+          220
+        ],
+        "grip": [
+          470,
+          329
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 35,
+    "source": "Technogym MG80 specifications list 35 kg starting resistance without plates, equivalent to 35 kgf for the single shared pelvic pad. The finish resistance is unmeasured.",
+    "url": "https://www.technogym.com/en-GB/product/pure-strength-hip-thrust_MG80.html"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      3.08176676699,
+      0.415198910326,
+      -0.576274818006
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.0006503
+  }
+}

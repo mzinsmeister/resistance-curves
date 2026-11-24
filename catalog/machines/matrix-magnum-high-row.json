@@ -1,0 +1,97 @@
+{
+  "name": "Magnum High Row (MG-PL37)",
+  "manufacturer": "Matrix Fitness",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 20.0,
+  "source": "Official Matrix Fitness demonstration, 26.150\u201327.250 s (https://www.youtube.com/watch?v=yYbnMw53OZc&t=26s). Near left independent workarm during an unbanded bilateral pull. Plate mass and tangential contact force are per arm. The rigid lever approximates the observed path of the rotating handle.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Matrix Fitness demonstration (yYbnMw53OZc), continuous stationary, near-level side view at 26.150\u201327.250 s, before the band installation. Model the near (left) independent workarm. The visible near plate hub rises on the back end of the bent upper tube. That same tube crosses the fixed upper axle and connects at its front end to the rotating handle held by the left hand. The pivot mark is at the center of the near bearing where the arm passes over the curved support. The far arm and frame storage horns are visible for context. The model treats the near hand path as a circular grip arc for this demonstrated grip orientation. The freely swiveling grip and small off-axis projection account for the variation in radius ratio and are limitations of the estimate. The loaded rear horn stays to the right of the axle and rises counterclockwise. The corresponding plate-induced reaction at the hand is upward, opposing the downward pull. Plate mass and output are per independent arm and the opposite hand bears the load from its own arm. The 20 kg reference normalizes added plates. Upright frames were cropped and brightened before square preparation. The measured plate-to-grip radius ratio varies by 10.1%. The hand tangent and load rotation therefore support an approximate profile for this grip. A 5 px shift left, up or down gives fitted start ratios of 0.557\u20130.593, peaks of 0.612\u20130.642 at roughly 50\u201358% of travel and finish ratios of 0.576\u20130.600 kgf per kg. Moving the pivot 5 px right exceeds the solver\u2019s rigid-lever angle tolerance. These checks cover pivot placement only and do not correct perspective or grip swivel. The final photo gives a direct ratio of 0.52 kgf per kg, compared with 0.58 from the fitted constant-radius model. The small fitted start-to-finish change is within the geometric uncertainty.",
+    "image_sources": [
+      "yYbnMw53OZc @ 26.150 s",
+      "yYbnMw53OZc @ 26.460 s",
+      "yYbnMw53OZc @ 26.700 s",
+      "yYbnMw53OZc @ 27.250 s"
+    ],
+    "poses": [
+      {
+        "pivot": [
+          583,
+          255
+        ],
+        "plates": [
+          750,
+          326
+        ],
+        "grip": [
+          301,
+          279
+        ]
+      },
+      {
+        "pivot": [
+          583,
+          255
+        ],
+        "plates": [
+          758,
+          286
+        ],
+        "grip": [
+          307,
+          328
+        ]
+      },
+      {
+        "pivot": [
+          583,
+          255
+        ],
+        "plates": [
+          751,
+          245
+        ],
+        "grip": [
+          347,
+          393
+        ]
+      },
+      {
+        "pivot": [
+          583,
+          255
+        ],
+        "plates": [
+          744,
+          176
+        ],
+        "grip": [
+          375,
+          482
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 2.3,
+    "source": "Matrix Fitness MG-PL37 product sell sheet lists 2.3 kg (5 lb) starting resistance. The sheet does not specify the side basis. The catalog uses the published value per independent workarm as an assumption. If Matrix measured both arms together, the symmetric per-arm value would be 1.15 kgf. The catalog holds the starting value constant through travel.",
+    "url": "https://images-direct.jhtassets.com/74de461e7981dfce95af03e6903766cd6a790062/original/named/MagnumHighRow%2B95449%2Beng%2Bca%2BProductSellSheet.pdf"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.566384461897,
+      0.181480738079,
+      -0.168092061609
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.0001424
+  }
+}

@@ -468,34 +468,70 @@
 
       const r = AtlasModel.compare(m, {...loading, strength, fraction, share, geometry, continuous: true});
       const reverse = geometry[0][1] > geometry.at(-1)[1];
+      const normalize = Boolean(el('normalize-strength')?.checked);
 
-      drawChart(
-        [
-          {points: r.demand, line: true, area: true, color: TEAL},
-          {points: r.capacity, line: true, color: AMBER, markers: true, hollow: true, markerRadius: 4},
-        ],
-        'Joint flexion angle (°) · lifting direction →',
-        'Joint torque (N·m)',
-        {
-          marker: r.crossing,
-          reverse,
-          shadeExceed: r.common,
-          xUnit: '°',
-          tooltipFormatter: (ang, [dem, cap]) => {
-            let html = `<strong>Joint angle ${fmt(ang, 0)}°</strong>`;
-            if (dem !== null) html += `<div class="tt-row"><span>Machine demand</span><span>${fmt(dem)} N·m</span></div>`;
-            if (cap !== null) html += `<div class="tt-row"><span>Lifter capacity</span><span>${fmt(cap)} N·m</span></div>`;
-            if (dem !== null && cap !== null && cap > 0) {
-              html += `<div class="tt-row"><span>Effort</span><span>${fmt(100 * dem / cap, 0)}%</span></div>`;
-            }
-            return html;
-          },
-        }
-      );
+      // Compute shape alignment score over overlapping joint angles
+      let matchScore = null;
+      if (r.common.length >= 2) {
+        const maxD = Math.max(...r.common.map(row => row.d), 1e-9);
+        const maxC = Math.max(...r.common.map(row => row.c), 1e-9);
+        const meanAbsDiff = r.common.reduce((acc, row) => acc + Math.abs(row.d / maxD - row.c / maxC), 0) / r.common.length;
+        matchScore = Math.max(0, Math.round((1 - meanAbsDiff) * 100));
+      }
+
+      if (normalize) {
+        const demPeak = Math.max(...r.demand.map(p => p[1]), 1e-9);
+        const capPeak = Math.max(...r.capacity.map(p => p[1]), 1e-9);
+        const demNorm = r.demand.map(([x, y]) => [x, 100 * y / demPeak]);
+        const capNorm = r.capacity.map(([x, y]) => [x, 100 * y / capPeak]);
+        drawChart(
+          [
+            {points: demNorm, line: true, area: true, color: TEAL},
+            {points: capNorm, line: true, color: AMBER, markers: true, hollow: true, markerRadius: 4},
+          ],
+          'Joint angle (°) · lifting direction →',
+          'Relative profile (% of peak)',
+          {
+            marker: null,
+            reverse,
+            xUnit: '°',
+            tooltipFormatter: (ang, [demP, capP]) => {
+              let html = `<strong>Joint angle ${fmt(ang, 0)}°</strong>`;
+              if (demP !== null) html += `<div class="tt-row"><span>Machine curve</span><span>${fmt(demP, 0)}% of peak</span></div>`;
+              if (capP !== null) html += `<div class="tt-row"><span>Human strength</span><span>${fmt(capP, 0)}% of peak</span></div>`;
+              return html;
+            },
+          }
+        );
+      } else {
+        drawChart(
+          [
+            {points: r.demand, line: true, area: true, color: TEAL},
+            {points: r.capacity, line: true, color: AMBER, markers: true, hollow: true, markerRadius: 4},
+          ],
+          'Joint angle (°) · lifting direction →',
+          'Joint torque (N·m)',
+          {
+            marker: r.crossing,
+            reverse,
+            shadeExceed: r.common,
+            xUnit: '°',
+            tooltipFormatter: (ang, [dem, cap]) => {
+              let html = `<strong>Joint angle ${fmt(ang, 0)}°</strong>`;
+              if (dem !== null) html += `<div class="tt-row"><span>Machine demand</span><span>${fmt(dem)} N·m</span></div>`;
+              if (cap !== null) html += `<div class="tt-row"><span>Lifter capacity</span><span>${fmt(cap)} N·m</span></div>`;
+              if (dem !== null && cap !== null && cap > 0) {
+                html += `<div class="tt-row"><span>Effort</span><span>${fmt(100 * dem / cap, 0)}%</span></div>`;
+              }
+              return html;
+            },
+          }
+        );
+      }
 
       setLegend([
-        ['Machine torque demand', TEAL],
-        ['Empirical normal lifter capacity', AMBER],
+        [normalize ? 'Machine torque shape (% of peak)' : 'Machine torque demand (N·m)', TEAL],
+        [normalize ? 'Human strength shape (% of peak)' : 'Empirical normal lifter capacity (N·m)', AMBER],
       ]);
 
       const source = el('comparison-source');
@@ -519,15 +555,18 @@
         return;
       }
       const range = `${fmt(r.common[0].x, 0)}° to ${fmt(r.common.at(-1).x, 0)}°`;
-      if (r.crossing !== null) {
+      const matchNote = matchScore !== null ? ` Curve shape alignment: ${matchScore}%.` : '';
+      if (normalize) {
+        el('result').textContent =
+          `Comparing relative curve shapes across ${range}.${matchNote} ` +
+          `Peak effort relative to strength occurs at ${fmt(r.hardest.x, 0)}°.`;
+      } else if (r.crossing !== null) {
         el('result').classList.add('is-warning');
         el('result').textContent =
-          `Predicted sticking point at ${fmt(r.crossing, 0)}° flexion. ` +
-          `Peak demand reaches ${fmt(100 * r.hardest.d / r.hardest.c, 0)}% of capacity at ${fmt(r.hardest.x, 0)}° (compared across ${range}).`;
+          `Predicted sticking point at ${fmt(r.crossing, 0)}° (effort peaks at ${fmt(100 * r.hardest.d / r.hardest.c, 0)}% at ${fmt(r.hardest.x, 0)}° across ${range}).${matchNote}`;
       } else {
         el('result').textContent =
-          `Load stays within available strength across ${range}. ` +
-          `Hardest point is ${fmt(100 * r.hardest.d / r.hardest.c, 0)}% of capacity at ${fmt(r.hardest.x, 0)}°.`;
+          `Load stays within available strength across ${range} — hardest point is ${fmt(100 * r.hardest.d / r.hardest.c, 0)}% of capacity at ${fmt(r.hardest.x, 0)}°.${matchNote}`;
       }
     } catch (err) {
       el('load-summary').textContent = '';
@@ -536,7 +575,7 @@
     }
   }
 
-  // Populate strength dropdown (empirical curves sorted widest ROM first)
+  // Populate strength dropdown (empirical pooled average adult first)
   if (el('strength')) {
     for (const [i, s] of m.strength.entries()) {
       el('strength').add(new Option(s.name, String(i)));
@@ -544,6 +583,71 @@
     el('strength').add(new Option('Personal measurements (custom)', 'custom'));
     el('strength').value = m.strength.length ? '0' : 'custom';
   }
+
+  // Movement-appropriate anatomical defaults when uncalibrated
+  if (el('share') && Number.isFinite(m.default_share)) {
+    el('share').value = String(m.default_share);
+  }
+  if (el('start') && el('finish') && el('arm')) {
+    const moveDefaults = {
+      'elbow-flexion': [20, 120, 0.26],
+      'elbow-extension': [110, 15, 0.26],
+      'knee-extension': [95, 15, 0.38],
+      'knee-flexion': [15, 100, 0.38],
+      'shoulder-abduction': [20, 95, 0.28],
+      'ankle-plantarflexion': [80, 120, 0.16],
+    };
+    const [dStart, dFinish, dArm] = moveDefaults[m.movement] || [20, 120, 0.28];
+    el('start').value = String(dStart);
+    el('finish').value = String(dFinish);
+    el('arm').value = String(dArm);
+  }
+
+  // Auto-solve plate mass where machine torque demand just reaches 100% of lifter capacity at sticking point
+  el('match-strength')?.addEventListener('click', () => {
+    try {
+      const strength = strengthPoints();
+      const fraction = number('capacity', 1, 300) / 100;
+      const share = number('share', 1, 100) / 100;
+      const baseStart = number('base-start', 0);
+      const baseFinish = el('vary-base').checked ? number('base-finish', 0) : baseStart;
+      const loadingBase = {
+        baseStart,
+        baseFinish,
+        referenceIncludesBase: el('reference-basis')?.value === 'included',
+      };
+      let geometry = m.geometry;
+      if (!geometry.length) {
+        const arm = number('arm', 0.001);
+        geometry = [[0, number('start', 0, 180), arm], [100, number('finish', 0, 180), arm]];
+      }
+      // Binary search for exact plate mass L where max(demand / capacity) == 1.0
+      const evalRatio = L => {
+        const r = AtlasModel.compare(m, {...loadingBase, load: L, strength, fraction, share, geometry, continuous: true});
+        return r.hardest ? r.hardest.d / r.hardest.c : 0;
+      };
+      let lo = 0, hi = 250;
+      if (evalRatio(0) >= 1) {
+        hi = 0;
+      } else {
+        while (evalRatio(hi) < 1 && hi < 2000) hi *= 2;
+        for (let k = 0; k < 28; k++) {
+          const mid = (lo + hi) / 2;
+          if (evalRatio(mid) >= 1) hi = mid;
+          else lo = mid;
+        }
+      }
+      const matchedKg = Math.round(hi * 4) / 4; // nearest 0.25 kg
+      if (el('load-mode').value === 'plates') {
+        const sug = AtlasModel.suggestPlates(matchedKg);
+        el('plates').value = sug.plates.length ? sug.plates.join(', ') : '0';
+      } else {
+        el('load').value = String(matchedKg);
+      }
+      if (el('normalize-strength')) el('normalize-strength').checked = false;
+      render();
+    } catch (_) {}
+  });
 
   // Restore saved load preference (default 20 kg)
   const prefs = readLoadPrefs();

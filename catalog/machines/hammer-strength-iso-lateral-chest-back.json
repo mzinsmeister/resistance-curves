@@ -1,0 +1,127 @@
+{
+  "name": "Iso-Lateral Chest / Back (IL-CB), Pulldown",
+  "manufacturer": "Hammer Strength",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 20.41165665,
+  "source": "Life Fitness / Hammer Strength manufacturer demo, https://www.youtube.com/watch?v=V3jhe-F-ceU&t=20s (20.00\u201320.68 s). Seated lat pulldown with one visible 45 lb plate on the tracked near workarm, force per hand. The chest press configuration uses a different grip and is outside the measured stroke.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Six near-level side frames from Life Fitness / Hammer Strength show a seated pulldown on the dual-function IL-CB. Each hand drives its independent workarm. The near hand draws the welded handle down as the single moving 45 lb plate on this arm rises. The upper black crossarm connects the grip and loading horn through the upper pivot bracket, so gravity generates torque opposing the pull. The plate location is centered on its bore at the base of the exposed pin, including when the top edge of the rim leaves the picture. The lower plates are on frame storage horns. The projected axle is marked at the lower fastener of the upper bracket. The moving tube crosses this position in all six views, and the loaded hub maintains a consistent radius around it. Both arms move in the demonstration, and the curve gives the tangential force at the tracked hand per kilogram loaded on its own arm. The estimate covers the filmed pulldown stroke. The chest press uses a different grip and stroke. Moving the axle pick 10 pixels horizontally changes the modeled start ratio from approximately 0.75 to 0.84 kgf/kg. The end stays below the modeled start in both trials.",
+    "inputs": [
+      "YouTube V3jhe-F-ceU at 20.00 s (lift-20.00.jpg)",
+      "YouTube V3jhe-F-ceU at 20.10 s (lift-20.10.jpg)",
+      "YouTube V3jhe-F-ceU at 20.24 s (lift-20.24.jpg)",
+      "YouTube V3jhe-F-ceU at 20.36 s (lift-20.36.jpg)",
+      "YouTube V3jhe-F-ceU at 20.50 s (lift-20.50.jpg)",
+      "YouTube V3jhe-F-ceU at 20.68 s (lift-20.68.jpg)"
+    ],
+    "poses": [
+      {
+        "pivot": [
+          507,
+          244
+        ],
+        "plates": [
+          778,
+          339
+        ],
+        "grip": [
+          174,
+          199
+        ]
+      },
+      {
+        "pivot": [
+          507,
+          244
+        ],
+        "plates": [
+          789,
+          305
+        ],
+        "grip": [
+          169,
+          243
+        ]
+      },
+      {
+        "pivot": [
+          507,
+          244
+        ],
+        "plates": [
+          795,
+          211
+        ],
+        "grip": [
+          180,
+          352
+        ]
+      },
+      {
+        "pivot": [
+          507,
+          244
+        ],
+        "plates": [
+          780,
+          145
+        ],
+        "grip": [
+          210,
+          420
+        ]
+      },
+      {
+        "pivot": [
+          507,
+          244
+        ],
+        "plates": [
+          755,
+          94
+        ],
+        "grip": [
+          247,
+          473
+        ]
+      },
+      {
+        "pivot": [
+          507,
+          244
+        ],
+        "plates": [
+          729,
+          58
+        ],
+        "grip": [
+          278,
+          519
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 3.0,
+    "source": "Life Fitness / Hammer Strength IL-CB product specifications give an unloaded starting resistance of 7 lb (3 kg as published) per independent workarm. The spec provides a single per-arm value for the machine.",
+    "url": "https://www.lifefitness.com/en-us/catalog/strength-training/plate-loaded/plate-loaded-iso-lateral-chest-back"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.792231073831,
+      0.276489072017,
+      -0.412567844906
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.001473
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "name": "Ground Base Squat / High Pull (GB-SHP)",
+  "manufacturer": "Hammer Strength",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 20.41165665,
+  "source": "Official Life Fitness / Hammer Strength exercise demonstration (https://www.youtube.com/watch?v=lnWAjXvZeEI, 22.12\u201322.55 s). Squat with low handles, from the start of the visible rise to standing. One independent workarm and its hand are modeled at a 45 lb reference load. The bearing center is estimated within the mounting flange.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Official Hammer Strength footage shows a bilateral squat on two independently rotating workarms. On the near side, the hand holds the long low handle on the black arm that carries the moving 45 lb plate. The bearing is on the inside of the fixed silver bracket, centered between its two flange fasteners as shown in the loading close-up at 15 s. The plate marks are at the center of the moving disk where it sits on the sleeve. The rear upright and its storage plates stay fixed. The hands lift their respective levers clockwise against the gravity torque, so the estimate applies to one hand and one independent workarm. The modeled arc goes from the start of the observed squat rise to standing with straight arms. Small camera shifts, a slight angle toward the end of the lever and the obscured bearing center limit precision. Close-ups of other takes show different plate stacks. The displayed force uses the visible 45 lb plate as a reference load for the side-shot configuration. Shifting the inferred bearing vertically by 18 px in either direction changes the fitted ratio by less than 0.010 kgf/kg and retains the shallow mid-to-late peak.",
+    "inputs": [
+      "YouTube lnWAjXvZeEI at 22.12 s (lift-22.12.jpg)",
+      "YouTube lnWAjXvZeEI at 22.21 s (lift-22.21.jpg)",
+      "YouTube lnWAjXvZeEI at 22.32 s (lift-22.32.jpg)",
+      "YouTube lnWAjXvZeEI at 22.43 s (lift-22.43.jpg)",
+      "YouTube lnWAjXvZeEI at 22.55 s (lift-22.55.jpg)"
+    ],
+    "poses": [
+      {
+        "pivot": [
+          672,
+          652
+        ],
+        "plates": [
+          390,
+          768
+        ],
+        "grip": [
+          218,
+          770
+        ]
+      },
+      {
+        "pivot": [
+          674,
+          652
+        ],
+        "plates": [
+          380,
+          739
+        ],
+        "grip": [
+          212,
+          731
+        ]
+      },
+      {
+        "pivot": [
+          677,
+          654
+        ],
+        "plates": [
+          375,
+          679
+        ],
+        "grip": [
+          207,
+          630
+        ]
+      },
+      {
+        "pivot": [
+          680,
+          655
+        ],
+        "plates": [
+          380,
+          628
+        ],
+        "grip": [
+          217,
+          553
+        ]
+      },
+      {
+        "pivot": [
+          695,
+          655
+        ],
+        "plates": [
+          399,
+          592
+        ],
+        "grip": [
+          243,
+          520
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 5.0,
+    "source": "Hammer Strength GB-SHP commercial specifications list 12 lb (5 kg) unloaded starting resistance per workarm.",
+    "url": "https://www.lifefitness.com/en-us/catalog/strength-training/plate-loaded/plate-loaded-squat-high-pull"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.59649939501,
+      0.135123224461,
+      -0.0942889708768
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.000119
+  }
+}

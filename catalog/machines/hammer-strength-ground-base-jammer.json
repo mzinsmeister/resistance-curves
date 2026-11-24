@@ -1,0 +1,112 @@
+{
+  "name": "Ground Base Jammer (GB-J)",
+  "manufacturer": "Hammer Strength",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 20.41166,
+  "source": "Official Life Fitness / Hammer Strength Ground Base Jammer demonstration (https://www.youtube.com/watch?v=XnUuRu46DdI, 22.40\u201323.32 s). One 45 lb plate on the independently moving near workarm. Travel ends at the last sampled side-view position before lockout.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Official Life Fitness / Hammer Strength Ground Base Jammer demonstration. The near workarm rotates about the shaft inside the upper side bracket, centered between the paired mounting fasteners where the tube enters the bracket. It lifts one moving 45 lb (20.41 kg) plate. The bearing center is partially hidden by the bracket. Moving the landmark to either fastener preserves the ascending shape and changes the start ratio by about 0.05 kgf/kg. The return torque acts through the rigid bent handle at the center of the near hand. The far lever stays at rest during this single-arm press. Plates halfway down the upright are storage plates. This is the level side shot from the low handle position to the highest sampled position before a camera cut, which occurs before elbow lockout. The curve covers the observed arc. Minor perspective, convergence and motion blur affect the apparent hub position.",
+    "inputs": [
+      "YouTube XnUuRu46DdI at 22.40 s (lift-22.40.jpg)",
+      "YouTube XnUuRu46DdI at 22.85 s (lift-22.85.jpg)",
+      "YouTube XnUuRu46DdI at 22.96 s (lift-22.96.jpg)",
+      "YouTube XnUuRu46DdI at 23.08 s (lift-23.08.jpg)",
+      "YouTube XnUuRu46DdI at 23.32 s (lift-23.32.jpg)"
+    ],
+    "poses": [
+      {
+        "pivot": [
+          584,
+          104
+        ],
+        "plates": [
+          367,
+          391
+        ],
+        "grip": [
+          445,
+          486
+        ]
+      },
+      {
+        "pivot": [
+          591,
+          103
+        ],
+        "plates": [
+          334,
+          352
+        ],
+        "grip": [
+          400,
+          453
+        ]
+      },
+      {
+        "pivot": [
+          592,
+          103
+        ],
+        "plates": [
+          315,
+          323
+        ],
+        "grip": [
+          368,
+          427
+        ]
+      },
+      {
+        "pivot": [
+          592,
+          103
+        ],
+        "plates": [
+          292,
+          282
+        ],
+        "grip": [
+          333,
+          393
+        ]
+      },
+      {
+        "pivot": [
+          593,
+          104
+        ],
+        "plates": [
+          262,
+          185
+        ],
+        "grip": [
+          248,
+          299
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 3.6,
+    "source": "Hammer Strength\u2019s GB-J product specifications list 8 lb (3.6 kg) unloaded starting resistance per workarm.",
+    "url": "https://www.lifefitness.com/en-us/catalog/strength-training/plate-loaded/ground-base-jammer"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.535437393798,
+      0.516531124226,
+      -0.184809850855
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.001412
+  }
+}

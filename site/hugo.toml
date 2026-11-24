@@ -1,4 +1,4 @@
 baseURL = 'https://example.invalid/'
-title = 'Resistance Atlas'
+title = 'LoadCurve'
 relativeURLs = true
 disableKinds = ['taxonomy','term','RSS','sitemap','robotsTXT','section']

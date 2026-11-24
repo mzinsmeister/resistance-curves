@@ -1,0 +1,97 @@
+{
+  "name": "Magnum Incline Lever Row (MG-PL36)",
+  "manufacturer": "Matrix Fitness",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 20.0,
+  "source": "Official Matrix Fitness demonstration, 24.800\u201325.600 s (https://www.youtube.com/watch?v=PpxB6FCl9Cg&t=24s). Unbanded bilateral row with the upright grip consistent with the fixed handle setting. The 20 kg reference applies to the single shared workarm and the force is combined across both hands.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Matrix Fitness demonstration (PpxB6FCl9Cg), one stationary near-level side shot of a bilateral unbanded row at 24.800\u201325.600 s. The fixed main bearing is at the junction of the beam and the curved rear support, partly overlapped by the athlete's lower leg. The long moving beam carries an inline plate horn and the handle bracket. The load landmark is where the edge-on plate thickness crosses the horn axis. The palm landmark is on the near upright handle. Matrix offers a floating and a fixed handle mode. The occupied grip and plate maintain nearly constant relative angle and radius ratio about the main bearing in this series, consistent with the fixed setting in this shot. The moving plate rises clockwise, giving an opposing tangential force down and back toward the starting grip. Both hands share the single workarm. The ratio is the combined tangential hand force and halves per hand if shared equally. The 20 kg reference normalizes added plate mass. Travel is from the demonstrated repetition and depends on take-off height, foot platform setting and grip. Slight perspective, the obscured bearing edge and soft 360p footage limit precision. Upright frames were cropped and brightened before square preparation. The measured plate-to-grip radius ratio varies by 2.30% across the four poses. Shifting the pivot by 5 px in either image axis gives fitted start ratios of 1.060\u20131.069 and finish ratios of 0.882\u20130.898 kgf per kg. A later sequence with a different grip gave a substantially less consistent radius ratio, so this estimate applies to the earlier grip and mode.",
+    "image_sources": [
+      "PpxB6FCl9Cg @ 24.800 s",
+      "PpxB6FCl9Cg @ 25.030 s",
+      "PpxB6FCl9Cg @ 25.250 s",
+      "PpxB6FCl9Cg @ 25.600 s"
+    ],
+    "poses": [
+      {
+        "pivot": [
+          650,
+          628
+        ],
+        "plates": [
+          203,
+          628
+        ],
+        "grip": [
+          262,
+          468
+        ]
+      },
+      {
+        "pivot": [
+          650,
+          628
+        ],
+        "plates": [
+          210,
+          562
+        ],
+        "grip": [
+          283,
+          421
+        ]
+      },
+      {
+        "pivot": [
+          650,
+          628
+        ],
+        "plates": [
+          242,
+          472
+        ],
+        "grip": [
+          350,
+          343
+        ]
+      },
+      {
+        "pivot": [
+          650,
+          628
+        ],
+        "plates": [
+          278,
+          382
+        ],
+        "grip": [
+          417,
+          287
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 20.4,
+    "source": "Matrix Fitness MG-PL36 technical specifications list 20.4 kg (45 lb) starting resistance. This is the combined unloaded force for the single shared workarm. The catalog holds it constant through travel because only the start is published.",
+    "url": "https://us.matrixfitness.com/eng/strength/plate-loaded/us-mg-pl36-lever-row"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      1.06411727593,
+      -0.00388849925008,
+      -0.170281238335
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.0005147
+  }
+}

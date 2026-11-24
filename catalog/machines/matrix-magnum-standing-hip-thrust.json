@@ -1,0 +1,97 @@
+{
+  "name": "Magnum Standing Hip Thrust (MG-PL82)",
+  "manufacturer": "Matrix Fitness",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 20.0,
+  "source": "Matrix Fitness demonstration (https://www.youtube.com/watch?v=D5g5joMA3e0), lifting frames at 32.48, 32.73, 32.98, 33.37 s. Bilateral standing hip thrust with the indexed roller locked in the demonstrated setting. The reference is 20 kg of total added plates on the shared workarm. Projection and roller contact limit precision. The reference mass normalizes the force calculation.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "The fixed workarm bearing is the low silver-centered hub at the end of the welded upright bracket. The higher silver bolt moves with the workarm and belongs to the indexed pad assembly. Added plate force travels from the large foreground loading disc through the low workarm and locked pad adjustment to the horizontal roller against the front of the pelvis. The background discs stay fixed. The projected plate disk center is used for gravity because the protruding horn tip is displaced by depth in the near-side view. The roller end-cap center approximates the pad force line, which points back and down against hip extension. The shared roller is driven by both legs. The demonstrated knee and hip motion is modeled as a compound lift. The view is slightly oblique and pans, so landmarks are tracked per frame and the inferred ratio is approximate. No elastic bands are engaged in this shot. Measuring to the projecting horn end instead of the visible disc center would yield about 0.85\u20130.96 kgf/kg, illustrating the need to track the plate center consistently. The force diagram shows the exerciser\u2019s effort on the machine. The machine reaction acts in the opposite direction.",
+    "photos": [
+      "frame-32.48s.jpg",
+      "frame-32.73s.jpg",
+      "frame-32.98s.jpg",
+      "frame-33.37s.jpg"
+    ],
+    "poses": [
+      {
+        "pivot": [
+          310,
+          575
+        ],
+        "plates": [
+          605,
+          727
+        ],
+        "grip": [
+          657,
+          368
+        ]
+      },
+      {
+        "pivot": [
+          311,
+          574
+        ],
+        "plates": [
+          621,
+          710
+        ],
+        "grip": [
+          658,
+          351
+        ]
+      },
+      {
+        "pivot": [
+          309,
+          572
+        ],
+        "plates": [
+          619,
+          654
+        ],
+        "grip": [
+          604,
+          280
+        ]
+      },
+      {
+        "pivot": [
+          306,
+          572
+        ],
+        "plates": [
+          618,
+          556
+        ],
+        "grip": [
+          507,
+          215
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 11.3,
+    "source": "The current Matrix Fitness UK and US product specs list 11.3 kg (25 lb) starting resistance for the shared workarm at the hip roller. An earlier worldwide sell sheet lists 9.5 kg (21 lb) with different dimensions and machine weight. The record uses the current product spec and the unloaded finish force is unpublished.",
+    "url": "https://uk.matrixfitness.com/eng/strength/plate-loaded/mg-pl82-standing-hip-thrust"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.706060729984,
+      0.1917103289,
+      -0.104277385762
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.0002113
+  }
+}

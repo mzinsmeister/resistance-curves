@@ -1,0 +1,97 @@
+{
+  "name": "Magnum T-Bar Row (MG-PL35)",
+  "manufacturer": "Matrix Fitness",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 20.0,
+  "source": "Official Matrix Fitness demonstration, 25.100\u201326.100 s (https://www.youtube.com/watch?v=0fVbKaEmwqY&t=25s). Unbanded bilateral row, 20 kg normalized across the single shared workarm. Force is combined across the two occupied handles.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Matrix Fitness demonstration (0fVbKaEmwqY), one stationary near-level side shot, same unbanded bilateral pull at 25.100\u201326.100 s. The low right bearing at the end of the pivot stand stays fixed. The long central beam rigidly connects it to the forward inline plate horn and dual handgrips. The plates are viewed edge-on, so the marked load center is the intersection of their thickness midpoint and the horn axis. The hand mark is centered on the nearer occupied grip, used as the sagittal projection of the two grips on the same rigid beam. The plate stack rises clockwise, and the gravity-induced handle force acts down and toward the start of the pull. The force is the combined tangential demand for both hands on one shared workarm. Per hand it is half the modeled value for an equal split. The 20 kg reference is a normalization for added plates rather than a reading of the filmed stack. The observed lift defines the endpoints. Slight parallax, the edge-on stack and the soft 360p video limit precision. Upright frames were cropped and brightened before square preparation. The measured plate-to-grip radius ratio varies by 1.35% across the four poses. Shifting the pivot by 5 px in either image axis gives fitted start ratios of 1.072\u20131.077 and finish ratios of 0.971\u20130.979 kgf per kg.",
+    "image_sources": [
+      "0fVbKaEmwqY @ 25.100 s",
+      "0fVbKaEmwqY @ 25.400 s",
+      "0fVbKaEmwqY @ 25.600 s",
+      "0fVbKaEmwqY @ 26.100 s"
+    ],
+    "poses": [
+      {
+        "pivot": [
+          805,
+          737
+        ],
+        "plates": [
+          160,
+          635
+        ],
+        "grip": [
+          224,
+          572
+        ]
+      },
+      {
+        "pivot": [
+          805,
+          737
+        ],
+        "plates": [
+          173,
+          572
+        ],
+        "grip": [
+          248,
+          517
+        ]
+      },
+      {
+        "pivot": [
+          805,
+          737
+        ],
+        "plates": [
+          189,
+          519
+        ],
+        "grip": [
+          268,
+          465
+        ]
+      },
+      {
+        "pivot": [
+          805,
+          737
+        ],
+        "plates": [
+          206,
+          456
+        ],
+        "grip": [
+          300,
+          406
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 20.4,
+    "source": "Matrix Fitness MG-PL35 product sell sheet lists 20.4 kg (45 lb) starting resistance. This is the combined unloaded force for the single shared workarm. The catalog holds it constant through travel because only the start is published.",
+    "url": "https://www.fitnesshealth-iq.com/storage/files/1/Magnum/MG-PL35/MagnumTBarRow%2B95447%2Beng%2Bworld%2BProductSellSheet.pdf"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      1.07493514154,
+      -0.0522792685736,
+      -0.04764603118
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 7.698e-05
+  }
+}

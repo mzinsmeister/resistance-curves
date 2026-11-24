@@ -117,9 +117,15 @@ def build(out):
             except ValueError as exc:
                 raise ValueError(f"{path.name}: {exc}") from exc
 
+            def strength_rank(s):
+                nm = s["name"].lower()
+                is_pooled = "average adult" in nm and "male" not in nm and "female" not in nm and "women" not in nm and "men" not in nm
+                span = s["points"][-1][0] - s["points"][0][0]
+                return (0 if is_pooled else 1, -span, nm)
+
             data["strength"] = sorted(
                 [s for s in strength if s["movement"] == data["movement"]],
-                key=lambda s: -(s["points"][-1][0] - s["points"][0][0]),
+                key=strength_rank,
             )
             curve = data["resistance_curve"]
             if curve["type"] == "polynomial":
@@ -169,6 +175,14 @@ def build(out):
                 data["kind"].lower().startswith("synthetic")
                 or "example" in data["manufacturer"].lower()
             )
+            src_low = (data["source"] + " " + raw.get("observation", {}).get("evidence", "")).lower()
+            is_unilateral = any(
+                k in src_low for k in (
+                    "single-arm", "one arm", "one independent", "per-side", "per arm",
+                    "independent arm", "one workarm", "iso-lateral", "unilateral",
+                )
+            ) and not any(k in src_low for k in ("both hands on one", "both legs on one", "shared workarm", "combined tangential", "combined contact"))
+            data["default_share"] = 100 if is_unilateral else 50
             data["evidence_images"] = discover_evidence(path.stem, raw)
 
             if data["mechanism"] == "motion_intervals":

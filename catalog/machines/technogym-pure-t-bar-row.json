@@ -1,0 +1,107 @@
+{
+  "name": "Pure Strength T-Bar Row (PG12)",
+  "manufacturer": "Technogym",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 20.0,
+  "source": "Starium Life Club, Pure Strength T-Bar Row, https://www.youtube.com/watch?v=zN3h4SmexR0 (4.530\u20135.260 s). Neutral handles on one shared workarm, total force at the two-hand midpoint. Product identification https://www.technogym.com/en-US/product/t-bar-row_PG12.html. Camera yaw and far-hand visibility limit precision.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Starium Life Club live demonstration zN3h4SmexR0, 4.530\u20135.260 s. The yellow T-bar rotates around the transverse bearing in the fixed foot-platform bracket; the chest pad and footplate stay on the black frame. The moving bar carries the front loading sleeve and both neutral grips as one steel assembly. The plate point is the center of the blue disc at the bore, accounting for its visible thickness. The grip point is the side projection of the midpoint of the two hand contacts, using the far handle mount to locate the partially obscured far hand near the top. The grip midpoint and plate lie in the bar's central plane. This represents the total tangential force shared by both hands, approximately equally for a symmetric pull. The plate rises to the left of the bearing under clockwise rotation in the image, and gravity opposes this motion. The camera is level and fixed on the near side; perspective from remaining yaw and partial occlusion of the far hand limit the endpoint accuracy. The 20 kg reference is total added mass on the single sleeve. The observed row is a compound shoulder and elbow movement. Shifting the estimated contact midpoint 8 pixels toward the lifter and 2 pixels down gives fitted endpoints of 1.136 and 0.806 kgf/kg, compared with 1.117 and 0.799. The projected plate and hand sweeps are 36 and 33 degrees. The individual pose ratios change more than the fitted curve (about 1.17 to 0.71 kgf/kg), consistent with residual foreshortening. The shape follows the shortening horizontal plate moment arm; the solver uses one rigid-arm radius ratio for the full stroke.",
+    "photo_ids": [
+      "frame-4.530s.jpg",
+      "frame-4.755s.jpg",
+      "frame-4.925s.jpg",
+      "frame-5.080s.jpg",
+      "frame-5.260s.jpg"
+    ],
+    "poses": [
+      {
+        "pivot": [
+          708,
+          767
+        ],
+        "plates": [
+          259,
+          666
+        ],
+        "grip": [
+          390,
+          550
+        ]
+      },
+      {
+        "pivot": [
+          708,
+          767
+        ],
+        "plates": [
+          268,
+          645
+        ],
+        "grip": [
+          399,
+          532
+        ]
+      },
+      {
+        "pivot": [
+          708,
+          767
+        ],
+        "plates": [
+          290,
+          558
+        ],
+        "grip": [
+          439,
+          470
+        ]
+      },
+      {
+        "pivot": [
+          708,
+          767
+        ],
+        "plates": [
+          341,
+          465
+        ],
+        "grip": [
+          491,
+          400
+        ]
+      },
+      {
+        "pivot": [
+          708,
+          767
+        ],
+        "plates": [
+          387,
+          405
+        ],
+        "grip": [
+          535,
+          351
+        ]
+      }
+    ]
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      1.11737964654,
+      -0.15317929409,
+      -0.165555959023
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.0008988
+  }
+}

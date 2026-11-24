@@ -1,0 +1,97 @@
+{
+  "name": "Magnum Squat / Lunge (MG-PL79)",
+  "manufacturer": "Matrix Fitness",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 20.0,
+  "source": "Planet Fitness demonstration (https://vimeo.com/1037494843), lifting frames at 19.75, 20.03, 20.19, 20.53 s. Right-leg-forward lunge using the lower neutral handles and front loading horns. The reference is 20 kg total across two equally loaded independent arms. Mirrored load paths let the observed per-arm plate ratio apply to the combined force. The fitted result depends on grip and horn choice. The reference mass normalizes the force calculation.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "The near-side independent arm rotates about the silver axle bolt at the top of the rear purple frame upright. The near 25 lb plate moves with that arm on the front loading horn. The rear 45 lb plate stays fixed on the storage horn. The near hand holds the lower neutral grip on the same workarm through the rising phase of a right-leg-forward split-stance lunge. Plate gravity opposes the upward hand path. The far arm is mechanically independent and the matching grip and horn choice is used in the demonstration. The ratio is per kilogram of plates on one arm, and also applies to total load for both arms with matching geometry and symmetric plate loading. The near hand receives the modeled contact force and both legs support the body through the compound lift. The camera is near side-on with mild perspective from the front; the moving plate and hand are projected at slightly different depths. The hand center is estimated from the middle of the grasp, adjacent to the visible end of the lower grip. The force diagram shows the exerciser\u2019s effort on the machine. The machine reaction acts in the opposite direction.",
+    "photos": [
+      "frame-19.75s.jpg",
+      "frame-20.03s.jpg",
+      "frame-20.19s.jpg",
+      "frame-20.53s.jpg"
+    ],
+    "poses": [
+      {
+        "pivot": [
+          691,
+          538
+        ],
+        "plates": [
+          388,
+          742
+        ],
+        "grip": [
+          303,
+          734
+        ]
+      },
+      {
+        "pivot": [
+          692,
+          538
+        ],
+        "plates": [
+          381,
+          729
+        ],
+        "grip": [
+          294,
+          714
+        ]
+      },
+      {
+        "pivot": [
+          692,
+          539
+        ],
+        "plates": [
+          371,
+          686
+        ],
+        "grip": [
+          281,
+          678
+        ]
+      },
+      {
+        "pivot": [
+          692,
+          538
+        ],
+        "plates": [
+          366,
+          577
+        ],
+        "grip": [
+          272,
+          546
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 16.3,
+    "source": "Matrix Fitness lists 16.3 kg (36 lb) starting resistance and does not specify an independent-arm split. The published value is used as the combined bilateral baseline for this record. The unloaded finish force is unpublished.",
+    "url": "https://uk.matrixfitness.com/eng/strength/plate-loaded/mg-pl79-squat-lunge"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.679017970408,
+      0.207618584709,
+      -0.0765175016239
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.0002234
+  }
+}
