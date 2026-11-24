@@ -1,0 +1,28 @@
+{
+  "name": "Average adult male \u00b7 isometric knee flexion (n=30)",
+  "movement": "knee-flexion",
+  "source": "Frey-Law et al. (2012), Journal of Applied Biomechanics 28(6):726\u2013737, Table 3 (PMC7050840). Mean unilateral isometric (0\u00b0/s) peak knee flexion torque across 30 healthy young men (Biodex System 3).",
+  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7050840/",
+  "points": [
+    [
+      15,
+      103.5
+    ],
+    [
+      35,
+      95.2
+    ],
+    [
+      55,
+      94.4
+    ],
+    [
+      75,
+      88.8
+    ],
+    [
+      100,
+      71.5
+    ]
+  ]
+}

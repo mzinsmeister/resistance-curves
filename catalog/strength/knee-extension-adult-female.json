@@ -1,0 +1,7 @@
+{
+  "name": "Adult women · isometric knee extension (n=23)",
+  "movement": "knee-extension",
+  "source": "Frey-Law LA, Laake A, Avin KG, Heitsman J, Marler T, Abdel-Malek K (2012). Knee and Elbow 3D Strength Surfaces: Peak Torque–Angle–Velocity Relationships. Journal of Applied Biomechanics 28(6):726–737. DOI 10.1123/jab.28.6.726. Table 2, female 0°/s row. Tables 2 and 3 have transposed captions in the PMC manuscript. Mean unilateral peak isometric torque (N·m) for 23 healthy young women who completed knee testing (24 enrolled). Participants sat strapped into a Biodex System 3 with approximately 90° hip flexion. Knee angle is degrees of flexion from full extension (0°).",
+  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7050840/#T2",
+  "points": [[15, 60.6], [35, 96.8], [55, 122.8], [75, 144.2], [100, 104.7]]
+}

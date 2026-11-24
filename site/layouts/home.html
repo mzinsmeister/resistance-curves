@@ -1,10 +1,141 @@
 {{ define "main" }}
-<section class="intro"><small>Resistance profiles</small><h1>Machine library</h1><p>Explore how the load changes through a rep and where it approaches a lifter’s strength limit.</p></section>
-<div class="listhead"><h2>Machines</h2><span>{{ len .Site.RegularPages }} records</span></div>
-<div class="cards">{{ range .Site.RegularPages.ByTitle }}{{ $m := .Params.machine }}
-<a class="card" href="{{ .RelPermalink }}index.html"><div class="cardtop"><small>{{ $m.manufacturer }}</small><span class="tag">{{ $m.kind }}</span></div>
-<h2>{{ .Title }}</h2><p>{{ humanize $m.movement }}</p>
-<svg aria-hidden="true" viewBox="0 0 100 100" preserveAspectRatio="none" class="spark">
-{{ partial "spark.html" $m }}</svg>
-<div class="cardfoot">{{ if eq $m.mechanism "motion_intervals" }}<span>Stroke average <b>{{ printf "%.1f" (float $m.default_mean_kgf) }} kgf</b></span>{{ else }}<span>Start <b>{{ printf "%.1f" (float $m.default_start_kgf) }} kgf</b></span><span>Finish <b>{{ printf "%.1f" (float $m.default_finish_kgf) }} kgf</b></span>{{ end }}</div>
-</a>{{ end }}</div>{{ end }}
+{{ $realCount := 0 }}
+{{ $exampleCount := 0 }}
+{{ range .Site.RegularPages }}
+  {{ if .Params.machine.is_example }}{{ $exampleCount = add $exampleCount 1 }}{{ else }}{{ $realCount = add $realCount 1 }}{{ end }}
+{{ end }}
+
+<section class="hero">
+  <div class="hero-copy">
+    <span class="eyebrow">Empirical Machine Mechanics</span>
+    <h1>Resistance Curve Library</h1>
+    <p>Inspect how handle force evolves from start to finish, solve the exact plates needed for any target force, and compare machine demand against empirical adult strength curves.</p>
+  </div>
+  <div class="hero-metrics" aria-label="Catalog summary">
+    <div class="hero-stat">
+      <strong id="stat-visible">{{ $realCount }}</strong>
+      <span>Machines shown</span>
+    </div>
+    <div class="hero-stat">
+      <strong id="stat-load">20 kg</strong>
+      <span>Preview plate load</span>
+    </div>
+  </div>
+</section>
+
+<section class="toolbar" aria-label="Filter and load controls">
+  <div class="toolbar-row">
+    <label class="search-field">
+      <svg class="search-icon" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <circle cx="9" cy="9" r="6"/><path d="M13.5 13.5 L18 18" stroke-linecap="round"/>
+      </svg>
+      <input id="filter-search" type="search" placeholder="Search machines, brands, movements..." autocomplete="off">
+    </label>
+
+    <div class="toolbar-selects">
+      <label class="inline-field">
+        <span>Brand</span>
+        <select id="filter-brand"><option value="">All brands</option></select>
+      </label>
+      <label class="inline-field">
+        <span>Curve</span>
+        <select id="filter-shape">
+          <option value="">All shapes</option>
+          <option value="Ascending">Ascending</option>
+          <option value="Descending">Descending</option>
+          <option value="Bell curve">Bell curve</option>
+          <option value="U-shaped">U-shaped</option>
+          <option value="Constant">Constant</option>
+        </select>
+      </label>
+      <label class="inline-field">
+        <span>Sort</span>
+        <select id="filter-sort">
+          <option value="name">Name (A–Z)</option>
+          <option value="peak-desc">Highest peak force</option>
+          <option value="peak-asc">Lowest peak force</option>
+          <option value="ratio-desc">Most variable curve</option>
+        </select>
+      </label>
+      <label class="inline-field load-quick">
+        <span>Added plates (kg)</span>
+        <input id="library-load" type="number" min="0" step="any" value="20">
+      </label>
+    </div>
+  </div>
+
+  <div class="toolbar-bottom">
+    <div class="pill-group" id="movement-pills" role="group" aria-label="Filter by movement">
+      <button type="button" class="pill is-active" data-movement="">All movements</button>
+    </div>
+    <div class="toolbar-toggles">
+      {{ if gt $exampleCount 0 }}
+      <label class="toggle-chip">
+        <input id="toggle-examples" type="checkbox">
+        <span>Show example models ({{ $exampleCount }})</span>
+      </label>
+      {{ end }}
+      <span class="result-count" id="result-count">{{ $realCount }} machines</span>
+    </div>
+  </div>
+</section>
+
+<div class="cards" id="machine-grid">
+{{ range .Site.RegularPages.ByTitle }}{{ $m := .Params.machine }}
+  <a class="card{{ if $m.is_example }} is-example{{ end }}"
+     href="{{ .RelPermalink }}index.html"
+     data-slug="{{ .Params.slugid }}"
+     data-name="{{ .Title | lower }}"
+     data-brand="{{ $m.manufacturer }}"
+     data-movement="{{ $m.movement }}"
+     data-movement-label="{{ humanize $m.movement }}"
+     data-shape="{{ $m.curve_shape }}"
+     data-example="{{ if $m.is_example }}true{{ else }}false{{ end }}"
+     {{ if $m.is_example }}hidden{{ end }}>
+    <div class="card-top">
+      <span class="card-brand">{{ $m.manufacturer }}</span>
+      <span class="shape-badge shape-{{ $m.curve_shape | urlize }}">{{ $m.curve_shape }}</span>
+    </div>
+    <h2 class="card-title">{{ .Title }}</h2>
+    <div class="card-meta">
+      <span class="meta-chip">{{ humanize $m.movement }}</span>
+      <span class="meta-chip subtle">{{ $m.kind }}</span>
+      {{ if gt (len $m.evidence_images) 0 }}
+      <span class="meta-chip evidence-chip">{{ len $m.evidence_images }} diagram{{ if gt (len $m.evidence_images) 1 }}s{{ end }}</span>
+      {{ end }}
+    </div>
+    <div class="spark-wrap">
+      <svg aria-hidden="true" viewBox="0 0 100 100" preserveAspectRatio="none" class="spark">
+        {{ partial "spark.html" (dict "m" $m "id" .Params.slugid) }}
+      </svg>
+    </div>
+    <div class="card-foot">
+      <div class="metric-cell">
+        <span>Start</span>
+        <strong data-field="start">{{ printf "%.1f" (float $m.default_start_kgf) }} kgf</strong>
+      </div>
+      <div class="metric-cell metric-peak">
+        <span>Peak</span>
+        <strong data-field="peak">{{ printf "%.1f" (float $m.default_peak_kgf) }} kgf</strong>
+      </div>
+      <div class="metric-cell">
+        <span>Finish</span>
+        <strong data-field="finish">{{ printf "%.1f" (float $m.default_finish_kgf) }} kgf</strong>
+      </div>
+    </div>
+  </a>
+{{ end }}
+</div>
+
+<div class="empty-state" id="empty-state" hidden>
+  <h3>No machines match these filters</h3>
+  <p>Try clearing your search or enabling all movements and brands.</p>
+  <button type="button" class="btn-secondary" id="reset-filters">Reset filters</button>
+</div>
+
+<script type="application/json" id="catalog-index">[
+{{ range $idx, $page := .Site.RegularPages.ByTitle }}{{ $m := $page.Params.machine }}{{ if $idx }},{{ end }}{"slug":{{ $page.Params.slugid | jsonify }},"plate_kg":{{ $m.plate_kg }},"resistance_curve":{{ $m.resistance_curve | jsonify }},"base_resistance":{{ with $m.base_resistance }}{{ . | jsonify }}{{ else }}null{{ end }},"reference_includes_base":{{ if $m.reference_includes_base }}true{{ else }}false{{ end }},"is_example":{{ if $m.is_example }}true{{ else }}false{{ end }}}{{ end }}
+]</script>
+<script defer src="{{ "model.js" | relURL }}"></script>
+<script defer src="{{ "library.js" | relURL }}"></script>
+{{ end }}

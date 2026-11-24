@@ -1,6 +1,0 @@
-{
-  "name": "Example lifter · illustrative",
-  "movement": "elbow-flexion",
-  "source": "Synthetic single-arm isometric torque values for exploring the model. Replace with personal measurements taken at the same posture, grip and joint angles.",
-  "points": [[0, 32], [25, 48], [60, 70], [85, 75], [110, 61], [140, 37]]
-}

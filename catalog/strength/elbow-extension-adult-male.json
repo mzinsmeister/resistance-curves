@@ -1,0 +1,7 @@
+{
+  "name": "Adult men · isometric elbow extension (n=30)",
+  "movement": "elbow-extension",
+  "source": "Frey-Law LA, Laake A, Avin KG, Heitsman J, Marler T, Abdel-Malek K (2012). Knee and Elbow 3D Strength Surfaces: Peak Torque–Angle–Velocity Relationships. Journal of Applied Biomechanics 28(6):726–737. DOI 10.1123/jab.28.6.726. Table 5, male 0°/s row. Mean unilateral peak isometric torque (N·m) for 30 healthy young men seated and strapped into a Biodex System 3 with approximately 25° shoulder flexion and a supinated forearm. Elbow angle is degrees of flexion from full extension (0°).",
+  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7050840/#T5",
+  "points": [[15, 40.2], [40, 50.5], [65, 52.8], [90, 50.7], [110, 45.4]]
+}

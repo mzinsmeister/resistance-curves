@@ -1,0 +1,97 @@
+{
+  "name": "Iso-Lateral D.Y. Row",
+  "manufacturer": "Hammer Strength",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 20.0,
+  "source": "Life Fitness / Hammer Strength IL-DRW demonstration, https://www.youtube.com/watch?v=27AgbqjwmOs&t=27s (27.50\u201328.15 s). Underhand grip and plates on one independent workarm. 20 kg is a reference load for scaling the image-derived ratio. The filmed range depends on the user and setup.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "The official Hammer Strength IL-DRW demonstration shows the near-side independent arm rotating about the lower of the two visible fasteners on the upper bearing bracket. The upper rear moving horn and underhand grip are fixed to that workarm. The lower plates stay on fixed storage horns. As the left hand pulls back, the upper plates rise and their gravity torque opposes the pull. One arm carries the modeled load. The camera is nearly side-on but the converging arm and the outboard horn face project at different depths. The plate radius uses the center of the visible outer plate bore, and the grip uses the hand center on the handle, partly occluded by the frame at mid-stroke. Approximate the tilted three-dimensional path as planar for this filmed repetition. The grip turns 23 degrees and the load horn turns 20 degrees in projection. Using the measured horn sweep in the same moment-arm formula gives about 0.72 at the finish, compared with 0.71 for the fitted grip-sweep model. The amber arrow indicates the tangent axis in the diagram; the plate torque consistently resists the pull.",
+    "poses": [
+      {
+        "pivot": [
+          277,
+          174
+        ],
+        "plates": [
+          647,
+          180
+        ],
+        "grip": [
+          151,
+          632
+        ]
+      },
+      {
+        "pivot": [
+          276,
+          175
+        ],
+        "plates": [
+          646,
+          138
+        ],
+        "grip": [
+          232,
+          654
+        ]
+      },
+      {
+        "pivot": [
+          275,
+          175
+        ],
+        "plates": [
+          635,
+          71
+        ],
+        "grip": [
+          274,
+          667
+        ]
+      },
+      {
+        "pivot": [
+          274,
+          175
+        ],
+        "plates": [
+          626,
+          54
+        ],
+        "grip": [
+          341,
+          666
+        ]
+      }
+    ],
+    "input_photos": [
+      "27AgbqjwmOs: dy-27.50s.jpg",
+      "27AgbqjwmOs: dy-27.85s.jpg",
+      "27AgbqjwmOs: dy-28.00s.jpg",
+      "27AgbqjwmOs: dy-28.15s.jpg"
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 1.4,
+    "source": "Life Fitness specifies 3 lb (1.4 kg) starting resistance per workarm for the Hammer Strength IL-DRW.",
+    "url": "https://www.lifefitness.com/en-us/catalog/strength-training/plate-loaded/plate-loaded-iso-lateral-d-y-row"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.766101469344,
+      0.00442360465914,
+      -0.0612392979751
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 8.182e-05
+  }
+}

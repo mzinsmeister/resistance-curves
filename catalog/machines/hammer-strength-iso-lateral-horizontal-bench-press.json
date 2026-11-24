@@ -1,0 +1,91 @@
+{
+  "name": "Iso-Lateral Horizontal Bench Press (IL-HBP)",
+  "manufacturer": "Hammer Strength",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 20.41,
+  "source": "Four ordered side-view frames from the official Hammer Strength Iso-Lateral Horizontal Bench Press demonstration (https://www.youtube.com/watch?v=kPi1grOKflU, 0:16.1\u20130:16.6). Near-side independent workarm loaded with one 45 lb (20.41 kg) plate.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Official Life Fitness / Hammer Strength side-view demonstration (YouTube kPi1grOKflU, 0:16.1\u20130:16.6) of the Plate-Loaded Iso-Lateral Horizontal Bench Press (IL-HBP). The near-side workarm (lifter's left arm) is tracked through four ordered positions of a single continuous upward press (bottom to top lockout) with one 45 lb Hammer Strength plate (20.41 kg) loaded on the arm. The camera is stationary and perpendicular to the side plane. The fixed pivot is the center of the upper two-bolt pillow-block bearing on the near upright; the plate center is the steel loading-horn center of the 45 lb plate; the grip is the hand center on the horizontal handle rigidly welded to the rotating arm. Hammer Strength's slight converging axis tilt introduces minor out-of-plane foreshortening checked via frame-to-frame rigid-lever invariants.",
+    "poses": [
+      {
+        "pivot": [
+          670,
+          415
+        ],
+        "plates": [
+          532,
+          539
+        ],
+        "grip": [
+          408,
+          535
+        ]
+      },
+      {
+        "pivot": [
+          670,
+          415
+        ],
+        "plates": [
+          506,
+          491
+        ],
+        "grip": [
+          392,
+          463
+        ]
+      },
+      {
+        "pivot": [
+          670,
+          415
+        ],
+        "plates": [
+          495,
+          463
+        ],
+        "grip": [
+          391,
+          422
+        ]
+      },
+      {
+        "pivot": [
+          670,
+          415
+        ],
+        "plates": [
+          488,
+          424
+        ],
+        "grip": [
+          410,
+          355
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 8.2,
+    "source": "Hammer Strength lists 18 lbs (8.2 kg) starting resistance per workarm for the IL-HBP. Unloaded curve across the stroke is unmeasured and held constant by default.",
+    "url": "https://shop.lifefitness.com/products/hammer-strength-plate-loaded-iso-lateral-horizontal-bench-press"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.486766723815,
+      0.294037103794,
+      -0.128272803594
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.0006175
+  }
+}

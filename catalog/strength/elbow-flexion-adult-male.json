@@ -1,0 +1,28 @@
+{
+  "name": "Average adult male \u00b7 isometric elbow flexion (n=30)",
+  "movement": "elbow-flexion",
+  "source": "Frey-Law et al. (2012), Journal of Applied Biomechanics 28(6):726\u2013737, Table 4 (PMC7050840). Mean unilateral isometric (0\u00b0/s) peak elbow flexion torque across 30 healthy young men (age 24.2 \u00b1 5.1 yrs, mass 81.5 \u00b1 9.2 kg; Biodex System 3).",
+  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7050840/",
+  "points": [
+    [
+      15,
+      56.4
+    ],
+    [
+      40,
+      62.9
+    ],
+    [
+      65,
+      63.0
+    ],
+    [
+      90,
+      60.3
+    ],
+    [
+      110,
+      56.4
+    ]
+  ]
+}

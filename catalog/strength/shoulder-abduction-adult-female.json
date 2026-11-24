@@ -1,0 +1,7 @@
+{
+  "name": "Adult women · isometric shoulder abduction (n=15)",
+  "movement": "shoulder-abduction",
+  "source": "McDonald AC, Savoie SM, Mulla DM, Keir PJ (2018). Dynamic and static shoulder strength relationship and predictive model. Applied Ergonomics 67:162–169. DOI 10.1016/j.apergo.2017.10.004. Table 3, 0° plane, Elevation row. Mean gravity-corrected unilateral maximal isometric torque (N·m) in 15 healthy right-hand-dominant women recruited from a university population. Participants sat strapped into a Biodex System 3 with an extended elbow and neutral grip. The tabulated angles are humeral elevation from the arm-at-side position (0°) in the frontal plane. The measured range is 30°–120°.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/29122187/",
+  "points": [[30, 47.6], [60, 47.3], [90, 42.3], [120, 39.1]]
+}

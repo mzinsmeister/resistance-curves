@@ -1,0 +1,28 @@
+{
+  "name": "Average adult \u00b7 isometric knee extension (n=54)",
+  "movement": "knee-extension",
+  "source": "Frey-Law et al. (2012), Journal of Applied Biomechanics 28(6):726\u2013737, Table 2 (PMC7050840, noting the manuscript caption swap between Tables 2 and 3). Sample-size-weighted mean unilateral isometric (0\u00b0/s) peak knee extension torque across 54 healthy young adults (30 men, 24 women; Biodex System 3).",
+  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7050840/",
+  "points": [
+    [
+      15,
+      72.4
+    ],
+    [
+      35,
+      116.6
+    ],
+    [
+      55,
+      151.6
+    ],
+    [
+      75,
+      182.0
+    ],
+    [
+      100,
+      139.5
+    ]
+  ]
+}

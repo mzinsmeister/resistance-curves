@@ -1,0 +1,179 @@
+{
+  "name": "Plate-Loaded Lateral Raise (PL-LR)",
+  "manufacturer": "Hammer Strength",
+  "movement": "shoulder-abduction",
+  "kind": "Photo estimate",
+  "plate_kg": 4.54,
+  "source": "Four ordered front-plane frames (perpendicular to the arm abduction plane) from the official Hammer Strength Plate-Loaded Lateral Raise demonstration (https://www.youtube.com/watch?v=4t2faIKsmr8, 0:09.1\u20130:09.9). Independent arm loaded with one 10 lb (4.54 kg) plate.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Official Life Fitness / Hammer Strength front-plane demonstration (YouTube 4t2faIKsmr8, 0:09.1\u20130:09.9) of the Plate-Loaded Lateral Raise (PL-LR), cross-checked with the side view in the same video (0:03.5 and 0:15.0\u20130:18.0) showing each arm is a single rigid lever rotating in the frontal plane about an upper front-to-back bearing behind the shoulder (directly beneath the angled grey counterweight block), with the weight horn and forearm/elbow pad rigidly welded to the lower end of that same arm. The viewer's right workarm (lifter's left arm) is tracked across four ordered poses from bottom (~20 deg abduction) to top (~85 deg abduction) with one 10 lb Hammer Strength round urethane Olympic plate (4.54 kg) loaded on the arm. Slight forward camera dolly (~5% zoom across the 0.8 s clip) is tracked per pose and cancels in the lever force ratios. Rigid-lever invariants hold tightly across all four poses (radius ratio spread ~1.5%, angular offset spread <6 deg). Anatomical landmarks mark the left glenohumeral joint center, vertical trunk axis (proximal straight above joint so 0 deg = arm at side), and distal elbow pad contact; scale uses the visible Hammer Strength 10 lb round urethane plate outer diameter (10.04 in = 0.255 m per Life Fitness spec). Because the plate sits ~0.35 m behind the arm plane (~10% perspective foreshortening at ~3.5 m camera distance), the estimated joint moment arm carries ~10% systematic uncertainty (~0.25\u20130.31 m plausible range).",
+    "poses": [
+      {
+        "pivot": [
+          565,
+          370
+        ],
+        "plates": [
+          646,
+          445
+        ],
+        "grip": [
+          632,
+          466
+        ],
+        "joint": [
+          590,
+          405
+        ],
+        "proximal": [
+          590,
+          330
+        ],
+        "distal": [
+          618,
+          474
+        ],
+        "scale_start": [
+          646,
+          412
+        ],
+        "scale_end": [
+          646,
+          478
+        ],
+        "scale_m": 0.255,
+        "scale_source": "Hammer Strength 10 lb round urethane Olympic plate outer diameter (10.04 in / 0.255 m per Life Fitness spec); ~10% depth offset behind arm plane."
+      },
+      {
+        "pivot": [
+          566,
+          370
+        ],
+        "plates": [
+          673,
+          406
+        ],
+        "grip": [
+          666,
+          434
+        ],
+        "joint": [
+          592,
+          405
+        ],
+        "proximal": [
+          592,
+          330
+        ],
+        "distal": [
+          649,
+          446
+        ],
+        "scale_start": [
+          673,
+          372
+        ],
+        "scale_end": [
+          673,
+          440
+        ],
+        "scale_m": 0.255,
+        "scale_source": "Hammer Strength 10 lb round urethane Olympic plate outer diameter (10.04 in / 0.255 m per Life Fitness spec); ~10% depth offset behind arm plane."
+      },
+      {
+        "pivot": [
+          568,
+          370
+        ],
+        "plates": [
+          671,
+          377
+        ],
+        "grip": [
+          673,
+          404
+        ],
+        "joint": [
+          594,
+          404
+        ],
+        "proximal": [
+          594,
+          329
+        ],
+        "distal": [
+          660,
+          418
+        ],
+        "scale_start": [
+          671,
+          343
+        ],
+        "scale_end": [
+          671,
+          411
+        ],
+        "scale_m": 0.255,
+        "scale_source": "Hammer Strength 10 lb round urethane Olympic plate outer diameter (10.04 in / 0.255 m per Life Fitness spec); ~10% depth offset behind arm plane."
+      },
+      {
+        "pivot": [
+          570,
+          370
+        ],
+        "plates": [
+          653,
+          336
+        ],
+        "grip": [
+          666,
+          366
+        ],
+        "joint": [
+          595,
+          396
+        ],
+        "proximal": [
+          595,
+          321
+        ],
+        "distal": [
+          662,
+          389
+        ],
+        "scale_start": [
+          653,
+          302
+        ],
+        "scale_end": [
+          653,
+          370
+        ],
+        "scale_m": 0.255,
+        "scale_source": "Hammer Strength 10 lb round urethane Olympic plate outer diameter (10.04 in / 0.255 m per Life Fitness spec); ~10% depth offset behind arm plane."
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 0.5,
+    "source": "Hammer Strength lists 1 lb (0.5 kg) starting resistance per workarm for the PL-LR. Unloaded curve across the stroke is unmeasured and held constant by default.",
+    "url": "https://shop.lifefitness.com/products/hammer-strength-plate-loaded-lateral-raise"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.690235210573,
+      0.667943640771,
+      -0.448190866452
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.002158
+  }
+}

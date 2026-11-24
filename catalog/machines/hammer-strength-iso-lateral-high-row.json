@@ -1,0 +1,91 @@
+{
+  "name": "Iso-Lateral High Row",
+  "manufacturer": "Hammer Strength",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 20.41,
+  "source": "Official Hammer Strength Iso-Lateral High Row demonstration video (https://www.youtube.com/watch?v=5vcDfRwVMSk, 20.3s-22.0s, 4 side-view frames f_006, f_010, f_013, f_016). Single-arm near workarm modeled with 45 lb (20.41 kg) added plate; pivot tracked per pose across slight camera jib drift (~5-6% radius-ratio uncertainty from oblique converging axis).",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Official Hammer Strength Plate-Loaded Iso-Lateral High Row demonstration video (YouTube ID 5vcDfRwVMSk, level side view at 20.3s-22.0s; frames f_006.jpg, f_010.jpg, f_013.jpg, f_016.jpg at 6 fps from 19.5s). Modeled assembly is the near-side (left) independent rigid lever arm rotating counterclockwise in the side view as the athlete pulls down and back; the far arm remains stationary overhead. Pivot is tracked per pose at the center of the lever's oblique pivot shaft between the front and rear bearing brackets to account for the camera's slow jib drift across the 1.7s clip. Added load on the rear weight horn is one 45 lb (20.41 kg) plate (lower plates sit on fixed storage horns). Grip is the athlete's left hand on the front J-handle. Slight oblique tilt of the converging iso-lateral axis and camera jib motion introduce ~5-6% uncertainty in the lever radius ratio across poses. Compound multi-joint high pull; anatomical joint fields omitted.",
+    "poses": [
+      {
+        "pivot": [
+          472,
+          288
+        ],
+        "plates": [
+          603,
+          368
+        ],
+        "grip": [
+          282,
+          326
+        ]
+      },
+      {
+        "pivot": [
+          465,
+          295
+        ],
+        "plates": [
+          615,
+          315
+        ],
+        "grip": [
+          295,
+          412
+        ]
+      },
+      {
+        "pivot": [
+          463,
+          301
+        ],
+        "plates": [
+          616,
+          282
+        ],
+        "grip": [
+          318,
+          464
+        ]
+      },
+      {
+        "pivot": [
+          462,
+          308
+        ],
+        "plates": [
+          613,
+          260
+        ],
+        "grip": [
+          343,
+          495
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 0.9,
+    "source": "Hammer Strength specifies 2 lbs (0.9 kg) starting resistance per arm for the Plate-Loaded Iso-Lateral High Row (IL-HR). Its variation across travel is unknown; the default holds this force constant.",
+    "url": "https://shop.lifefitness.com/products/hammer-strength-iso-lateral-high-row"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.62877520538,
+      0.317052834438,
+      -0.233542564348
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.0005602
+  }
+}

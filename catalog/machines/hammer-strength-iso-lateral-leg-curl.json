@@ -1,0 +1,180 @@
+{
+  "name": "Iso-Lateral Leg Curl",
+  "manufacturer": "Hammer Strength",
+  "movement": "knee-flexion",
+  "kind": "Photo estimate",
+  "plate_kg": 11.3398,
+  "source": "Official Life Fitness / Hammer Strength Plate-Loaded Iso-Lateral Leg Curl (IL-LC) demonstration (https://www.youtube.com/watch?v=fJxkgOrvCuc), level side-view frames at 26.05 s, 25.45 s, 24.85 s, and 24.05 s ordered from extended bottom to flexed top of the lifting stroke. Modeled for one independent workarm loaded with one 25 lb (11.34 kg) Hammer Strength round urethane Olympic plate (12.60 in / 0.320 m diameter used as in-plane scale reference). Unloaded workarm starting resistance (4 lbs / 1.8 kg per workarm) recorded separately in base_resistance.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Four level side-view frames from the official Life Fitness / Hammer Strength Plate-Loaded Iso-Lateral Leg Curl (IL-LC) demonstration (YouTube fJxkgOrvCuc) at 26.05 s, 25.45 s, 24.85 s, and 24.05 s, ordered from extended bottom to fully flexed top of the lifting stroke (sampled along the filmed eccentric phase reversed into lifting order; quasi-static rigid-lever geometry is identical in both directions). One rigid black lever arm per side pivots on a fixed horizontal axle (pivot) inside the grey rear upright, carrying both the ankle roller pad (grip) and one 25 lb (11.34 kg) Hammer Strength round urethane Olympic plate on a rigid loading horn (plates, plate stamping '25' verified in close-up frame at 19.0 s). Because the machine is Iso-Lateral with independent arms, plate_kg is 11.34 kg for the modeled near-side workarm (unilateral leg load). Scale reference uses the vertical diameter of the in-plane 25 lb Hammer Strength round urethane Olympic plate (0.320 m / 12.60 in per Hammer Strength specifications; ~95-96 px across all four poses). Anatomical landmarks trace the near-side hip/proximal thigh, knee joint center, and posterior ankle contact at the roller pad.",
+    "poses": [
+      {
+        "pivot": [
+          624,
+          525
+        ],
+        "plates": [
+          751,
+          545
+        ],
+        "grip": [
+          696,
+          437
+        ],
+        "joint": [
+          612,
+          496
+        ],
+        "proximal": [
+          515,
+          480
+        ],
+        "distal": [
+          700,
+          444
+        ],
+        "scale_start": [
+          751,
+          497
+        ],
+        "scale_end": [
+          751,
+          593
+        ],
+        "scale_m": 0.32,
+        "scale_source": "Hammer Strength 25 lb round urethane Olympic plate vertical diameter (12.60 in = 0.320 m, in-plane on the moving near-side loading horn; plausible range 0.31-0.33 m)."
+      },
+      {
+        "pivot": [
+          624,
+          525
+        ],
+        "plates": [
+          745,
+          480
+        ],
+        "grip": [
+          641,
+          412
+        ],
+        "joint": [
+          612,
+          496
+        ],
+        "proximal": [
+          515,
+          480
+        ],
+        "distal": [
+          648,
+          418
+        ],
+        "scale_start": [
+          745,
+          432
+        ],
+        "scale_end": [
+          745,
+          528
+        ],
+        "scale_m": 0.32,
+        "scale_source": "Hammer Strength 25 lb round urethane Olympic plate vertical diameter (12.60 in = 0.320 m, in-plane on the moving near-side loading horn; plausible range 0.31-0.33 m)."
+      },
+      {
+        "pivot": [
+          624,
+          525
+        ],
+        "plates": [
+          707,
+          428
+        ],
+        "grip": [
+          594,
+          416
+        ],
+        "joint": [
+          612,
+          496
+        ],
+        "proximal": [
+          515,
+          480
+        ],
+        "distal": [
+          606,
+          414
+        ],
+        "scale_start": [
+          707,
+          380
+        ],
+        "scale_end": [
+          707,
+          476
+        ],
+        "scale_m": 0.32,
+        "scale_source": "Hammer Strength 25 lb round urethane Olympic plate vertical diameter (12.60 in = 0.320 m, in-plane on the moving near-side loading horn; plausible range 0.31-0.33 m)."
+      },
+      {
+        "pivot": [
+          624,
+          525
+        ],
+        "plates": [
+          662,
+          404
+        ],
+        "grip": [
+          552,
+          439
+        ],
+        "joint": [
+          612,
+          496
+        ],
+        "proximal": [
+          515,
+          480
+        ],
+        "distal": [
+          566,
+          428
+        ],
+        "scale_start": [
+          662,
+          356
+        ],
+        "scale_end": [
+          662,
+          452
+        ],
+        "scale_m": 0.32,
+        "scale_source": "Hammer Strength 25 lb round urethane Olympic plate vertical diameter (12.60 in = 0.320 m, in-plane on the moving near-side loading horn; plausible range 0.31-0.33 m)."
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 1.8,
+    "source": "Hammer Strength lists 4 lbs (1.8 kg) starting resistance per workarm for the Plate-Loaded Iso-Lateral Leg Curl (IL-LC). Full unloaded curve across travel is unknown; default holds this constant.",
+    "url": "https://shop.lifefitness.com/products/hammer-strength-plate-loaded-iso-lateral-leg-curl"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      1.11635670489,
+      0.275741401663,
+      -1.25667298013,
+      0.245970684999
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.001713
+  }
+}

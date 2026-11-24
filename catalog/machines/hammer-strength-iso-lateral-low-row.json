@@ -1,0 +1,91 @@
+{
+  "name": "Iso-Lateral Low Row",
+  "manufacturer": "Hammer Strength",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 24.95,
+  "source": "Official Hammer Strength Iso-Lateral Low Row demonstration video (https://www.youtube.com/watch?v=k2S4G14cmts, 25.3s-26.5s, 4 side-view frames f_006, f_008, f_010, f_012). Single-arm near workarm modeled with 55 lb (24.95 kg) added plates (1x45 lb + 1x10 lb); slight 3D arc divergence introduces ~4-6% projection uncertainty.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Official Hammer Strength Plate-Loaded Iso-Lateral Low Row demonstration video (YouTube ID k2S4G14cmts, static level side view at 25.3s-26.5s; frames f_006.jpg, f_008.jpg, f_010.jpg, f_012.jpg at 6 fps from 24.5s). Modeled assembly is the near-side (left) independent rigid lever arm pivoting counterclockwise in the side view around the upper-front bearing housing. Added load on the moving upper horn is one 45 lb plate plus one 10 lb plate (55 lb = 24.95 kg); the lower 45 lb plate sits on a fixed storage horn. Grip is the athlete's left hand on the lower handle. Slight 3D arc divergence of the iso-lateral arm and near-top framing of the plate horn at full contraction introduce minor projection uncertainty (~4-6%). Compound multi-joint horizontal pull; anatomical joint fields omitted.",
+    "poses": [
+      {
+        "pivot": [
+          380,
+          333
+        ],
+        "plates": [
+          586,
+          366
+        ],
+        "grip": [
+          452,
+          650
+        ]
+      },
+      {
+        "pivot": [
+          380,
+          333
+        ],
+        "plates": [
+          586,
+          316
+        ],
+        "grip": [
+          515,
+          636
+        ]
+      },
+      {
+        "pivot": [
+          380,
+          333
+        ],
+        "plates": [
+          569,
+          255
+        ],
+        "grip": [
+          604,
+          591
+        ]
+      },
+      {
+        "pivot": [
+          380,
+          333
+        ],
+        "plates": [
+          557,
+          230
+        ],
+        "grip": [
+          631,
+          570
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 3.6,
+    "source": "Hammer Strength specifies 8 lbs (3.6 kg) starting resistance per arm for the Plate-Loaded Iso-Lateral Low Row (IL-LR). Its variation across travel is unknown; the default holds this force constant.",
+    "url": "https://shop.lifefitness.com/products/hammer-strength-plate-loaded-iso-lateral-low-row"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.606406924501,
+      0.0566201028269,
+      -0.105282061283
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.0001651
+  }
+}

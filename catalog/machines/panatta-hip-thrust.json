@@ -1,0 +1,111 @@
+{
+  "name": "Freeweight One Hip Thrust",
+  "manufacturer": "Panatta",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 20.0,
+  "source": "Panatta 1FO097 demonstration, https://www.youtube.com/watch?v=TS9uM6_jXoI&t=29s (29.98\u201331.66 s lowering sequence reversed, checked against the following ascent). 20 kg is a reference total across the moving horns. Both legs contribute to the shared pelvic roller load.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Panatta's official 1FO097 demonstration shows a rear frame bearing, a rigid triangular workarm carrying the front moving loading horns, and an adjustable thrust roller locked to the workarm for the repetition. The static storage plates stay with the frame. The main near-side bearing cap and the bore of the near-side moving plate locate the axle and load. The grip landmark is the center of the pelvic thrust roller in side projection. The rotating pad transmits its contact load through that axis, and both legs contribute to the single shared pelvic load. The backrest tilts on its separate support. Frames are ordered from hips low to extended using the near-side lowering shot in reverse. The following angle of the video confirms the same visible plate-rise direction on the ascent. Camera motion and the projected depth difference between the pad and horn introduce some disagreement between their measured sweeps. This is a quasi-static plate-only equivalent tangent force at the roller for the filmed setup. The roller turns 15 degrees and the horn 18 degrees in projection, with a 0.004 kgf/kg difference between their implied finish ratios. The diagram uses the generic grip label for the shared pelvic roller.",
+    "poses": [
+      {
+        "pivot": [
+          175,
+          560
+        ],
+        "plates": [
+          711,
+          760
+        ],
+        "grip": [
+          708,
+          525
+        ]
+      },
+      {
+        "pivot": [
+          191,
+          557
+        ],
+        "plates": [
+          721,
+          719
+        ],
+        "grip": [
+          710,
+          498
+        ]
+      },
+      {
+        "pivot": [
+          198,
+          561
+        ],
+        "plates": [
+          730,
+          668
+        ],
+        "grip": [
+          704,
+          460
+        ]
+      },
+      {
+        "pivot": [
+          207,
+          560
+        ],
+        "plates": [
+          735,
+          626
+        ],
+        "grip": [
+          697,
+          433
+        ]
+      },
+      {
+        "pivot": [
+          184,
+          554
+        ],
+        "plates": [
+          706,
+          573
+        ],
+        "grip": [
+          656,
+          394
+        ]
+      }
+    ],
+    "input_photos": [
+      "TS9uM6_jXoI: side-31.66s.jpg",
+      "TS9uM6_jXoI: side-31.20s.jpg",
+      "TS9uM6_jXoI: side-30.80s.jpg",
+      "TS9uM6_jXoI: side-30.40s.jpg",
+      "TS9uM6_jXoI: side-29.98s.jpg"
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 25,
+    "source": "Panatta lists a 25 kg starting load for the 1FO097, treated here as 25 kgf at the single shared pelvic roller.",
+    "url": "https://www.panattasport.com/en/freeweight-one/hip-thrust/"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.989936265731,
+      0.0618161778917
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.008772
+  }
+}

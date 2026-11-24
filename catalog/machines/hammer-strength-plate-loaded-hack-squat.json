@@ -1,0 +1,63 @@
+{
+  "name": "Plate-Loaded Hack Squat",
+  "manufacturer": "Hammer Strength",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 40.8233,
+  "source": "Official Life Fitness / Hammer Strength Plate-Loaded Hack Squat demonstration (https://www.youtube.com/watch?v=FioZXSiy98M), level side-view frames at 26.80 s, 28.00 s, and 29.10 s in lifting order. Loaded with one 45 lb (20.41 kg) plate per side (90 lb = 40.82 kg total). Twin linear chrome rails measure 44.9 deg (matching the published 45-degree pressing angle). Bearing friction and dynamic inertia omitted; unloaded carriage starting resistance (125 lbs / 57 kg) recorded separately in base_resistance.",
+  "observation": {
+    "mechanism": "sled",
+    "evidence": "Three level side-view frames extracted from the official Life Fitness / Hammer Strength Plate-Loaded Hack Squat demonstration (YouTube FioZXSiy98M) at 26.80 s (bottom), 28.00 s (middle), and 29.10 s (top) in lifting order. The carriage holding both the back/shoulder pads and the loading horns slides smoothly along two parallel straight fixed chrome guide rails inclined at ~45 degrees. rail_low and rail_high mark widely separated centerline points along the upper (near-side) chrome guide rail in each pose (camera is tripod-mounted and stationary). One 45 lb (20.41 kg) Hammer Strength Olympic plate is loaded on each side of the carriage (90 lb = 40.823 kg total added plates, verified from the front and close-up shots in the same video). Unloaded carriage starting resistance (125 lbs / 57 kg) is recorded separately in base_resistance from the official Life Fitness product specification.",
+    "poses": [
+      {
+        "rail_low": [
+          395,
+          659
+        ],
+        "rail_high": [
+          618,
+          437
+        ]
+      },
+      {
+        "rail_low": [
+          395,
+          659
+        ],
+        "rail_high": [
+          618,
+          437
+        ]
+      },
+      {
+        "rail_low": [
+          395,
+          659
+        ],
+        "rail_high": [
+          618,
+          437
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 57.0,
+    "source": "Hammer Strength lists 125 lbs (57 kg) starting resistance for the Plate-Loaded Hack Squat (PL-HSQ2). Constant across linear rail travel.",
+    "url": "https://shop.lifefitness.com/products/hammer-strength-plate-loaded-hack-squat"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.705515995805
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 2,
+    "max_sample_error_kgf_per_kg": 0.0
+  }
+}

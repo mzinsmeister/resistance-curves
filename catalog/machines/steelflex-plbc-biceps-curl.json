@@ -1,0 +1,237 @@
+{
+  "name": "PLBC Plate-Loaded Biceps Curl",
+  "manufacturer": "Steelflex",
+  "movement": "elbow-flexion",
+  "kind": "Photo estimate",
+  "plate_kg": 20.0,
+  "source": "Steelflex PLBC manufacturer demo, 16.00\u201316.78 s (https://www.youtube.com/watch?v=438jL-pdJZw). Product and independent-arm specification: https://www.steelflexfitness.com/biceps-curl-machine-plbc.html. Left workarm per-side estimate. Plate centers projected into the grip plane.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Steelflex PLBC, filmed bilateral curl. Each arm has its own plate horn and handle. This estimate uses the demonstrator's left workarm, on the right of the image. Added plate mass means mass on that arm. The red workarm raises its green disc as the elbow flexes. The handle can pivot to accommodate the wrist. The five marked hand centers nevertheless follow a near-circular arc in this repetition, so the lever approximates this particular grip and setup. The opposite disc is strongly foreshortened. The modeled disc is nearly face-on, but its center projects outward from the grip plane along the machine axis. The obscured intersections of the axle with the two planes were estimated independently using least-squares circles fitted to the five visible plate centers and five hand centers. These gave [611,570] in the plate plane and [513,605] in the grip plane. The mechanics landmarks shift the visible plate centers by [-98,+36] to the grip plane. The original centers are preserved in observed_plate_center. The two independently tracked angles advance about 96 and 98 degrees, and their offset varies by about five degrees across the stroke. The projected plate center remains on the positive horizontal side of the axle, so gravity resists the upward curl. The source uses a fixed camera angle, with residual perspective and grip swivel contributing error. Elbow alignment and the assumed 0.23\u20130.29 m forearm length limit the anatomical estimates. The 20 kg reference normalizes plate resistance. Omitting each intermediate pose from the circle fits in turn gives start, peak and finish ranges of 0.35\u20130.40, 0.54\u20130.60 and 0.35\u20130.38 kgf per added kilogram. All variants peak near mid-stroke.",
+    "image_sources": [
+      "https://www.youtube.com/watch?v=438jL-pdJZw&t=16.00s (frame-16.00.jpg)",
+      "https://www.youtube.com/watch?v=438jL-pdJZw&t=16.17s (frame-16.17.jpg)",
+      "https://www.youtube.com/watch?v=438jL-pdJZw&t=16.33s (frame-16.33.jpg)",
+      "https://www.youtube.com/watch?v=438jL-pdJZw&t=16.50s (frame-16.50.jpg)",
+      "https://www.youtube.com/watch?v=438jL-pdJZw&t=16.78s (frame-16.78.jpg)"
+    ],
+    "poses": [
+      {
+        "pivot": [
+          513,
+          605
+        ],
+        "plates": [
+          611,
+          716
+        ],
+        "grip": [
+          753,
+          708
+        ],
+        "observed_plate_center": [
+          709,
+          680
+        ],
+        "joint": [
+          541,
+          609
+        ],
+        "proximal": [
+          486,
+          477
+        ],
+        "distal": [
+          701,
+          706
+        ],
+        "scale_start": [
+          541,
+          609
+        ],
+        "scale_end": [
+          701,
+          706
+        ],
+        "scale_m": 0.26,
+        "scale_source": "Assumed adult elbow-to-wrist length, 0.26 m, with a plausible range of 0.23\u20130.29 m. No measurement of the demonstrator."
+      },
+      {
+        "pivot": [
+          513,
+          605
+        ],
+        "plates": [
+          646,
+          682
+        ],
+        "grip": [
+          775,
+          611
+        ],
+        "observed_plate_center": [
+          744,
+          646
+        ],
+        "joint": [
+          545,
+          615
+        ],
+        "proximal": [
+          486,
+          477
+        ],
+        "distal": [
+          713,
+          634
+        ],
+        "scale_start": [
+          545,
+          615
+        ],
+        "scale_end": [
+          713,
+          634
+        ],
+        "scale_m": 0.26,
+        "scale_source": "Assumed adult elbow-to-wrist length, 0.26 m, with a plausible range of 0.23\u20130.29 m. No measurement of the demonstrator."
+      },
+      {
+        "pivot": [
+          513,
+          605
+        ],
+        "plates": [
+          662,
+          624
+        ],
+        "grip": [
+          754,
+          516
+        ],
+        "observed_plate_center": [
+          760,
+          588
+        ],
+        "joint": [
+          546,
+          617
+        ],
+        "proximal": [
+          488,
+          477
+        ],
+        "distal": [
+          715,
+          557
+        ],
+        "scale_start": [
+          546,
+          617
+        ],
+        "scale_end": [
+          715,
+          557
+        ],
+        "scale_m": 0.26,
+        "scale_source": "Assumed adult elbow-to-wrist length, 0.26 m, with a plausible range of 0.23\u20130.29 m. No measurement of the demonstrator."
+      },
+      {
+        "pivot": [
+          513,
+          605
+        ],
+        "plates": [
+          648,
+          552
+        ],
+        "grip": [
+          688,
+          408
+        ],
+        "observed_plate_center": [
+          746,
+          516
+        ],
+        "joint": [
+          547,
+          617
+        ],
+        "proximal": [
+          488,
+          477
+        ],
+        "distal": [
+          642,
+          466
+        ],
+        "scale_start": [
+          547,
+          617
+        ],
+        "scale_end": [
+          642,
+          466
+        ],
+        "scale_m": 0.26,
+        "scale_source": "Assumed adult elbow-to-wrist length, 0.26 m, with a plausible range of 0.23\u20130.29 m. No measurement of the demonstrator."
+      },
+      {
+        "pivot": [
+          513,
+          605
+        ],
+        "plates": [
+          615,
+          493
+        ],
+        "grip": [
+          581,
+          355
+        ],
+        "observed_plate_center": [
+          713,
+          457
+        ],
+        "joint": [
+          548,
+          618
+        ],
+        "proximal": [
+          489,
+          477
+        ],
+        "distal": [
+          579,
+          421
+        ],
+        "scale_start": [
+          548,
+          618
+        ],
+        "scale_end": [
+          579,
+          421
+        ],
+        "scale_m": 0.26,
+        "scale_source": "Assumed adult elbow-to-wrist length, 0.26 m, with a plausible range of 0.23\u20130.29 m. No measurement of the demonstrator."
+      }
+    ]
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.380314330136,
+      0.776852081607,
+      -0.783608269177
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.002402
+  }
+}

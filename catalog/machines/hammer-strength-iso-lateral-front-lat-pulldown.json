@@ -1,0 +1,91 @@
+{
+  "name": "Iso-Lateral Front Lat Pulldown",
+  "manufacturer": "Hammer Strength",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 20.41,
+  "source": "Official Hammer Strength Iso-Lateral Front Lat Pulldown demonstration video (https://www.youtube.com/watch?v=WcTbf3RI3Q8, 25.0s-26.5s, 4 side-view frames f_004, f_008, f_010, f_012). Single-arm near workarm modeled with 45 lb (20.41 kg) added plate; static level side view with tight rigid-lever agreement (~2.6% radius-ratio spread).",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Official Hammer Strength Plate-Loaded Iso-Lateral Front Lat Pulldown demonstration video (YouTube ID WcTbf3RI3Q8, static level side view at 25.0s-26.5s; frames f_004.jpg, f_008.jpg, f_010.jpg, f_012.jpg at 6 fps from 24.5s). Modeled assembly is the near-side (left) independent rigid lever arm rotating clockwise in the side view around the upper fixed bearing housing. One 45 lb (20.41 kg) plate is mounted on the rear weight horn (the lower 45 lb plate rests on a fixed storage horn). Grip is the athlete's left hand on the front handle. Camera is level and side-on; small out-of-plane convergence of the iso-lateral arm introduces minor projection uncertainty (~2-3% on lever radius ratio). Compound multi-joint vertical pull; anatomical joint fields omitted.",
+    "poses": [
+      {
+        "pivot": [
+          573,
+          353
+        ],
+        "plates": [
+          728,
+          468
+        ],
+        "grip": [
+          340,
+          260
+        ]
+      },
+      {
+        "pivot": [
+          573,
+          353
+        ],
+        "plates": [
+          762,
+          376
+        ],
+        "grip": [
+          325,
+          372
+        ]
+      },
+      {
+        "pivot": [
+          573,
+          353
+        ],
+        "plates": [
+          752,
+          297
+        ],
+        "grip": [
+          356,
+          475
+        ]
+      },
+      {
+        "pivot": [
+          573,
+          353
+        ],
+        "plates": [
+          743,
+          272
+        ],
+        "grip": [
+          373,
+          505
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 0.5,
+    "source": "Hammer Strength specifies 1 lb (0.5 kg) starting resistance per arm for the Plate-Loaded Iso-Lateral Front Lat Pulldown (IL-PD). Its variation across travel is unknown; the default holds this force constant.",
+    "url": "https://shop.lifefitness.com/products/hammer-strength-plate-loaded-iso-lateral-front-lat-pulldown"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.609918771777,
+      0.481641454095,
+      -0.389511985226
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.001137
+  }
+}

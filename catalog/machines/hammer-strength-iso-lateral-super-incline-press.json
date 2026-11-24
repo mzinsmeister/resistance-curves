@@ -1,0 +1,91 @@
+{
+  "name": "Iso-Lateral Super Incline Press (IL-SIP)",
+  "manufacturer": "Hammer Strength",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 40.82,
+  "source": "Four ordered side-view frames from the official Hammer Strength Iso-Lateral Super Incline Press demonstration (https://www.youtube.com/watch?v=1oiVixExr5k, 0:16.9\u20130:17.6). Near-side independent workarm loaded with two 45 lb (40.82 kg) plates.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Official Hammer Strength side-view demonstration (YouTube 1oiVixExr5k, 0:16.9\u20130:17.6) of the Plate-Loaded Iso-Lateral Super Incline Press (IL-SIP). The near-side workarm (lifter's left arm) is tracked through four ordered positions of a single continuous overhead press (bottom to top lockout) with two 45 lb Hammer Strength plates (40.82 kg) loaded on the arm. The camera is stationary and perpendicular to the side plane. The fixed pivot is the center of the upper two-bolt flange bearing on the near upright; the plate center is the loading-horn axis of the 45 lb plates; the grip is the hand center on the horizontal handle rigidly welded to the rotating lever arm. Minor converging-arc out-of-plane foreshortening is verified against the planar rigid-lever invariants (radius ratio spread <3%, angular offset spread ~1 deg).",
+    "poses": [
+      {
+        "pivot": [
+          686,
+          285
+        ],
+        "plates": [
+          474,
+          376
+        ],
+        "grip": [
+          411,
+          396
+        ]
+      },
+      {
+        "pivot": [
+          686,
+          285
+        ],
+        "plates": [
+          465,
+          341
+        ],
+        "grip": [
+          398,
+          349
+        ]
+      },
+      {
+        "pivot": [
+          686,
+          285
+        ],
+        "plates": [
+          460,
+          303
+        ],
+        "grip": [
+          397,
+          300
+        ]
+      },
+      {
+        "pivot": [
+          686,
+          285
+        ],
+        "plates": [
+          461,
+          264
+        ],
+        "grip": [
+          403,
+          255
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 5.0,
+    "source": "Hammer Strength lists 11 lbs (5.0 kg) starting resistance per workarm for the IL-SIP. Unloaded curve across the stroke is unmeasured and held constant by default.",
+    "url": "https://shop.lifefitness.com/products/hammer-strength-plate-loaded-iso-lateral-super-incline-press"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.718641308933,
+      0.152528753322,
+      -0.0918643425107
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.0001332
+  }
+}

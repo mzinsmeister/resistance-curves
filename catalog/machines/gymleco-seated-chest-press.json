@@ -1,0 +1,107 @@
+{
+  "name": "Seated Chest Press (021)",
+  "manufacturer": "Gymleco",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 20.0,
+  "source": "Official Gymleco video https://www.youtube.com/watch?v=kGi96Jehc9Y (30.04\u201330.84 s) and model specifications https://gymleco.com/products/021-seated-chest-press. Near-side independent workarm during the seated press, with a 20 kg per-arm reference load. Photographic estimate with camera perspective and partial pivot occlusion.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Official Gymleco demonstration kGi96Jehc9Y (30.04\u201330.84 s), model 021. The near grip and rear moving horn are carried on a rigid V-shaped workarm about the shaft in the lower frame. Gravity acts through the near yellow loaded disc to the rear branch of that lever and is transmitted through the front branch to the hand. The entry-assist pedal is clear of the lifter's feet during the recorded press. The load is per near hand and independent workarm. The near shaft center is partly obscured by the lower frame and sits close to the image boundary at the start; it is traced from the visible steel hub and both branches of the workarm. The grip is estimated immediately inside the upper lever end when the palm is hidden. The plates rise as the grip advances and resistance points back toward the chest. Perspective, slight camera roll and the partially obscured shaft limit this side-view estimate. A 20 kg per-arm reference load is used to display the force.",
+    "photo_ids": [
+      "chest-30.04s.jpg",
+      "chest-30.28s.jpg",
+      "chest-30.43s.jpg",
+      "chest-30.58s.jpg",
+      "chest-30.84s.jpg"
+    ],
+    "poses": [
+      {
+        "pivot": [
+          563,
+          775
+        ],
+        "plates": [
+          836,
+          660
+        ],
+        "grip": [
+          567,
+          391
+        ]
+      },
+      {
+        "pivot": [
+          551,
+          768
+        ],
+        "plates": [
+          791,
+          606
+        ],
+        "grip": [
+          468,
+          391
+        ]
+      },
+      {
+        "pivot": [
+          546,
+          760
+        ],
+        "plates": [
+          779,
+          575
+        ],
+        "grip": [
+          422,
+          394
+        ]
+      },
+      {
+        "pivot": [
+          545,
+          752
+        ],
+        "plates": [
+          758,
+          529
+        ],
+        "grip": [
+          366,
+          402
+        ]
+      },
+      {
+        "pivot": [
+          543,
+          746
+        ],
+        "plates": [
+          739,
+          495
+        ],
+        "grip": [
+          341,
+          409
+        ]
+      }
+    ]
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.716312709307,
+      -0.172272980549,
+      -0.0913352799848
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.0006638
+  }
+}

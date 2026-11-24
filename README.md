@@ -89,7 +89,7 @@ On a machine page enter total added kilograms or list individual plates on one m
 
 The optional machine record field `base_resistance` holds `starting_kgf`, a `source` and optionally `url` and `finish_kgf`. One value assumes constant unloaded force. A different finish value gives a linear estimate between the two. The site starts unknown machines at zero and allows either endpoint to be edited. Hammer Strength specifies approximately 2 kg starting resistance per workarm for the PL-BI. Its change across travel is unknown. [Manufacturer specifications](https://shop.lifefitness.com/products/hammer-strength-plate-loaded-seated-biceps)
 
-For a plate-only reference force R, total force at each position is B + R × L/Lref, with unloaded handle force B and custom plate mass L. For a reported force that already includes B, use B + (R − B) × L/Lref. Reported records may set the boolean `reference_includes_base`. The default for records without this field preserves the reference values by assuming the base was included. The Instagram preacher curl record sets it to false based on the user’s interpretation. Its reported 22.68 and 25.85 kgf become estimated totals of 24.68 and 27.85 kgf when the 2 kgf base is held constant. The selector makes this assumption editable. The Git record and its fitted coefficients always describe the original reference.
+For a plate-only reference force R, total force at each position is B + R × L/Lref, with unloaded handle force B and custom plate mass L. For a reported force that already includes B, use B + (R − B) × L/Lref. Reported records may set the boolean `reference_includes_base`. The default for records without this field preserves the reference values by assuming the base was included. The Git record and its fitted coefficients always describe the original reference.
 
 ## Comparing resistance and strength
 
@@ -113,13 +113,11 @@ Rotary results describe force tangent to the grip path. Sled results describe fo
 
 Pixel landmarks are estimates. Small changes to a short perpendicular moment arm can greatly change the result. Compare overlays with the original photos and rerun with plausible alternative points to see how much the result moves. Geometry checks reject evidently inconsistent rigid arms, reversed sequences within a sweep and impossible negative belt tension. They cannot validate hidden mechanisms or compensate for a tilted camera.
 
-## Hammer Strength preacher curl reference
+## Hammer Strength Seated Biceps (PL-BI)
 
-The figures supplied for the @juandsamudio analysis correspond to **31.75 kg of plates**, **22.68 kgf (222.4 N)** at the bottom and **25.85 kgf (253.5 N)** at the top. The top value is 14% higher. Those endpoints alone leave the middle of the curve undetermined. The screenshot's separate worked pose gives about 533.8 N belt tension, a 0.1016 m cam moment arm and an assumed 0.254 m effective hand arm, yielding about 213.5 N (21.77 kgf). The slide does not identify this as either quoted endpoint.
+The catalog models the Hammer Strength Plate-Loaded Seated Biceps (PL-BI) directly from side-view frames of the manufacturer's demonstration video, tracing the load arm, belt span, cam pivot, and grip across the stroke. [Original footage](https://www.youtube.com/watch?v=B27-cHMnlPE&t=17s)
 
-A separate check in the machine record uses five unannotated frames from the manufacturer's demonstration. A coding agent identified the plate center, hand contact, handle end and fixed bearing directly in these frames. Dividing the registered vertical plate rise by the hand path length estimates mean tangential force per kilogram over the filmed lift by conservation of work. The model treats the moving assembly as quasi-static and omits its unloaded weight. The result can check the scale of the reported resistance, while resolving endpoint forces needs better local measurements. The record includes frame extraction instructions and pixel coordinates. [Original footage](https://www.youtube.com/watch?v=B27-cHMnlPE&t=17s)
-
-The converted reference is in `examples/hammer-strength-preacher-reference.json` for comparison with an independent photo run. Check that added load, contact point, side and treatment of the unloaded mechanism match before comparing.
+An independent metric reference example is in `examples/hammer-strength-preacher-reference.json` for cross-checking against photo runs. Check that added load, contact point, side, and treatment of the unloaded mechanism match before comparing.
 
 ## Life Fitness Signature Series Biceps Curl
 

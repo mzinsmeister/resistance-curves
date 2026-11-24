@@ -1,0 +1,112 @@
+{
+  "name": "Iso-Lateral Shoulder Press (IL-SP)",
+  "manufacturer": "Hammer Strength",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 20.0,
+  "source": "Official Life Fitness / Hammer Strength video https://www.youtube.com/watch?v=TBZ3m1cd2Vw (13.88\u201314.30 s). Near-side independent workarm during the demonstrated overhead press. Quasi-static side-view geometry with a 20 kg per-arm reference load and partly occluded grip.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Official Life Fitness / Hammer Strength IL-SP demonstration TBZ3m1cd2Vw, 13.88\u201314.30 s. The near workarm carries the high moving plates on a horn welded to the same steel assembly as the near handle. The central 45 lb discs on the front upright are stored plates. The near axle is marked where the moving workarm enters the fixed upper bracket, at the bright end of the near fastener. Camera translation is tracked per frame. The plate point is on the horn axis through the stack rather than at the sleeve tip. The near grip is partly hidden behind the loaded plates; its center is estimated at the top of the near hand where the fingers close around the handle. Plate height increases as the rightward workarm rotates upward, so gravity acts against the press along the grip trajectory. The near hand alone bears this workarm load. The side projection, converging axis, hand occlusion and visible duration limit accuracy. The reference plate setting is 20 kg on the modeled arm. Shifting the estimated axle 9 pixels toward the bracket corner changes the fitted endpoints from 0.79 and 0.89 to about 0.77 and 0.88 kgf/kg, with the same rising profile. Travel is normalized to the observed press.",
+    "photo_ids": [
+      "shoulder-13.88s.jpg",
+      "shoulder-14.00s.jpg",
+      "shoulder-14.09s.jpg",
+      "shoulder-14.18s.jpg",
+      "shoulder-14.30s.jpg"
+    ],
+    "poses": [
+      {
+        "pivot": [
+          511,
+          267
+        ],
+        "plates": [
+          792,
+          426
+        ],
+        "grip": [
+          773,
+          532
+        ]
+      },
+      {
+        "pivot": [
+          513,
+          267
+        ],
+        "plates": [
+          808,
+          397
+        ],
+        "grip": [
+          796,
+          502
+        ]
+      },
+      {
+        "pivot": [
+          515,
+          267
+        ],
+        "plates": [
+          819,
+          368
+        ],
+        "grip": [
+          808,
+          471
+        ]
+      },
+      {
+        "pivot": [
+          517,
+          267
+        ],
+        "plates": [
+          827,
+          339
+        ],
+        "grip": [
+          814,
+          440
+        ]
+      },
+      {
+        "pivot": [
+          519,
+          268
+        ],
+        "plates": [
+          832,
+          323
+        ],
+        "grip": [
+          818,
+          420
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 4.5,
+    "source": "Hammer Strength Iso-Lateral Owner's Manual 1000419-0001 AC, section 2.17, lists 10 lb (4.5 kgf equivalent) per workarm at the start. The unloaded force through the remainder of the stroke is unmeasured.",
+    "url": "https://resources.lifefitness.com/hub/life-fitness/en-US/1000419-0001-xd_32ce9968be620066-6b5ac64-1817a3e5ec1--7f3d.ditamap?onepage=true"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.785633218944,
+      0.143537544432,
+      -0.0434470328579
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 8.584e-05
+  }
+}

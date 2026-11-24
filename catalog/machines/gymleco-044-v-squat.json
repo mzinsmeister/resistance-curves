@@ -1,0 +1,77 @@
+{
+  "name": "044 V-Squat",
+  "manufacturer": "Gymleco",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 40.0,
+  "source": "Gymleco model 044 demonstration https://www.youtube.com/watch?v=LoW6ZIBJWHg&t=3s and product specification https://gymleco.com/products/044-v-squat-plate-loaded. Facing the machine, using the lower moving horns. Combined shoulder-pad force at a 40 kg reference load.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Gymleco model 044, demonstrator facing the machine, pads and yellow plates on one rotating yoke. The small fixed bracket at the rear ends of the moving beams houses the transverse pivot. The axle center is estimated at the beam center at the inside of that bracket. The lower yellow-disc horns rotate with the yoke; the blue discs on the rear fixed frame are storage. The unloaded upper moving horns constitute a different loading position and are outside this curve. Both shoulders drive the underside of the pads as both legs press against the fixed deck. The estimate is total tangential resistance at the yoke for plates on the lower moving horns, summed across both sides. The added plates stay left of the pivot and rise, giving a resisting moment. The same near-side shot has moderate perspective. A common approximate affine rectification stretches horizontal coordinates 25% and removes 0.18 pixel of vertical displacement per horizontal pixel, estimated from the visible side-plane geometry and checked against rigid-arm consistency. Shoulder contact and plate center are estimated along the near pad and disc face. This lower-horn ratio is sensitive to the short gravity arm and should be read as a photo estimate. The manufacturer does not publish starting contact resistance in the cited specification. Shifting the estimated rear bearing 5 corrected pixels horizontally either way puts the bottom ratio between 0.293 and 0.315 and the top ratio between 0.288 and 0.308. Both alternatives support a nearly level curve over the observed stroke.",
+    "input_photos": [
+      "LoW6ZIBJWHg @ 3.51 s (lift-3.51.jpg; rectified-3.51.jpg)",
+      "LoW6ZIBJWHg @ 3.94 s (lift-3.94.jpg; rectified-3.94.jpg)",
+      "LoW6ZIBJWHg @ 4.51 s (lift-4.51.jpg; rectified-4.51.jpg)"
+    ],
+    "poses": [
+      {
+        "pivot": [
+          801,
+          481
+        ],
+        "plates": [
+          698,
+          500
+        ],
+        "grip": [
+          475,
+          394
+        ]
+      },
+      {
+        "pivot": [
+          791,
+          481
+        ],
+        "plates": [
+          688,
+          481
+        ],
+        "grip": [
+          484,
+          345
+        ]
+      },
+      {
+        "pivot": [
+          768,
+          490
+        ],
+        "plates": [
+          670,
+          459
+        ],
+        "grip": [
+          516,
+          275
+        ]
+      }
+    ]
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.304025589637,
+      0.0250038302417,
+      -0.0305150236339
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 1.38e-05
+  }
+}

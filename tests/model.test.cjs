@@ -66,3 +66,35 @@ test('unloaded resistance alone can reach capacity, with limb share applied once
   assert.equal(compare(machine,inputs).crossing,0);
   assert.equal(compare(machine,{...inputs,baseStart:19}).crossing,null);
 });
+
+test('reverse calculator solves peak, endpoint, mean, and custom travel loads accurately', () => {
+  const {platesForTargetForce, suggestPlates} = require('../site/static/model.js');
+  const curveMachine = {
+    points: [[0, 5], [100, 15]],
+    gravity: 9.80665,
+    plate_kg: 10,
+    resistance_curve: {type: 'polynomial', coefficients: [0.5, 1.0]},
+  };
+  const base = {baseStart: 2, baseFinish: 2, referenceIncludesBase: false};
+  // Peak ratio is 1.5 at 100%, so target 32 kgf => (32 - 2) / 1.5 = 20 kg
+  const peakRes = platesForTargetForce(curveMachine, 32, 'peak', base, true);
+  assert.ok(Math.abs(peakRes.requiredKg - 20) < 1e-6);
+  assert.equal(peakRes.matchedPct, 100);
+  assert.deepEqual(peakRes.suggestedPlates, [20]);
+
+  // Start ratio is 0.5 at 0%, so target 12 kgf => (12 - 2) / 0.5 = 20 kg
+  const startRes = platesForTargetForce(curveMachine, 12, 'start', base, true);
+  assert.ok(Math.abs(startRes.requiredKg - 20) < 1e-6);
+
+  // Mean ratio is 1.0, so target 27 kgf => (27 - 2) / 1.0 = 25 kg
+  const meanRes = platesForTargetForce(curveMachine, 27, 'mean', base, true);
+  assert.ok(Math.abs(meanRes.requiredKg - 25) < 1e-6);
+  assert.deepEqual(meanRes.suggestedPlates, [25]);
+
+  // Target below base resistance requires 0 plates
+  const lowRes = platesForTargetForce(curveMachine, 1.5, 'peak', base, true);
+  assert.equal(lowRes.requiredKg, 0);
+  assert.equal(lowRes.coveredByBase, true);
+
+  assert.deepEqual(suggestPlates(27.4).plates, [25, 2.5]);
+});

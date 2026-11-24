@@ -1,0 +1,108 @@
+{
+  "name": "WJ32 Triceps Extension",
+  "manufacturer": "GMWD",
+  "movement": "elbow-extension",
+  "kind": "Photo estimate",
+  "plate_kg": 20.0,
+  "source": "GMWD product overview, triceps setting at 14.69\u201315.40 s (https://www.youtube.com/watch?v=yQmoH1K4huQ). Model and setup: https://gmwdfitness.com/products/bicep-curl-and-tricep-extension-machine-wj32. Reindexed workarm, both hands, plate-only estimate over the filmed repetition.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "GMWD WJ32 product overview, triceps-extension setting. The upper grip arm and the lower loading post are pinned to the same rotary assembly at the silver frame axle. The pin is fixed throughout the rep. The plate centers rise on the right of the axis as the supported elbows extend and the grips travel down, so plate torque opposes the movement throughout. The centers use the white plate silhouette and hub at the plate face. The protruding spring clip is offset by perspective. Both hands share one workarm and the curve gives total tangential force, approximately half per hand with balanced effort. The elbow center is covered by the adjustment sector in the side view, so the record gives contact force only. The 20 kg reference is a normalization load. Hand placement, camera projection and the selected pin hole limit transfer to other setups.",
+    "image_sources": [
+      "https://www.youtube.com/watch?v=yQmoH1K4huQ&t=14.69s (frame-14.69.jpg)",
+      "https://www.youtube.com/watch?v=yQmoH1K4huQ&t=14.89s (frame-14.89.jpg)",
+      "https://www.youtube.com/watch?v=yQmoH1K4huQ&t=15.02s (frame-15.02.jpg)",
+      "https://www.youtube.com/watch?v=yQmoH1K4huQ&t=15.16s (frame-15.16.jpg)",
+      "https://www.youtube.com/watch?v=yQmoH1K4huQ&t=15.40s (frame-15.40.jpg)"
+    ],
+    "poses": [
+      {
+        "pivot": [
+          408,
+          471
+        ],
+        "plates": [
+          468,
+          734
+        ],
+        "grip": [
+          273,
+          300
+        ]
+      },
+      {
+        "pivot": [
+          408,
+          470
+        ],
+        "plates": [
+          542,
+          701
+        ],
+        "grip": [
+          223,
+          353
+        ]
+      },
+      {
+        "pivot": [
+          408,
+          470
+        ],
+        "plates": [
+          600,
+          655
+        ],
+        "grip": [
+          195,
+          409
+        ]
+      },
+      {
+        "pivot": [
+          410,
+          470
+        ],
+        "plates": [
+          654,
+          589
+        ],
+        "grip": [
+          181,
+          486
+        ]
+      },
+      {
+        "pivot": [
+          407,
+          470
+        ],
+        "plates": [
+          680,
+          483
+        ],
+        "grip": [
+          191,
+          578
+        ]
+      }
+    ]
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.265834366584,
+      1.61786519466,
+      -0.385585787396,
+      -0.303165316165
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.001599
+  }
+}

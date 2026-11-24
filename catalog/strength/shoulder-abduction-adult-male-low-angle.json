@@ -1,0 +1,7 @@
+{
+  "name": "Adult men · low-angle isometric shoulder abduction (n=12)",
+  "movement": "shoulder-abduction",
+  "source": "Gielo-Perczak K, Matz S, An KN (2006). Arm abduction strength and its relationship to shoulder geometry. Journal of Electromyography and Kinesiology 16(1):66–78. DOI 10.1016/j.jelekin.2005.05.004. Table 7, reported shoulder joint moment magnitudes (N·m), pooled by the two glenoid geometry group sizes (7 and 5). Twelve healthy men (mean age 40.5 years) performed right-arm maximal isometric abduction while standing in a frame that limited trunk lean. With the elbow straight and wrist neutral, they exerted lateral force on an instrumented handle at 5°–30° of arm elevation from the side in the frontal plane. The protocol derives joint moments from three-dimensional handle loads during a constrained lateral exertion.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/16129621/",
+  "points": [[5, 18.10], [10, 16.98], [15, 18.42], [20, 18.49], [25, 19.36], [30, 19.64]]
+}

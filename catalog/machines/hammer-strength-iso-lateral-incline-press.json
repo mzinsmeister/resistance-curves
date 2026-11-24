@@ -1,0 +1,91 @@
+{
+  "name": "Iso-Lateral Incline Press (IL-IP)",
+  "manufacturer": "Hammer Strength",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 40.82,
+  "source": "Four ordered side-view frames from the official Hammer Strength Iso-Lateral Incline Press demonstration (https://www.youtube.com/watch?v=UKPBc1BWRzw, 0:26.6\u20130:27.4). Near-side independent workarm loaded with two 45 lb (40.82 kg) plates.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Official Life Fitness / Hammer Strength side-view demonstration (YouTube UKPBc1BWRzw, 0:26.6\u20130:27.4) of the Plate-Loaded Iso-Lateral Incline Press (IL-IP). The near-side workarm (lifter's left arm) is tracked through four ordered positions of a single continuous upward press (bottom to top lockout) with two 45 lb Hammer Strength plates (40.82 kg) loaded on the arm. The pivot is the center of the upper two-bolt flange bearing housing supporting the workarm (tracked per frame to account for the slight horizontal camera dolly slide across the 0.8 s clip). The loading horn center (plate mass center) and handle grip contact are rigidly welded to the single rotating lever arm. Because Hammer Strength Iso-Lateral arms have a slight converging axis tilt (~10\u201315 deg out of the sagittal plane), this perpendicular side projection approximates the true 3D arc as a planar lever; frame-to-frame radius ratio and offset consistency verify the planar approximation.",
+    "poses": [
+      {
+        "pivot": [
+          608,
+          253
+        ],
+        "plates": [
+          449,
+          378
+        ],
+        "grip": [
+          454,
+          444
+        ]
+      },
+      {
+        "pivot": [
+          598,
+          253
+        ],
+        "plates": [
+          427,
+          360
+        ],
+        "grip": [
+          437,
+          427
+        ]
+      },
+      {
+        "pivot": [
+          592,
+          254
+        ],
+        "plates": [
+          408,
+          323
+        ],
+        "grip": [
+          402,
+          381
+        ]
+      },
+      {
+        "pivot": [
+          585,
+          255
+        ],
+        "plates": [
+          386,
+          275
+        ],
+        "grip": [
+          373,
+          333
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 3.6,
+    "source": "Hammer Strength lists 8 lbs (3.6 kg) starting resistance per workarm for the IL-IP. Unloaded curve across the stroke is unmeasured and held constant by default.",
+    "url": "https://shop.lifefitness.com/products/hammer-strength-plate-loaded-iso-lateral-incline-press"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.67225584487,
+      0.290111976596,
+      -0.114079890839
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.0004373
+  }
+}

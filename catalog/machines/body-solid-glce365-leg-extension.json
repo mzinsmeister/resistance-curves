@@ -1,0 +1,77 @@
+{
+  "name": "GLCE365 Seated Leg Extension",
+  "manufacturer": "Body-Solid",
+  "movement": "knee-extension",
+  "kind": "Photo estimate",
+  "plate_kg": 40.0,
+  "source": "Body-Solid GLCE365 demonstration https://www.youtube.com/watch?v=rYea7FEwjq4&t=20s and owner\u2019s manual https://bodysolid.com/content/manuals/GLCE365.pdf. Bilateral knee extensions on the shared lower roller. Combined shin force at a 40 kg reference load.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Body-Solid GLCE365, seated knee-extension mode with both shins pushing on the shared lower roller pair. The owner's manual identifies the one pivot shaft and its pivot frame (part E), which carries the forward plate post and the lower roller adjustment frame. The upper curl rollers are part of the assembly and carry no user contact in this lift. The plate-stack center on the moving post rises to the right of the fixed shaft throughout the photographed stroke, so the plate torque opposes extension. The output point approximates the midpoint between shin contacts at the lower roller axis; the far contact is partly hidden by the load and footwear. Force is for both shins combined at an illustrative total plate mass. The fixed camera is oblique. Approximate affine correction expands horizontal coordinates 17% and removes 0.05 pixel of vertical displacement per horizontal pixel, estimated from the projected machine axes and checked against the two lever arms. The assumed plane correction is approximate. The primary contact marks with plausible projection alternatives (10% horizontal expansion without shear, or 20% with 0.06 shear) give start/mid/finish ratios of 0.789/1.124/0.762 and 0.859/1.138/0.683. This supports the mid-stroke peak while leaving the exact endpoint difference uncertain. The near knee and lower leg are visible, but depth separation from the shared force line and uncertain ankle/contact positions preclude reliable metric knee torque from this view. The manual and demo give no unloaded contact-force value.",
+    "input_photos": [
+      "rYea7FEwjq4 @ 20.02 s (lift-20.02.jpg; rectified-20.02.jpg)",
+      "rYea7FEwjq4 @ 20.49 s (lift-20.49.jpg; rectified-20.49.jpg)",
+      "rYea7FEwjq4 @ 20.86 s (lift-20.86.jpg; rectified-20.86.jpg)"
+    ],
+    "poses": [
+      {
+        "pivot": [
+          577,
+          490
+        ],
+        "plates": [
+          700,
+          601
+        ],
+        "grip": [
+          587,
+          637
+        ]
+      },
+      {
+        "pivot": [
+          577,
+          490
+        ],
+        "plates": [
+          739,
+          497
+        ],
+        "grip": [
+          678,
+          583
+        ]
+      },
+      {
+        "pivot": [
+          577,
+          490
+        ],
+        "plates": [
+          673,
+          364
+        ],
+        "grip": [
+          718,
+          470
+        ]
+      }
+    ]
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.845788882992,
+      1.29066930731,
+      -1.43688921112
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.006823
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "name": "Plate-Loaded Seated Calf Raise",
+  "manufacturer": "Hammer Strength",
+  "movement": "ankle-plantarflexion",
+  "kind": "Photo estimate",
+  "plate_kg": 40.8233,
+  "source": "Official Life Fitness / Hammer Strength Plate-Loaded Seated Calf (PL-CALF) demonstration (https://www.youtube.com/watch?v=yTkZOIEAWm0), level side-view frames at 22.25 s, 21.70 s, and 20.57 s ordered from bottom stretch to top plantarflexion. Loaded with one 45 lb (20.41 kg) plate per side on the central lever front horn (90 lb = 40.82 kg total). Unloaded starting resistance (60 lbs / 27.2 kg, printed on the machine decal and official specification page) recorded separately in base_resistance.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Three level side-view frames from the official Life Fitness / Hammer Strength Plate-Loaded Seated Calf Raise (PL-CALF) demonstration (YouTube yTkZOIEAWm0) at 22.25 s (bottom stretch), 21.70 s (mid-lift), and 20.57 s (top plantarflexion), ordered from bottom to top of the lifting stroke (sampled along the filmed eccentric phase reversed into lifting order; quasi-static rigid-lever geometry is identical in both directions). A single rigid black lever pivots on the fixed rear bearing axle under the seat (pivot, verified from close-up frames at 7.5 s and 25.5 s, tracked individually in each frame to cancel the ~30 px vertical camera pan during the shot), carrying the knee pads (grip, center of contact on distal thigh) partway forward and two 45 lb (20.41 kg) Hammer Strength Olympic plates on the front loading horns (plates, 90 lb = 40.823 kg total added plates, stamping '45' verified in close-up frames). Because the lever extends roughly 1.75x farther from the rear pivot to the plate horn than to the knee pad, added plates produce ~1.73 kgf/kg of force at the knee pad across the ~8-degree lever sweep. Anatomical joint geometry is omitted because the machine contacts the knee rather than directly acting tangentially about the ankle joint. Published unloaded starting resistance (60 lbs / 27.2 kg, also printed on the machine decal) is recorded separately in base_resistance.",
+    "poses": [
+      {
+        "pivot": [
+          611,
+          630
+        ],
+        "plates": [
+          335,
+          611
+        ],
+        "grip": [
+          475,
+          558
+        ]
+      },
+      {
+        "pivot": [
+          611,
+          621
+        ],
+        "plates": [
+          335,
+          578
+        ],
+        "grip": [
+          475,
+          536
+        ]
+      },
+      {
+        "pivot": [
+          611,
+          600
+        ],
+        "plates": [
+          336,
+          533
+        ],
+        "grip": [
+          476,
+          504
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 27.2,
+    "source": "Hammer Strength lists 60 lbs (27.2 kg) starting resistance for the Plate-Loaded Seated Calf Raise (PL-CALF), also printed directly on the frame decal. Full unloaded curve across travel is unknown; default holds this constant.",
+    "url": "https://shop.lifefitness.com/products/hammer-strength-plate-loaded-seated-calf-raise"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      1.74525859176,
+      -0.0307328413972
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.003731
+  }
+}

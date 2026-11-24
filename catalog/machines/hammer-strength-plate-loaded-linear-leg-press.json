@@ -1,0 +1,68 @@
+{
+  "name": "Plate-Loaded Linear Leg Press",
+  "manufacturer": "Hammer Strength",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 40.0,
+  "source": "Life Fitness / Hammer Strength HSLLP demonstration https://www.youtube.com/watch?v=Xv-FPPjt4iQ&t=24s and manufacturer specifications https://www.lifefitness.com/en-eu/catalog/strength-training/plate-loaded/plate-loaded-linear-leg-press. Combined footplate force at a 40 kg reference load.",
+  "observation": {
+    "mechanism": "sled",
+    "evidence": "Life Fitness / Hammer Strength footage, HSLLP, same near-side shot. From the bottom of the filmed rep the two loaded moving horns and footplate rise together along the two fixed straight guide rods. The seat and the plates on the rear storage posts remain stationary. Marked points follow the near guide at its supports. Gravity projects down the rails, opposing the press; the modeled force is the total along the rail at the shared footplate across both legs. The camera is slightly off-axis. The filmed projection reads about 43 degrees; the product specification gives a nominal 45 degrees (ideal plate ratio 0.7071). The saved estimate uses the photographed rail inclination. Reference mass is a normalization across the moving horns; storage plates, bearing friction and acceleration are excluded.",
+    "input_photos": [
+      "Xv-FPPjt4iQ @ 00:24.80 (lift-24.80.jpg)",
+      "Xv-FPPjt4iQ @ 00:25.17 (lift-25.17.jpg)",
+      "Xv-FPPjt4iQ @ 00:25.50 (lift-25.50.jpg)"
+    ],
+    "poses": [
+      {
+        "rail_low": [
+          377,
+          705
+        ],
+        "rail_high": [
+          697,
+          402
+        ]
+      },
+      {
+        "rail_low": [
+          383,
+          705
+        ],
+        "rail_high": [
+          702,
+          402
+        ]
+      },
+      {
+        "rail_low": [
+          386,
+          704
+        ],
+        "rail_high": [
+          705,
+          402
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 53,
+    "source": "Life Fitness HSLLP specification lists 118 lb (53 kg) starting resistance for the single, shared sled. The published metric value is used as unloaded footplate resistance.",
+    "url": "https://www.lifefitness.com/en-eu/catalog/strength-training/plate-loaded/plate-loaded-linear-leg-press"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.687912521335
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 2,
+    "max_sample_error_kgf_per_kg": 0.0
+  }
+}

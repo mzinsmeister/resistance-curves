@@ -1,5 +1,10 @@
-{{ if eq .mechanism "motion_intervals" }}
-{{ range .segments }}<line x1="{{ index . 0 }}" x2="{{ index . 1 }}" y1="{{ index . 2 }}" y2="{{ index . 2 }}" stroke="currentColor" stroke-width="3" vector-effect="non-scaling-stroke"/>{{ end }}
-{{ else if or (eq .mechanism "reported") (eq .mechanism "belt_cam") }}
-{{ range .markers }}<line x1="{{ index . 0 }}" x2="{{ index . 0 }}" y1="{{ index . 1 }}" y2="{{ index . 1 }}" stroke="currentColor" stroke-width="8" stroke-linecap="round" vector-effect="non-scaling-stroke"/>{{ end }}
-{{ else }}<polyline points="{{ .trace }}" fill="none" stroke="currentColor" stroke-width="3" vector-effect="non-scaling-stroke"/>{{ end }}
+{{ $m := .m }}{{ $id := .id }}
+<defs>
+  <linearGradient id="sg-{{ $id }}" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="currentColor" stop-opacity="0.22"/>
+    <stop offset="100%" stop-color="currentColor" stop-opacity="0.01"/>
+  </linearGradient>
+</defs>
+<polygon points="{{ $m.area }}" fill="url(#sg-{{ $id }})" class="spark-area"/>
+<polyline points="{{ $m.trace }}" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" class="spark-line"/>
+{{ with $m.peak_xy }}<circle cx="{{ index . 0 }}" cy="{{ index . 1 }}" r="3.2" fill="currentColor" class="spark-peak"/>{{ end }}

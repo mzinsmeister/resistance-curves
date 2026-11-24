@@ -1,0 +1,7 @@
+{
+  "name": "Average adult · seated isometric ankle plantarflexion",
+  "movement": "ankle-plantarflexion",
+  "source": "Hussain SJ, Frey-Law L (2016). 3D strength surfaces for ankle plantar- and dorsi-flexion in healthy adults: an isometric and isokinetic dynamometry study. Journal of Foot and Ankle Research 9:43. DOI 10.1186/s13047-016-0174-1. Additional file 1, Table S1, 0°/s row. Mean gravity-corrected peak torque (N·m) of the right ankle, pooled from the published sex-specific means using the enrollment weights of 26 men and 27 women (53 healthy adults aged 18–45). Table S1 gives no per-angle sample sizes. Participants sat in a Biodex System 3.0 with hip flexion about 80°, knee flexion about 60°, and the shank horizontal. Catalog angle = 90° + study angle, where study 0° is neutral, negative is dorsiflexion, and positive is plantarflexion. Thus catalog 80° is 10° dorsiflexion and 120° is 30° plantarflexion. The authors flagged the measurements at catalog 80° and 90° for possible contribution from hip and knee extension.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/27843491/",
+  "points": [[80, 65.0], [90, 61.6], [100, 56.6], [110, 44.3], [120, 30.7]]
+}

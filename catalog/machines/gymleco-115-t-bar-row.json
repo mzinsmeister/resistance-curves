@@ -1,0 +1,107 @@
+{
+  "name": "115 T-Bar Row",
+  "manufacturer": "Gymleco",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 20.0,
+  "source": "Gymleco 115 T-Bar Row manufacturer demonstration, https://www.youtube.com/watch?v=8QD9fJtRsVo&t=9s (9.25\u20139.92 s). Product and loading sleeve: https://gymleco.com/products/115-t-bar-row. 20 kg is an illustrative plate at the sleeve shoulder. The force is shared across both hands.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Manufacturer video and the 115 product photos show a single T-bar on a fixed rear axle, with a welded cross-handle and a forward, angled loading sleeve. The load path is plate to sleeve to bar to both hands. The grip landmark is the centerline midpoint of the two hand contacts for a balanced bilateral pull. The official repetition is filmed with an empty sleeve. The plates landmark represents the bore center of a hypothetical single plate seated near the sleeve shoulder, about one-half plate thickness outward. Moving plates farther out along the sleeve increases their horizontal moment arm. Across the modeled lift the empty sleeve rises, so an added plate there exerts a gravity torque opposing the lift. Mild obliquity and movement of the camera, compressed video, and actual plate thickness limit precision. The grip turns 21 degrees and the load sleeve turns 18 degrees in projection. Using the measured sleeve sweep in the same moment-arm formula gives about 1.05 at the finish, compared with 1.03 for the fitted grip-sweep model. Gymleco's specification lists machine weight without an unloaded grip resistance value.",
+    "poses": [
+      {
+        "pivot": [
+          911,
+          670
+        ],
+        "plates": [
+          279,
+          607
+        ],
+        "grip": [
+          375,
+          538
+        ]
+      },
+      {
+        "pivot": [
+          910,
+          667
+        ],
+        "plates": [
+          287,
+          556
+        ],
+        "grip": [
+          390,
+          487
+        ]
+      },
+      {
+        "pivot": [
+          904,
+          666
+        ],
+        "plates": [
+          308,
+          507
+        ],
+        "grip": [
+          415,
+          440
+        ]
+      },
+      {
+        "pivot": [
+          898,
+          666
+        ],
+        "plates": [
+          328,
+          445
+        ],
+        "grip": [
+          446,
+          386
+        ]
+      },
+      {
+        "pivot": [
+          896,
+          666
+        ],
+        "plates": [
+          346,
+          430
+        ],
+        "grip": [
+          463,
+          370
+        ]
+      }
+    ],
+    "input_photos": [
+      "8QD9fJtRsVo: tbar-9.25s.jpg",
+      "8QD9fJtRsVo: tbar-9.40s.jpg",
+      "8QD9fJtRsVo: tbar-9.55s.jpg",
+      "8QD9fJtRsVo: tbar-9.70s.jpg",
+      "8QD9fJtRsVo: tbar-9.92s.jpg"
+    ]
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      1.14163970857,
+      -0.0418028625832,
+      -0.0705416813221
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.0001222
+  }
+}

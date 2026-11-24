@@ -1,0 +1,107 @@
+{
+  "name": "GLCE365 Lying Leg Curl",
+  "manufacturer": "Body-Solid",
+  "movement": "knee-flexion",
+  "kind": "Photo estimate",
+  "plate_kg": 20.0,
+  "source": "Body-Solid GLCE365 manufacturer demo, prone curl at 28.33\u201329.02 s (https://www.youtube.com/watch?v=rYea7FEwjq4). Assembly diagram: https://bodysolid.com/content/manuals/GLCE365.pdf. Near-side view rectified from the frame geometry, shared ankle roller, plate-only estimate over the filmed repetition.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Body-Solid GLCE365 prone leg curl. The active upper ankle roller, central plate horn and unused lower roller move together with the forked assembly about the fixed axle on the front upright. The added plates rise as the knees flex. Their center stays ahead of the axle, so gravity opposes the lifting stroke. Grip marks the midpoint of the active roller axis as a proxy for the shared pad contact. The pivot marks the center plane of the axle, inferred inward from the visible near-side bolt. Both legs share the one moving assembly, so the curve gives total pad force and approximately half per leg under symmetric loading. The camera is fixed but oblique. The views were approximately rectified using longitudinal and transverse floor-rail slopes of +0.23 and -0.31 and the near-vertical frame upright. The inverse affine map from the 1080 by 780 rectified image to the 1280 by 720 video is x = 0.758u + 240, y = 0.17434u + 0.964v - 55 before square preparation. Perspective and uncertainty in the center-plane axle and roller centers remain. The sagittal anatomy in this oblique source lies off the marked center plane and lacks a calibrated in-plane length reference, so this is a contact-force estimate. The 20 kg reference normalizes plate resistance. Moving the projected axle center among nearby positions [632,387], [640,389], and [632,393] retains the mid-stroke peak. The alternative curves span 0.84\u20130.88 at the start, 1.24\u20131.28 at the peak and 0.81\u20130.82 kgf/kg at the finish. The diagram shows the contact tangent, whose physical plate reaction points clockwise about the axle in these views.",
+    "image_sources": [
+      "https://www.youtube.com/watch?v=rYea7FEwjq4&t=28.33s (rectified-frame-28.33.jpg)",
+      "https://www.youtube.com/watch?v=rYea7FEwjq4&t=28.46s (rectified-frame-28.46.jpg)",
+      "https://www.youtube.com/watch?v=rYea7FEwjq4&t=28.58s (rectified-frame-28.58.jpg)",
+      "https://www.youtube.com/watch?v=rYea7FEwjq4&t=28.71s (rectified-frame-28.71.jpg)",
+      "https://www.youtube.com/watch?v=rYea7FEwjq4&t=29.02s (rectified-frame-29.02.jpg)"
+    ],
+    "poses": [
+      {
+        "pivot": [
+          636,
+          390
+        ],
+        "plates": [
+          776,
+          537
+        ],
+        "grip": [
+          779,
+          320
+        ]
+      },
+      {
+        "pivot": [
+          636,
+          390
+        ],
+        "plates": [
+          824,
+          482
+        ],
+        "grip": [
+          762,
+          275
+        ]
+      },
+      {
+        "pivot": [
+          636,
+          390
+        ],
+        "plates": [
+          836,
+          409
+        ],
+        "grip": [
+          715,
+          242
+        ]
+      },
+      {
+        "pivot": [
+          636,
+          390
+        ],
+        "plates": [
+          830,
+          332
+        ],
+        "grip": [
+          659,
+          224
+        ]
+      },
+      {
+        "pivot": [
+          636,
+          390
+        ],
+        "plates": [
+          759,
+          214
+        ],
+        "grip": [
+          551,
+          254
+        ]
+      }
+    ]
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.861593952065,
+      1.58551711866,
+      -1.63617899154
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.00556
+  }
+}

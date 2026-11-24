@@ -1,7 +1,38 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{{ if .IsHome }}Machine library{{ else }}{{ .Title }}{{ end }} · Resistance Atlas</title>
-<link rel="stylesheet" href="{{ "atlas.css" | relURL }}"></head><body>
-<header><div class="wrap"><a class="brand" href="{{ "index.html" | relURL }}"><span class="logo" aria-hidden="true">∿</span> Resistance Atlas</a><a href="{{ "index.html" | relURL }}">Machine library</a></div></header>
-<main class="wrap">{{ block "main" . }}{{ end }}</main>
-<footer class="wrap">Resistance Atlas <span>Plate-loaded machine mechanics</span></footer></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ if .IsHome }}Machine Library{{ else }}{{ .Title }}{{ end }} · Resistance Atlas</title>
+  <link rel="stylesheet" href="{{ "atlas.css" | relURL }}">
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="{{ "index.html" | relURL }}">
+        <span class="logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+            <path d="M2 17 C6 17, 7 6, 12 6 C17 6, 18 14, 22 10"/>
+            <circle cx="12" cy="6" r="2.2" fill="currentColor" stroke="none"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <strong>Resistance Atlas</strong>
+          <small>Plate-Loaded Biomechanics</small>
+        </span>
+      </a>
+      <nav class="topnav" aria-label="Primary">
+        <a class="nav-link{{ if .IsHome }} is-active{{ end }}" href="{{ "index.html" | relURL }}">Machine Library</a>
+        <span class="nav-pill">{{ len .Site.RegularPages }} curves</span>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap main-content">{{ block "main" . }}{{ end }}</main>
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span><strong>Resistance Atlas</strong> · Quasi-static plate-loaded mechanics</span>
+      <span class="footer-note">Curves derived from machine geometry &amp; verified visual evidence</span>
+    </div>
+  </footer>
+</body>
+</html>

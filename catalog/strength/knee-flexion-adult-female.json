@@ -1,0 +1,28 @@
+{
+  "name": "Average adult female \u00b7 isometric knee flexion (n=24)",
+  "movement": "knee-flexion",
+  "source": "Frey-Law et al. (2012), Journal of Applied Biomechanics 28(6):726\u2013737, Table 3 (PMC7050840). Mean unilateral isometric (0\u00b0/s) peak knee flexion torque across 24 healthy young women (Biodex System 3).",
+  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7050840/",
+  "points": [
+    [
+      15,
+      66.0
+    ],
+    [
+      35,
+      68.5
+    ],
+    [
+      55,
+      64.9
+    ],
+    [
+      75,
+      65.4
+    ],
+    [
+      100,
+      53.2
+    ]
+  ]
+}

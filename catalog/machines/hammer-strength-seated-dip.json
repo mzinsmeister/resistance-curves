@@ -1,0 +1,91 @@
+{
+  "name": "Plate-Loaded Seated Dip (PL-DIP)",
+  "manufacturer": "Hammer Strength",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 40.8233133,
+  "source": "Four ordered side-view frames from the official Hammer Strength Plate-Loaded Seated Dip demonstration (https://www.youtube.com/watch?v=zL9e9j2rM2w, t=20.5 s). Near-side workarm loaded with two 45 lb (40.82 kg) plates.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Four level near-side frames (10 fps from t=20.5 s: frames 3, 6, 9, 13, cropped 1260x1080 at x=380..1640, letterboxed vertically to 1260x1260 and resized to 1000x1000) from Hammer Strength's official Plate-Loaded Seated Dip (PL-DIP) demonstration video (https://www.youtube.com/watch?v=_gAO5z8kpC0). The machine uses independent iso-lateral rigid rotating lever arms; the near-side arm carries two 45 lb Olympic plates (40.82 kg total on one arm) on the rear loading horn and the pressing handle on the opposite side of the fixed frame pivot bearing (pivot at [482.6, 446.0]). Pressing the handle downward rotates the lever clockwise, raising the rear plate stack as its angle approaches horizontal (144 deg to 168 deg), producing a smooth ascending resistance profile from 0.79 to 0.94 kgf/kg per arm. Radius ratios (0.96-0.99) and rigid angular offset (147-150 deg) agree within 3% and 3 deg across all four frames. Uncertainty: pivot +/-3 px, plate COM +/-4 px, grip center +/-6 px. Classified as compound (multi-joint shoulder and elbow extension), so anatomical joint fields are omitted.",
+    "poses": [
+      {
+        "pivot": [
+          482.6,
+          446.0
+        ],
+        "plates": [
+          171.5,
+          671.4
+        ],
+        "grip": [
+          871.7,
+          424.6
+        ]
+      },
+      {
+        "pivot": [
+          482.6,
+          446.0
+        ],
+        "plates": [
+          138.0,
+          598.6
+        ],
+        "grip": [
+          867.5,
+          495.7
+        ]
+      },
+      {
+        "pivot": [
+          482.6,
+          446.0
+        ],
+        "plates": [
+          125.2,
+          563.4
+        ],
+        "grip": [
+          858.9,
+          530.0
+        ]
+      },
+      {
+        "pivot": [
+          482.6,
+          446.0
+        ],
+        "plates": [
+          117.5,
+          524.9
+        ],
+        "grip": [
+          854.6,
+          564.3
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 1.8,
+    "source": "Hammer Strength lists 4 lbs (1.8 kg) starting resistance per workarm for the PL-DIP. Unloaded curve across the stroke is unmeasured and held constant by default.",
+    "url": "https://shop.lifefitness.com/products/hammer-strength-plate-loaded-seated-dip"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.787425272738,
+      0.208802525362,
+      -0.0575780015565
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.0001653
+  }
+}

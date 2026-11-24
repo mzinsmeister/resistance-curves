@@ -1,0 +1,7 @@
+{
+  "name": "Average adult · wide-range isometric elbow flexion (n=32)",
+  "movement": "elbow-flexion",
+  "source": "Sato S et al. (2021). Elbow Joint Angles in Elbow Flexor Unilateral Resistance Exercise Training Determine Its Effects on Muscle Strength and Thickness of Trained and Non-trained Arms. Frontiers in Physiology 12:734509. DOI 10.3389/fphys.2021.734509. Table 1, dominant-arm pre-training MVC-ISO means (N·m), pooled by group size (EXT 12, FLE 12, control 8). The cohort comprised 32 healthy university students (19 men, 13 women) without structured resistance training in the preceding six months. Tests used a Biodex System 3.0 with 45° of shoulder flexion and the trunk and pelvis secured. The elbow angle increases in flexion from 0° at full extension.",
+  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8489980/#T1",
+  "points": [[10, 26.1], [50, 38.8], [90, 43.3], [130, 32.5]]
+}

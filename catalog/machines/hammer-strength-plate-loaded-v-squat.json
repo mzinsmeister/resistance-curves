@@ -1,0 +1,82 @@
+{
+  "name": "Plate-Loaded V-Squat",
+  "manufacturer": "Hammer Strength",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 40.0,
+  "source": "Life Fitness / Hammer Strength PL-VSQ demonstration https://www.youtube.com/watch?v=j6bEZhsOyVc&t=18s and product specifications https://www.lifefitness.com/en-us/catalog/strength-training/plate-loaded/plate-loaded-v-squat. Forward-facing press, combined shoulder-pad force at a 40 kg reference load.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Life Fitness / Hammer Strength footage of the PL-VSQ, with forward-facing setup and one near-side shot through the bottom-to-top press. The feet press against the fixed deck while the shoulders drive the shared backrest and shoulder yoke around the rear frame bearing. The loaded forward horn and the integral rear counterbalance rotate with the yoke. The 45 lb disc centered underneath the rear bearing and the smaller rear disc are on fixed storage horns. Grip is the estimated underside contact at the near shoulder pad. The modeled moment is from the combined added mass on the moving horns; the force is the total tangential load at the shoulder yoke supported by both legs. The load horn stays in front of the pivot and rises through the lift. The nearly side-on projection approximates the bearing center and shoulder contact. The counterbalance is part of the unloaded machine.",
+    "input_photos": [
+      "j6bEZhsOyVc @ 00:18.85 (lift-18.85.jpg)",
+      "j6bEZhsOyVc @ 00:19.30 (lift-19.30.jpg)",
+      "j6bEZhsOyVc @ 00:19.95 (lift-19.95.jpg)"
+    ],
+    "poses": [
+      {
+        "pivot": [
+          661,
+          508
+        ],
+        "plates": [
+          512,
+          618
+        ],
+        "grip": [
+          435,
+          414
+        ]
+      },
+      {
+        "pivot": [
+          656,
+          510
+        ],
+        "plates": [
+          488,
+          585
+        ],
+        "grip": [
+          453,
+          370
+        ]
+      },
+      {
+        "pivot": [
+          655,
+          510
+        ],
+        "plates": [
+          481,
+          569
+        ],
+        "grip": [
+          471,
+          352
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 24.5,
+    "source": "Hammer Strength plate-loaded owner's manual, p. 26, lists 54 lb (24.5 kg) starting resistance for the PL-VSQ's single, shared shoulder-pad workarm.",
+    "url": "https://kb.cybexintl.com/Owners_Manuals/Strength/Hammer_Strength_Plate_Loaded_Owners_Manual.pdf#page=26"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.606147408573,
+      0.14208303437,
+      -0.0331824060536
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 8.927e-05
+  }
+}
