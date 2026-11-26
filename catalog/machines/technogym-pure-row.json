@@ -7,7 +7,7 @@
   "source": "COMBI KUNTOKESKUS, TechnoGym Pure Strength Row, https://www.youtube.com/watch?v=hKJt7oHsLi0 (15.100\u201316.150 s). Near-side neutral grip, one independent workarm. The fixed side-view camera and low native resolution limit landmark precision.",
   "observation": {
     "mechanism": "lever",
-    "evidence": "COMBI KUNTOKESKUS gym demonstration hKJt7oHsLi0, 15.100\u201316.150 s, bilateral neutral-grip pull. The near gray workarm joins the handgrip to the moving yellow plate horn and turns about the circular lower axle cap at the black frame bracket beside the foot platform. Track the center of the near yellow plate at its horn and the middle of the near hand on the neutral grip. As this arm turns counterclockwise in the displayed image, the near plate rises on the right of the axle and gravity tends to turn the arm clockwise, opposing the pull. Each hand bears its own independent arm; 20 kg is a reference load on that arm. The camera is fixed and close to a side view, with residual perspective from the lateral offset of the plate and grip and low native video resolution. The fit spans the observed neutral-grip repetition. This is a compound exercise involving elbow and shoulder motion. Moving the axle pick 3 pixels right and 3 pixels up gives fitted start and finish ratios of 0.536 and 0.512 kgf/kg, compared with 0.550 and 0.512. Both fits peak in midstroke.",
+    "evidence": "COMBI KUNTOKESKUS gym demonstration hKJt7oHsLi0, 15.100\u201316.150 s, bilateral neutral-grip pull. The near gray workarm joins the handgrip to the moving yellow plate horn and turns about the circular lower axle cap at the black frame bracket beside the foot platform. Track the center of the near yellow plate at its horn and the middle of the near hand on the neutral grip. As this arm turns counterclockwise in the displayed image, the near plate rises on the right of the axle and gravity tends to turn the arm clockwise, opposing the pull. Each hand bears its own independent arm; 20 kg is a reference load on that arm. The camera is fixed and close to a side view, with residual perspective from the lateral offset of the plate and grip and low native video resolution. The fit spans the observed neutral-grip repetition. This is a compound exercise involving elbow and shoulder motion. Moving the axle pick 3 pixels right and 3 pixels up gives fitted start and finish ratios of 0.536 and 0.512 kgf/kg, compared with 0.550 and 0.512. Both fits peak in midstroke. Pivot refined by concentric-circle fit to [546, 639].",
     "photo_ids": [
       "frame-15.100s.jpg",
       "frame-15.420s.jpg",
@@ -18,8 +18,8 @@
     "poses": [
       {
         "pivot": [
-          550,
-          649
+          546,
+          639
         ],
         "plates": [
           664,
@@ -32,8 +32,8 @@
       },
       {
         "pivot": [
-          550,
-          649
+          546,
+          639
         ],
         "plates": [
           681,
@@ -46,8 +46,8 @@
       },
       {
         "pivot": [
-          550,
-          649
+          546,
+          639
         ],
         "plates": [
           687,
@@ -60,8 +60,8 @@
       },
       {
         "pivot": [
-          550,
-          649
+          546,
+          639
         ],
         "plates": [
           683,
@@ -74,8 +74,8 @@
       },
       {
         "pivot": [
-          550,
-          649
+          546,
+          639
         ],
         "plates": [
           679,
@@ -96,9 +96,9 @@
   "resistance_curve": {
     "type": "polynomial",
     "coefficients": [
-      0.549516474771,
-      0.15448090203,
-      -0.191846546786
+      0.573215439265,
+      0.206310895757,
+      -0.224897535929
     ],
     "input": "stroke_fraction",
     "domain": [
@@ -107,6 +107,6 @@
     ],
     "output": "kgf_per_kg",
     "sample_count": 101,
-    "max_sample_error_kgf_per_kg": 0.0003112
+    "max_sample_error_kgf_per_kg": 0.0002584
   }
 }

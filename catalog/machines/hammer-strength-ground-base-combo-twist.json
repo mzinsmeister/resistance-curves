@@ -7,7 +7,7 @@
   "source": "Life Fitness / Hammer Strength manufacturer demo, https://www.youtube.com/watch?v=A9eWnLannEc&t=29s (29.34\u201330.06 s). Standing alternating push-pull. One 45 lb plate on the lower working horn of the tracked workarm. Force per pulling hand for this loading configuration.",
   "observation": {
     "mechanism": "lever",
-    "evidence": "Near-level side view of an alternating push-pull repetition on the GB-CT. The tracked near hand draws the upright grip toward the body as the near lower working plate rises. The grip, welded triangular workarm and load horn turn together around the near lower shaft supported by the silver frame bracket. The projected axle is at the inner bearing beside the bracket face. The single near 45 lb plate is marked at its center of mass by the bore inside its rim. The other plates include an opposite loading position and a far workarm. The simultaneous far-hand action belongs to the separate far arm. Gravity at the near loaded hub opposes the near-hand pull. The result applies per hand with the demonstrated lower loading position. The alternate horn changes which direction lifts added plates. Slight lateral camera motion and perspective on the inward handle remain sources of geometric error. Moving the projected bearing point 5 pixels laterally provides a check on the sensitivity to the partially hidden shaft center. For the marked side, this changes the modeled start by roughly 0.01\u20130.02 kgf/kg.",
+    "evidence": "Near-level side view of an alternating push-pull repetition on the GB-CT. The tracked near hand draws the upright grip toward the body as the near lower working plate rises. The grip, welded triangular workarm and load horn turn together around the near lower shaft supported by the silver frame bracket. The projected axle is at the inner bearing beside the bracket face. The single near 45 lb plate is marked at its center of mass by the bore inside its rim. The other plates include an opposite loading position and a far workarm. The simultaneous far-hand action belongs to the separate far arm. Gravity at the near loaded hub opposes the near-hand pull. The result applies per hand with the demonstrated lower loading position. The alternate horn changes which direction lifts added plates. Slight lateral camera motion and perspective on the inward handle remain sources of geometric error. Moving the projected bearing point 5 pixels laterally provides a check on the sensitivity to the partially hidden shaft center. For the marked side, this changes the modeled start by roughly 0.01\u20130.02 kgf/kg. Pivot verified by 50/50 motion overlay and concentric-circle fit at the main bearing cap (near [491, 728]).",
     "inputs": [
       "YouTube A9eWnLannEc at 29.34 s (lift-29.34.jpg)",
       "YouTube A9eWnLannEc at 29.42 s (lift-29.42.jpg)",
@@ -19,8 +19,8 @@
     "poses": [
       {
         "pivot": [
-          465,
-          754
+          491,
+          728
         ],
         "plates": [
           297,
@@ -33,8 +33,8 @@
       },
       {
         "pivot": [
-          459,
-          754
+          485,
+          728
         ],
         "plates": [
           290,
@@ -47,8 +47,8 @@
       },
       {
         "pivot": [
-          459,
-          754
+          485,
+          728
         ],
         "plates": [
           281,
@@ -61,8 +61,8 @@
       },
       {
         "pivot": [
-          456,
-          754
+          482,
+          728
         ],
         "plates": [
           281,
@@ -75,8 +75,8 @@
       },
       {
         "pivot": [
-          451,
-          754
+          477,
+          728
         ],
         "plates": [
           281,
@@ -89,8 +89,8 @@
       },
       {
         "pivot": [
-          445,
-          757
+          471,
+          731
         ],
         "plates": [
           283,
@@ -111,9 +111,9 @@
   "resistance_curve": {
     "type": "polynomial",
     "coefficients": [
-      0.446354773888,
-      0.0458782367714,
-      -0.0870752615464
+      0.529781154241,
+      0.10030986207,
+      -0.12537684715
     ],
     "input": "stroke_fraction",
     "domain": [
@@ -122,6 +122,6 @@
     ],
     "output": "kgf_per_kg",
     "sample_count": 101,
-    "max_sample_error_kgf_per_kg": 0.0001568
+    "max_sample_error_kgf_per_kg": 0.0001413
   }
 }

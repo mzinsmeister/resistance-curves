@@ -7,16 +7,16 @@
   "source": "Four ordered front-plane frames (perpendicular to the arm abduction plane) from the official Hammer Strength Plate-Loaded Lateral Raise demonstration (https://www.youtube.com/watch?v=4t2faIKsmr8, 0:09.1\u20130:09.9). Independent arm loaded with one 10 lb (4.54 kg) plate.",
   "observation": {
     "mechanism": "lever",
-    "evidence": "Official Life Fitness / Hammer Strength front-plane demonstration (YouTube 4t2faIKsmr8, 0:09.1\u20130:09.9) of the Plate-Loaded Lateral Raise (PL-LR), cross-checked with the side view in the same video (0:03.5 and 0:15.0\u20130:18.0) showing each arm is a single rigid lever rotating in the frontal plane about an upper front-to-back bearing behind the shoulder (directly beneath the angled grey counterweight block), with the weight horn and forearm/elbow pad rigidly welded to the lower end of that same arm. The viewer's right workarm (lifter's left arm) is tracked across four ordered poses from bottom (~20 deg abduction) to top (~85 deg abduction) with one 10 lb Hammer Strength round urethane Olympic plate (4.54 kg) loaded on the arm. Slight forward camera dolly (~5% zoom across the 0.8 s clip) is tracked per pose and cancels in the lever force ratios. Rigid-lever invariants hold tightly across all four poses (radius ratio spread ~1.5%, angular offset spread <6 deg). Anatomical landmarks mark the left glenohumeral joint center, vertical trunk axis (proximal straight above joint so 0 deg = arm at side), and distal elbow pad contact; scale uses the visible Hammer Strength 10 lb round urethane plate outer diameter (10.04 in = 0.255 m per Life Fitness spec). Because the plate sits ~0.35 m behind the arm plane (~10% perspective foreshortening at ~3.5 m camera distance), the estimated joint moment arm carries ~10% systematic uncertainty (~0.25\u20130.31 m plausible range).",
+    "evidence": "Official Life Fitness / Hammer Strength front-plane demonstration (YouTube 4t2faIKsmr8, 0:09.1\u20130:09.9) of the Plate-Loaded Lateral Raise (PL-LR), cross-checked with the side view in the same video (0:03.5 and 0:15.0\u20130:18.0) showing each arm is a single rigid lever rotating in the frontal plane about an upper front-to-back bearing behind the shoulder (directly beneath the angled grey counterweight block), with the weight horn and forearm/elbow pad rigidly welded to the lower end of that same arm. The viewer's right workarm (lifter's left arm) is tracked across four ordered poses from bottom (~20 deg abduction) to top (~85 deg abduction) with one 10 lb Hammer Strength round urethane Olympic plate (4.54 kg) loaded on the arm. Slight forward camera dolly (~5% zoom across the 0.8 s clip) is tracked per pose and cancels in the lever force ratios. Rigid-lever invariants hold tightly across all four poses (radius ratio spread ~1.5%, angular offset spread <6 deg). Anatomical landmarks mark the left glenohumeral joint center, vertical trunk axis (proximal straight above joint so 0 deg = arm at side), and distal elbow pad contact; scale uses the visible Hammer Strength 10 lb round urethane plate outer diameter (10.04 in = 0.255 m per Life Fitness spec). Because the plate sits ~0.35 m behind the arm plane (~10% perspective foreshortening at ~3.5 m camera distance), the estimated joint moment arm carries ~10% systematic uncertainty (~0.25\u20130.31 m plausible range). Pivot verified by 50/50 motion overlay and concentric-circle fit at the rear shoulder-level bearing housing (near [590, 398]), reducing plate-radius spread from 26% to 2.1% and grip-radius spread from 24% to 7.7%.",
     "poses": [
       {
         "pivot": [
-          565,
-          370
+          588,
+          398
         ],
         "plates": [
-          646,
-          445
+          653,
+          449
         ],
         "grip": [
           632,
@@ -35,11 +35,11 @@
           474
         ],
         "scale_start": [
-          646,
+          653,
           412
         ],
         "scale_end": [
-          646,
+          653,
           478
         ],
         "scale_m": 0.255,
@@ -47,8 +47,8 @@
       },
       {
         "pivot": [
-          566,
-          370
+          589,
+          398
         ],
         "plates": [
           673,
@@ -83,12 +83,12 @@
       },
       {
         "pivot": [
-          568,
-          370
+          591,
+          398
         ],
         "plates": [
           671,
-          377
+          375
         ],
         "grip": [
           673,
@@ -119,16 +119,16 @@
       },
       {
         "pivot": [
-          570,
-          370
+          592,
+          398
         ],
         "plates": [
-          653,
+          648,
           336
         ],
         "grip": [
-          666,
-          366
+          665,
+          368
         ],
         "joint": [
           595,
@@ -143,11 +143,11 @@
           389
         ],
         "scale_start": [
-          653,
+          648,
           302
         ],
         "scale_end": [
-          653,
+          648,
           370
         ],
         "scale_m": 0.255,
@@ -163,9 +163,9 @@
   "resistance_curve": {
     "type": "polynomial",
     "coefficients": [
-      0.690235210573,
-      0.667943640771,
-      -0.448190866452
+      0.803214463315,
+      0.900247556992,
+      -0.936665973201
     ],
     "input": "stroke_fraction",
     "domain": [
@@ -174,6 +174,6 @@
     ],
     "output": "kgf_per_kg",
     "sample_count": 101,
-    "max_sample_error_kgf_per_kg": 0.002158
+    "max_sample_error_kgf_per_kg": 0.002262
   }
 }

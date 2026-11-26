@@ -3,6 +3,7 @@
   "manufacturer": "Geometry example",
   "movement": "elbow-flexion",
   "kind": "Synthetic model",
+  "example": true,
   "plate_kg": 32,
   "source": "Constructed single-arm lever with aligned elbow and machine axes. Its four pose records use a 0.30 m hand radius.",
   "observation": {

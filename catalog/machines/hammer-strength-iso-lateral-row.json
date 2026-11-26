@@ -4,65 +4,79 @@
   "movement": "compound",
   "kind": "Photo estimate",
   "plate_kg": 31.75,
-  "source": "Official Hammer Strength Iso-Lateral Row demonstration video (https://www.youtube.com/watch?v=VZmJ8z6zh3g, 16.6s-17.1s, 4 side-view frames f_002, f_003, f_004, f_008). Single-arm near workarm modeled with 70 lb (31.75 kg) added plates (1x45 lb + 1x25 lb); clean static level side view (~5% radius-ratio spread).",
+  "source": "Official Hammer Strength Iso-Lateral Row demonstration video (https://www.youtube.com/watch?v=VZmJ8z6zh3g, static level side view across full ROM from full stretch to peak contraction, 5 poses at t=18.3s, 17.9s, 17.6s, 17.4s, 17.1s ordered start-to-finish). Single-arm near workarm modeled with 70 lb (31.75 kg) added plates (1x45 lb + 1x25 lb); pivot verified by 50/50 motion overlay and concentric-circle fit (<1 px grip radius spread).",
   "observation": {
     "mechanism": "lever",
-    "evidence": "Official Hammer Strength Plate-Loaded Iso-Lateral Row demonstration video (YouTube ID VZmJ8z6zh3g, static level side view at 16.6s-17.1s; frames f_002.jpg, f_003.jpg, f_004.jpg, f_008.jpg at 12 fps from 16.5s). Modeled assembly is the near-side (left) independent rigid lever arm rotating clockwise in the side view around the lower-front pivot bearing housing. Added load on the moving lower-front horn is one 45 lb plate plus one 25 lb plate (70 lb = 31.75 kg). Grip is the athlete's left hand on the vertical neutral handle. Camera is level and side-on with minimal perspective distortion across the full rowing stroke (~5% radius-ratio spread). Compound multi-joint horizontal pull; anatomical joint fields omitted.",
+    "evidence": "Official Hammer Strength Plate-Loaded Iso-Lateral Row demonstration video (YouTube ID VZmJ8z6zh3g, static level side view; 5 frames ordered from 0% full stretch to 100% peak contraction: f_019, f_015, f_012, f_010, f_007 at 10 fps from t=16.5s). Modeled assembly is the near-side (left) independent rigid lever arm rotating clockwise around the upper pivot bearing axle [504, 591] (verified by 50/50 start/finish ghost overlay and concentric-circle fit: grip radius 234.2-235.9 px across 52 deg full sweep, plate radius 132.8-138.3 px). Added load on the moving lower-front horn is one 45 lb + one 25 lb plate (70 lb = 31.75 kg). Grip is the athlete's left hand on the vertical neutral handle. Compound multi-joint horizontal pull; anatomical joint fields omitted.",
     "poses": [
       {
         "pivot": [
-          496,
-          614
+          504,
+          591
         ],
         "plates": [
-          368,
-          635
+          386,
+          652
         ],
         "grip": [
-          485,
-          365
-        ]
-      },
-      {
-        "pivot": [
-          496,
-          614
-        ],
-        "plates": [
-          362,
-          601
-        ],
-        "grip": [
-          542,
+          427,
           368
         ]
       },
       {
         "pivot": [
-          496,
-          614
+          504,
+          591
         ],
         "plates": [
-          368,
-          567
+          375,
+          628
         ],
         "grip": [
-          594,
-          383
+          474,
+          358
         ]
       },
       {
         "pivot": [
-          496,
-          614
+          504,
+          591
         ],
         "plates": [
-          375,
-          540
+          368,
+          595
         ],
         "grip": [
-          630,
-          405
+          534,
+          357
+        ]
+      },
+      {
+        "pivot": [
+          504,
+          591
+        ],
+        "plates": [
+          370,
+          560
+        ],
+        "grip": [
+          586,
+          370
+        ]
+      },
+      {
+        "pivot": [
+          504,
+          591
+        ],
+        "plates": [
+          378,
+          534
+        ],
+        "grip": [
+          629,
+          393
         ]
       }
     ]
@@ -75,9 +89,9 @@
   "resistance_curve": {
     "type": "polynomial",
     "coefficients": [
-      0.536100968948,
-      0.0532098442943,
-      -0.100519990899
+      0.512583222904,
+      0.241574655419,
+      -0.226928695138
     ],
     "input": "stroke_fraction",
     "domain": [
@@ -86,6 +100,6 @@
     ],
     "output": "kgf_per_kg",
     "sample_count": 101,
-    "max_sample_error_kgf_per_kg": 0.0001731
+    "max_sample_error_kgf_per_kg": 0.0002594
   }
 }

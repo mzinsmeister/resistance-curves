@@ -45,6 +45,19 @@ def classify_shape(ratios):
     return "Ascending" if end_r >= start_r else "Descending"
 
 
+def is_example_record(raw, data=None):
+    """Identify synthetic, unbranded CAD-library, or explicitly flagged example records."""
+    if raw.get("example") is True:
+        return True
+    src = data or raw
+    kind = str(src.get("kind", "")).lower()
+    meta = f"{src.get('manufacturer', '')} {kind} {src.get('source', '')}".lower()
+    return (
+        kind.startswith("synthetic")
+        or any(tok in meta for tok in ("example", "cad library", "layout model", "unbranded"))
+    )
+
+
 def spark_geometry(points):
     top = max(max(y for _, y in points), 1e-6)
     coords = [(x, 92.0 - 80.0 * y / top) for x, y in points]
@@ -171,10 +184,7 @@ def build(out):
             data["default_peak_pct"] = peak_pct
             data["default_min_kgf"] = min_val
             data["default_mean_kgf"] = mean_val
-            data["is_example"] = (
-                data["kind"].lower().startswith("synthetic")
-                or "example" in data["manufacturer"].lower()
-            )
+            data["is_example"] = is_example_record(raw, data)
             src_low = (data["source"] + " " + raw.get("observation", {}).get("evidence", "")).lower()
             is_unilateral = any(
                 k in src_low for k in (

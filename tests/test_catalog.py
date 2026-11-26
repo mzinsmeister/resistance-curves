@@ -107,3 +107,37 @@ class CatalogTests(unittest.TestCase):
             stat_ratio = sum(abs(m["cam_belt_arm_px"] / m["load_belt_arm_px"]) for m in prof["poses"]) / len(prof["poses"])
             self.assertLess(abs(kin_ratio - stat_ratio) / stat_ratio, 0.20,
                             f"{path.name}: kinematic ratio {kin_ratio:.3f} disagrees with static {stat_ratio:.3f}")
+
+    def test_all_catalog_levers_have_consistent_individual_radii(self):
+        import math
+
+        for path in sorted((ROOT / "catalog/machines").glob("*.json")):
+            record = json.loads(path.read_text())
+            obs = record.get("observation")
+            if not obs or obs.get("mechanism") != "lever":
+                continue
+            poses = obs.get("poses") or []
+            if len(poses) < 2:
+                continue
+            rg = [math.dist(p["pivot"], p["grip"]) for p in poses]
+            rp = [math.dist(p["pivot"], p["plates"]) for p in poses]
+            self.assertLessEqual(max(rg) / min(rg), 1.18, f"{path.name}: grip radius varies too much (wrong pivot?)")
+            self.assertLessEqual(max(rp) / min(rp), 1.18, f"{path.name}: plate radius varies too much (wrong pivot?)")
+
+    def test_example_models_are_explicitly_labeled(self):
+        import sys
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from build_site import is_example_record
+
+        examples = []
+        for path in sorted((ROOT / "catalog/machines").glob("*.json")):
+            record = json.loads(path.read_text())
+            detected = is_example_record(record)
+            if detected:
+                self.assertTrue(
+                    record.get("example") is True,
+                    f"{path.name} looks like a synthetic/unbranded example model and must set \"example\": true",
+                )
+                examples.append(path.stem)
+        self.assertIn("innerscene-inclined-leg-press", examples)
+        self.assertIn("single-arm-lever-curl", examples)

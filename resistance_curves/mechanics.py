@@ -184,6 +184,12 @@ def estimate(observation, plate_kg=None):
                 offsets = [m[prefix + "load_angle_deg"] - m["grip_angle_deg"] for m in measured]
                 if max(ratios) > 1.15 * min(ratios) or any(abs(remainder(o - offsets[0], 360)) > 8 for o in offsets):
                     raise ValueError("Landmarks disagree with one rigid lever. Check projection and pivot selection.")
+            grip_radii = [m["grip_radius_px"] for m in measured]
+            load_radii = [m["radius_ratio"] * m["grip_radius_px"] for m in measured]
+            if max(grip_radii) > 1.18 * min(grip_radii) or max(load_radii) > 1.18 * min(load_radii):
+                raise ValueError(
+                    "Lever arm radius varies too much across poses. Check pivot bearing location and camera obliquity."
+                )
             if not extra_fields:
                 ratio = sum(m["radius_ratio"] for m in measured) / len(measured)
                 start = measured[0]["load_angle_deg"]

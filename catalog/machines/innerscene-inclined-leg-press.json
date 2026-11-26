@@ -3,6 +3,7 @@
   "manufacturer": "Innerscene CAD library",
   "movement": "compound",
   "kind": "3D model estimate",
+  "example": true,
   "plate_kg": 20.0,
   "source": "Unbranded, public-domain Innerscene layout model. Rail end-face centers give a vertical rise of 1.03 m over 1.21 m of horizontal travel. The modeled sled and plate horns move together. Added plate resistance only.",
   "observation": {

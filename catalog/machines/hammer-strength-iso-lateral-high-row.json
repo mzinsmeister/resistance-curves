@@ -7,12 +7,12 @@
   "source": "Official Hammer Strength Iso-Lateral High Row demonstration video (https://www.youtube.com/watch?v=5vcDfRwVMSk, 20.3s-22.0s, 4 side-view frames f_006, f_010, f_013, f_016). Single-arm near workarm modeled with 45 lb (20.41 kg) added plate; pivot tracked per pose across slight camera jib drift (~5-6% radius-ratio uncertainty from oblique converging axis).",
   "observation": {
     "mechanism": "lever",
-    "evidence": "Official Hammer Strength Plate-Loaded Iso-Lateral High Row demonstration video (YouTube ID 5vcDfRwVMSk, level side view at 20.3s-22.0s; frames f_006.jpg, f_010.jpg, f_013.jpg, f_016.jpg at 6 fps from 19.5s). Modeled assembly is the near-side (left) independent rigid lever arm rotating counterclockwise in the side view as the athlete pulls down and back; the far arm remains stationary overhead. Pivot is tracked per pose at the center of the lever's oblique pivot shaft between the front and rear bearing brackets to account for the camera's slow jib drift across the 1.7s clip. Added load on the rear weight horn is one 45 lb (20.41 kg) plate (lower plates sit on fixed storage horns). Grip is the athlete's left hand on the front J-handle. Slight oblique tilt of the converging iso-lateral axis and camera jib motion introduce ~5-6% uncertainty in the lever radius ratio across poses. Compound multi-joint high pull; anatomical joint fields omitted.",
+    "evidence": "Official Hammer Strength Plate-Loaded Iso-Lateral High Row demonstration video (YouTube ID 5vcDfRwVMSk, level side view at 20.3s-22.0s; frames f_006.jpg, f_010.jpg, f_013.jpg, f_016.jpg at 6 fps from 19.5s). Modeled assembly is the near-side (left) independent rigid lever arm rotating counterclockwise in the side view as the athlete pulls down and back; the far arm remains stationary overhead. Pivot is tracked per pose at the center of the lever's oblique pivot shaft between the front and rear bearing brackets to account for the camera's slow jib drift across the 1.7s clip. Added load on the rear weight horn is one 45 lb (20.41 kg) plate (lower plates sit on fixed storage horns). Grip is the athlete's left hand on the front J-handle. Slight oblique tilt of the converging iso-lateral axis and camera jib motion introduce ~5-6% uncertainty in the lever radius ratio across poses. Compound multi-joint high pull; anatomical joint fields omitted. Pivot refined by 50/50 motion overlay to exact bearing shaft center (near [475, 300]).",
     "poses": [
       {
         "pivot": [
-          472,
-          288
+          475,
+          300
         ],
         "plates": [
           603,
@@ -25,8 +25,8 @@
       },
       {
         "pivot": [
-          465,
-          295
+          468,
+          307
         ],
         "plates": [
           615,
@@ -39,8 +39,8 @@
       },
       {
         "pivot": [
-          463,
-          301
+          466,
+          313
         ],
         "plates": [
           616,
@@ -53,8 +53,8 @@
       },
       {
         "pivot": [
-          462,
-          308
+          465,
+          320
         ],
         "plates": [
           613,
@@ -75,9 +75,9 @@
   "resistance_curve": {
     "type": "polynomial",
     "coefficients": [
-      0.62877520538,
-      0.317052834438,
-      -0.233542564348
+      0.650143140523,
+      0.291596789423,
+      -0.247629123335
     ],
     "input": "stroke_fraction",
     "domain": [
@@ -86,6 +86,6 @@
     ],
     "output": "kgf_per_kg",
     "sample_count": 101,
-    "max_sample_error_kgf_per_kg": 0.0005602
+    "max_sample_error_kgf_per_kg": 0.0003865
   }
 }

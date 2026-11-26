@@ -33,7 +33,7 @@ class MechanicsTests(unittest.TestCase):
 
     def test_rigid_arm_has_interior_peak_and_zero_at_vertical(self):
         pose = lambda point: {"pivot": [500, 500], "plates": point, "grip": point}
-        data = {"mechanism": "lever", "poses": [pose([600, 600]), pose([500, 400])]}
+        data = {"mechanism": "lever", "poses": [pose([570.71, 570.71]), pose([500, 400])]}
         profile = estimate(data)
         self.assertAlmostEqual(profile["samples"][100]["newtons_per_kg"], 0)
         self.assertGreater(profile["samples"][33]["newtons_per_kg"], 9.80)
@@ -95,6 +95,17 @@ class MechanicsTests(unittest.TestCase):
         bad_plates["poses"][1]["plates"] = [150, 700]
         with self.assertRaisesRegex(ValueError, "Load-pivot-to-plates radius"):
             estimate(bad_plates)
+
+    def test_lever_rejects_wrong_pivot_even_when_radius_ratio_stays_constant(self):
+        # True pivot is [500, 500], arm swings 60 deg with r_grip=150, r_plates=150;
+        # shifting pivot to a bogus [460, 460] keeps radius_ratio ~1.0 while both radii vary by >20%.
+        poses = []
+        for deg in (30, 0, -30):
+            rad = math.radians(deg)
+            pt = [500 + 150 * math.cos(rad), 500 + 150 * math.sin(rad)]
+            poses.append({"pivot": [440, 440], "plates": pt, "grip": pt})
+        with self.assertRaisesRegex(ValueError, "Lever arm radius varies"):
+            estimate({"mechanism": "lever", "poses": poses})
 
     def test_unresolved(self):
         with self.assertRaisesRegex(ValueError, "hidden pivot"):

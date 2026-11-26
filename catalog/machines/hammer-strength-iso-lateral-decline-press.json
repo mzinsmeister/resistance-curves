@@ -7,7 +7,7 @@
   "source": "Official Life Fitness / Hammer Strength video https://www.youtube.com/watch?v=V0vu5fnvSvY (25.00\u201325.76 s). Near-side unilateral workarm during the demonstrated press. Quasi-static side-view geometry with a 20 kg per-arm reference load.",
   "observation": {
     "mechanism": "lever",
-    "evidence": "Official Life Fitness / Hammer Strength IL-DCP demonstration V0vu5fnvSvY, 25.00\u201325.76 s. The nearer, left workarm is followed through the outward press while the opposite arm is already extended. Gravity loads the upper moving plate horn, which is fixed to the same braced steel arm as the lower handgrip. The arm transfers torque through the axle at the overhead beam to the frame; plates on the rear upright are storage. Pivot landmarks use the rear large axle fastener at the top of the moving brace; the forward fastener remains the other visible candidate in this view. The plate landmarks use the center of the loaded disc stack on the horn axis, and the grip landmarks follow the left hand at the lower handle, partly covered by the upright or pressing arm. As the hand presses forward, the moving plates rise and the resulting tangential resistance acts back toward the chest. This is per hand, with no load shared across the independent arms. The side projection approximates the converging workarm path and the observed exercise range. The reference plate setting is 20 kg on the modeled arm. The front bolt alternative gives 0.46\u20130.61 kgf/kg and greater drift in the projected radii. The rear axle follows the arm attachment and gives the more consistent rotation. Both choices preserve the rising profile.",
+    "evidence": "Official Life Fitness / Hammer Strength IL-DCP demonstration V0vu5fnvSvY, 25.00\u201325.76 s. The nearer, left workarm is followed through the outward press while the opposite arm is already extended. Gravity loads the upper moving plate horn, which is fixed to the same braced steel arm as the lower handgrip. The arm transfers torque through the axle at the overhead beam to the frame; plates on the rear upright are storage. Pivot landmarks use the rear large axle fastener at the top of the moving brace; the forward fastener remains the other visible candidate in this view. The plate landmarks use the center of the loaded disc stack on the horn axis, and the grip landmarks follow the left hand at the lower handle, partly covered by the upright or pressing arm. As the hand presses forward, the moving plates rise and the resulting tangential resistance acts back toward the chest. This is per hand, with no load shared across the independent arms. The side projection approximates the converging workarm path and the observed exercise range. The reference plate setting is 20 kg on the modeled arm. The front bolt alternative gives 0.46\u20130.61 kgf/kg and greater drift in the projected radii. The rear axle follows the arm attachment and gives the more consistent rotation. Both choices preserve the rising profile. Pivot verified by 50/50 motion overlay and concentric-circle fit at the upper bearing housing (near [507, 311]), reducing rigid-lever RMS 4x.",
     "photo_ids": [
       "decline-25.00s.jpg",
       "decline-25.24s.jpg",
@@ -18,8 +18,8 @@
     "poses": [
       {
         "pivot": [
-          479,
-          298
+          507,
+          311
         ],
         "plates": [
           357,
@@ -32,8 +32,8 @@
       },
       {
         "pivot": [
-          479,
-          300
+          507,
+          313
         ],
         "plates": [
           352,
@@ -46,8 +46,8 @@
       },
       {
         "pivot": [
-          479,
-          301
+          507,
+          314
         ],
         "plates": [
           344,
@@ -60,8 +60,8 @@
       },
       {
         "pivot": [
-          479,
-          301
+          507,
+          314
         ],
         "plates": [
           337,
@@ -74,8 +74,8 @@
       },
       {
         "pivot": [
-          480,
-          303
+          508,
+          316
         ],
         "plates": [
           336,
@@ -96,9 +96,9 @@
   "resistance_curve": {
     "type": "polynomial",
     "coefficients": [
-      0.590293429956,
-      0.203246972786,
-      -0.0581951035439
+      0.779353862458,
+      0.200220580931,
+      -0.0820634538391
     ],
     "input": "stroke_fraction",
     "domain": [
@@ -107,6 +107,6 @@
     ],
     "output": "kgf_per_kg",
     "sample_count": 101,
-    "max_sample_error_kgf_per_kg": 0.0002083
+    "max_sample_error_kgf_per_kg": 0.0001937
   }
 }

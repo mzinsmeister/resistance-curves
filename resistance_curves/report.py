@@ -551,6 +551,81 @@ def draw_force_diagram(pose, mechanism, view_path, out_path, *,
         fig.savefig(out_path, dpi=125)
 
 
+def draw_pivot_check(observation, result, views, out_path):
+    """Render a 50/50 start+finish ghost overlay comparing the marked pivot against the kinematic center."""
+    mechanism = result.get("mechanism")
+    poses = observation.get("poses") or []
+    if mechanism not in ("lever", "belt_cam") or len(poses) < 2 or len(views) < len(poses):
+        return
+    p0, pN = Path(views[0]), Path(views[len(poses) - 1])
+    if not (p0.is_file() and pN.is_file()):
+        return
+    with Image.open(p0) as a, Image.open(pN) as b:
+        im0 = np.asarray(a.convert("RGB"), dtype=float)
+        imN = np.asarray(b.convert("RGB"), dtype=float)
+    piv0 = np.asarray(poses[0]["pivot"], dtype=float)
+    pivN = np.asarray(poses[-1]["pivot"], dtype=float)
+    dx = int(round((piv0[0] - pivN[0]) * im0.shape[1] / 1000.0))
+    dy = int(round((piv0[1] - pivN[1]) * im0.shape[0] / 1000.0))
+    imN_aligned = np.roll(np.roll(imN, dx, axis=1), dy, axis=0)
+    ghost = np.clip(0.5 * im0 + 0.5 * imN_aligned, 0, 255).astype(np.uint8)
+
+    pivs = np.array([q["pivot"] for q in poses], dtype=float)
+    shifts = pivs - piv0
+    grips = np.array([q["grip"] for q in poses], dtype=float) - shifts
+    plts = np.array([q["plates"] for q in poses], dtype=float) - shifts
+    rg = np.hypot(grips[:, 0] - piv0[0], grips[:, 1] - piv0[1])
+    rp = np.hypot(plts[:, 0] - piv0[0], plts[:, 1] - piv0[1])
+    rg_ratio = float(rg.max() / max(1e-6, rg.min()))
+    rp_ratio = float(rp.max() / max(1e-6, rp.min()))
+
+    # For levers with >= 3 poses, estimate concentric-circle kinematic center via Gauss-Newton / Nelder-Mead
+    opt_c = None
+    if mechanism == "lever" and len(poses) >= 3:
+        angs = np.unwrap([atan2(g[1] - piv0[1], g[0] - piv0[0]) for g in grips])
+        if abs(degrees(angs[-1] - angs[0])) >= 15.0:
+            try:
+                from scipy.optimize import minimize
+                def rms_fn(c):
+                    rg_ = np.hypot(grips[:, 0] - c[0], grips[:, 1] - c[1])
+                    rp_ = np.hypot(plts[:, 0] - c[0], plts[:, 1] - c[1])
+                    ag = np.arctan2(grips[:, 1] - c[1], grips[:, 0] - c[0])
+                    ap = np.arctan2(plts[:, 1] - c[1], plts[:, 0] - c[0])
+                    off = np.unwrap(ap - ag)
+                    off_e = (off - np.mean(off)) * np.mean(rp_)
+                    return float(np.sqrt(np.mean(np.concatenate([(rg_ - rg_.mean()) ** 2, (rp_ - rp_.mean()) ** 2, off_e ** 2]))))
+                res = minimize(rms_fn, piv0, method="Nelder-Mead", options={"xatol": 0.2, "maxiter": 1000})
+                if 0 <= res.x[0] <= 1000 and 0 <= res.x[1] <= 1000:
+                    opt_c = res.x
+            except Exception:
+                pass
+
+    active = [piv0, grips[0], grips[-1], plts[0], plts[-1]]
+    if opt_c is not None:
+        active.append(opt_c)
+    x0, x1, y0, y1 = _detect_viewport(ghost, active)
+    fig = Figure(figsize=(7.2, 6.4), dpi=125)
+    FigureCanvasAgg(fig)
+    ax = fig.add_axes([0, 0, 1, 1])
+    ax.imshow(ghost, extent=(0, 1000, 1000, 0))
+    for g, col in [(grips[0], C_OUT), (grips[-1], "#d97706")]:
+        ax.plot([piv0[0], g[0]], [piv0[1], g[1]], color=col, lw=2.2, path_effects=HALO_THIN)
+    for pl, col in [(plts[0], C_LOAD), (plts[-1], "#0284c7")]:
+        ax.plot([piv0[0], pl[0]], [piv0[1], pl[1]], color=col, lw=2.2, path_effects=HALO_THIN)
+    ax.scatter([piv0[0]], [piv0[1]], facecolors="none", edgecolors=C_PIVOT, linewidth=2.6, s=160, zorder=8)
+    title = f"Start+Finish ghost check · rg={rg_ratio:.3f} · rp={rp_ratio:.3f}"
+    if opt_c is not None:
+        shift = hypot(opt_c[0] - piv0[0], opt_c[1] - piv0[1])
+        ax.scatter([opt_c[0]], [opt_c[1]], facecolors="none", edgecolors="#22c55e", linewidth=2.4, s=160, zorder=9)
+        title += f" · kinematic center Δ={shift:.0f}px (green)"
+    ax.text(x0 + (x1 - x0) * 0.02, y0 + (y1 - y0) * 0.03, title,
+            fontsize=8.8, fontweight="bold", color="#f8fafc", va="top", ha="left", zorder=12,
+            bbox={"facecolor": "#0f172a", "alpha": 0.88, "edgecolor": "#334155", "boxstyle": "round,pad=0.35"})
+    ax.set(xlim=(x0, x1), ylim=(y1, y0))
+    ax.axis("off")
+    fig.savefig(out_path, dpi=125)
+
+
 def draw_report(result, observation, views, folder):
     samples = result["samples"]
     scaled = result["plate_kg"] is not None
@@ -585,3 +660,4 @@ def draw_report(result, observation, views, folder):
             pose, result["mechanism"], path, folder / f"landmarks-{i:03}.png",
             pose_index=i, pose_meta=meta, review_zoom=True,
         )
+    draw_pivot_check(observation, result, views, folder / "pivot-check.png")
