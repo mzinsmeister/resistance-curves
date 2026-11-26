@@ -70,11 +70,11 @@
   }
 
   function drawChart(series, xlabel, ylabel, opts = {}) {
-    const {marker = null, reverse = false, shadeExceed = null, xUnit = '%', tooltipFormatter} = opts;
+    const {marker = null, reverse = false, shadeExceed = null, xUnit = '%', fixedTop = null, tooltipFormatter} = opts;
     const all = series.flatMap(s => s.points);
     const min = Math.min(...all.map(p => p[0]));
     const max = Math.max(...all.map(p => p[0]));
-    const top = niceTop(Math.max(1, ...all.map(p => p[1])));
+    const top = fixedTop !== null ? fixedTop : niceTop(Math.max(1, ...all.map(p => p[1])));
 
     const W = 720, H = 370;
     const padL = 62, padR = 26, padT = 34, padB = 56;
@@ -480,25 +480,33 @@
       }
 
       if (normalize) {
-        const demPeak = Math.max(...r.demand.map(p => p[1]), 1e-9);
-        const capPeak = Math.max(...r.capacity.map(p => p[1]), 1e-9);
+        const demPeak = r.common.length >= 2
+          ? Math.max(...r.common.map(row => row.d), 1e-9)
+          : Math.max(...r.demand.map(p => p[1]), 1e-9);
+        const capPeak = r.common.length >= 2
+          ? Math.max(...r.common.map(row => row.c), 1e-9)
+          : Math.max(...r.capacity.map(p => p[1]), 1e-9);
         const demNorm = r.demand.map(([x, y]) => [x, 100 * y / demPeak]);
         const capNorm = r.capacity.map(([x, y]) => [x, 100 * y / capPeak]);
+        const normTop = Math.max(100, ...demNorm.map(p => p[1]), ...capNorm.map(p => p[1]));
         drawChart(
           [
             {points: demNorm, line: true, area: true, color: TEAL},
             {points: capNorm, line: true, color: AMBER, markers: true, hollow: true, markerRadius: 4},
           ],
           'Joint angle (°) · lifting direction →',
-          'Relative profile (% of peak)',
+          'Relative profile (% of peak in shared ROM)',
           {
             marker: null,
             reverse,
             xUnit: '°',
+            fixedTop: normTop <= 105 ? 100 : niceTop(normTop),
             tooltipFormatter: (ang, [demP, capP]) => {
+              const demAbs = sampleSeriesAt(r.demand, ang);
+              const capAbs = sampleSeriesAt(r.capacity, ang);
               let html = `<strong>Joint angle ${fmt(ang, 0)}°</strong>`;
-              if (demP !== null) html += `<div class="tt-row"><span>Machine curve</span><span>${fmt(demP, 0)}% of peak</span></div>`;
-              if (capP !== null) html += `<div class="tt-row"><span>Human strength</span><span>${fmt(capP, 0)}% of peak</span></div>`;
+              if (demP !== null) html += `<div class="tt-row"><span>Machine curve</span><span>${fmt(demP, 0)}% (${fmt(demAbs)} N·m)</span></div>`;
+              if (capP !== null) html += `<div class="tt-row"><span>Human strength</span><span>${fmt(capP, 0)}% (${fmt(capAbs)} N·m)</span></div>`;
               return html;
             },
           }

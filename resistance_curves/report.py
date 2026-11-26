@@ -236,7 +236,7 @@ def _arrow(ax, start, end, color, lw=3.0, ms=16, zorder=6):
 
 
 def draw_force_diagram(pose, mechanism, view_path, out_path, *,
-                       pose_index=None, pose_meta=None, jpeg_quality=88):
+                       pose_index=None, pose_meta=None, jpeg_quality=88, review_zoom=False):
     """Render a clean, collision-free free-body / force diagram over a prepared pose image."""
     photo_arr = None
     if view_path is not None and Path(view_path).is_file():
@@ -268,6 +268,7 @@ def draw_force_diagram(pose, mechanism, view_path, out_path, *,
             plates_vis = plates_math
             plate_pivot = pivot
         active = [pivot, plate_pivot, plates_vis, grip, axis]
+        active.extend(pose[k] for k in ("secondary_plates", "pull_toward") if k in pose)
         if mechanism == "belt_cam":
             active.extend([pose["belt_load"], pose["belt_cam"]])
     else:
@@ -360,7 +361,20 @@ def draw_force_diagram(pose, mechanism, view_path, out_path, *,
         # Exact physics direction for lifter's tangential contact force opposing gravity
         rx, ry = grip[0] - axis[0], grip[1] - axis[1]
         tx, ty = _unit(-ry, rx)  # clockwise unit tangent in y-down coords
-        if mechanism == "lever":
+        if "pull_toward" in pose:
+            pull = pose["pull_toward"]
+            tx, ty = _unit(pull[0] - grip[0], pull[1] - grip[1])
+            lift_sign = 1.0
+            pull_color = C_OUT if mechanism == "belt_cam" else C_BELT
+            ax.plot([grip[0], pull[0]], [grip[1], pull[1]], color=pull_color, ls="--",
+                    lw=2.2, zorder=5, path_effects=HALO_THIN)
+            segments.append((grip, pull))
+            if mechanism == "belt_cam":
+                p_cam_proj = _project_on_line(axis, grip, pull)
+                ax.plot([axis[0], p_cam_proj[0]], [axis[1], p_cam_proj[1]], color=C_OUT, ls=":",
+                        lw=1.8, alpha=0.9, zorder=4, path_effects=HALO_THIN)
+                segments.append((axis, p_cam_proj))
+        elif mechanism == "lever":
             grav_sign = 1.0 if (plates_math[0] - pivot[0]) >= 0 else -1.0
             lift_sign = -grav_sign
         else:
@@ -417,11 +431,21 @@ def draw_force_diagram(pose, mechanism, view_path, out_path, *,
             {"point": pivot, "text": "Pivot" if mechanism == "lever" else "Load pivot", "color": C_PIVOT_TXT},
             {"point": plates_vis, "text": "Plates", "color": C_LOAD_TXT},
             {"point": g_end, "text": "Mg", "color": C_LOAD_TXT, "prefer": (0.2, 1.0)},
-            {"point": grip, "text": "Contact", "color": C_OUT_TXT},
+            {"point": grip, "text": "Handle mount" if (mechanism == "belt_cam" and "pull_toward" in pose) else "Contact", "color": C_OUT_TXT},
             {"point": f_end, "text": "F", "color": C_OUT_TXT, "prefer": (fx, fy)},
         ])
         if mechanism == "belt_cam":
             labels.append({"point": axis, "text": "Cam pivot", "color": C_PIVOT_TXT})
+        if "secondary_plates" in pose:
+            secondary = pose["secondary_plates"]
+            end = (secondary[0], min(y1 - vh * 0.05, secondary[1] + arrow_len))
+            ax.plot([pivot[0], secondary[0]], [pivot[1], secondary[1]],
+                    color=C_LOAD, lw=2.3, zorder=4, path_effects=HALO_THIN)
+            _arrow(ax, secondary, end, C_LOAD, lw=3.0, ms=16, zorder=6)
+            ax.scatter(*secondary, color=C_LOAD, edgecolor="white", linewidth=1.7, s=74, zorder=9)
+            segments.extend([(pivot, secondary), (secondary, end)])
+            dots.extend([secondary, end])
+            labels.append({"point": secondary, "text": "Second stack", "color": C_LOAD_TXT})
 
     # Optional anatomical segments (clean emerald dash-dot, no cluttered purple bar over the limb)
     if all(k in pose for k in ("joint", "proximal", "distal")):
@@ -496,6 +520,25 @@ def draw_force_diagram(pose, mechanism, view_path, out_path, *,
     ax.set(xlim=(x0, x1), ylim=(y1, y0))
     ax.axis("off")
 
+    # On review overlays, render a magnified crosshair inset around `plates` to prevent pin-offset mistakes.
+    if review_zoom and photo_arr is not None and mechanism in ("lever", "belt_cam") and "plates" in pose:
+        pl = pose.get("observed_plate_center", pose["plates"])
+        inset = fig.add_axes([0.74, 0.72, 0.24, 0.26])
+        inset.imshow(photo_arr, extent=(0, 1000, 1000, 0))
+        rad = max(55.0, span * 0.085)
+        inset.axhline(pl[1], color="#facc15", lw=1.2, alpha=0.9)
+        inset.axvline(pl[0], color="#facc15", lw=1.2, alpha=0.9)
+        inset.scatter([pl[0]], [pl[1]], facecolors="none", edgecolors="#ef4444", linewidth=1.8, s=90, zorder=5)
+        inset.set(xlim=(max(0, pl[0] - rad), min(1000, pl[0] + rad)),
+                  ylim=(min(1000, pl[1] + rad), max(0, pl[1] - rad)))
+        inset.set_xticks([])
+        inset.set_yticks([])
+        for spine in inset.spines.values():
+            spine.set_edgecolor("#facc15")
+            spine.set_linewidth(1.8)
+        inset.set_title("Plates hub zoom", fontsize=7.5, fontweight="bold", color="#f8fafc",
+                        backgroundcolor="#0f172a", pad=2)
+
     out_path = Path(out_path)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     if out_path.suffix.lower() in (".jpg", ".jpeg"):
@@ -540,5 +583,5 @@ def draw_report(result, observation, views, folder):
         meta = poses_meta[i - 1] if i - 1 < len(poses_meta) else None
         draw_force_diagram(
             pose, result["mechanism"], path, folder / f"landmarks-{i:03}.png",
-            pose_index=i, pose_meta=meta,
+            pose_index=i, pose_meta=meta, review_zoom=True,
         )

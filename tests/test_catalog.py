@@ -74,7 +74,7 @@ class CatalogTests(unittest.TestCase):
 
     def test_catalog_starting_resistance_and_empirical_strength(self):
         record = json.loads((ROOT / "catalog/machines/hammer-strength-preacher-curl.json").read_text())
-        self.assertEqual(machine_view(record)["base_resistance"]["starting_kgf"], 2)
+        self.assertEqual(machine_view(record)["base_resistance"]["starting_kgf"], 1.8)
         record["base_resistance"]["starting_kgf"] = -1
         with self.assertRaisesRegex(ValueError, "Base resistance"):
             machine_view(record)
@@ -82,3 +82,28 @@ class CatalogTests(unittest.TestCase):
             s = json.loads(sp.read_text())
             self.assertNotIn("synthetic", s["source"].lower(), f"Synthetic strength profile {sp.name}")
             check_pairs(s["points"], 1e-6, 180)
+
+    def test_belt_cam_kinematic_consistency_and_ui_strength_default(self):
+        import math
+        from resistance_curves.mechanics import estimate
+
+        # Strength comparison must default to normalized shape comparison (% of peak) to avoid arbitrary Nm mismatch
+        page_tpl = (ROOT / "site/layouts/page.html").read_text()
+        self.assertIn('id="normalize-strength" type="checkbox" checked', page_tpl)
+
+        # Every catalog belt_cam must agree with kinematic rotation ratio d(theta_load)/d(theta_cam)
+        for path in sorted((ROOT / "catalog/machines").glob("*.json")):
+            record = json.loads(path.read_text())
+            obs = record.get("observation")
+            if not obs or obs.get("mechanism") != "belt_cam":
+                continue
+            prof = estimate(obs, record["plate_kg"])
+            poses = obs["poses"]
+            th_load = [math.atan2(p["plates"][1] - p["pivot"][1], p["plates"][0] - p["pivot"][0]) for p in poses]
+            th_cam = [math.atan2(p["grip"][1] - p["cam_pivot"][1], p["grip"][0] - p["cam_pivot"][0]) for p in poses]
+            d_load = sum(abs(math.remainder(b - a, 2 * math.pi)) for a, b in zip(th_load, th_load[1:]))
+            d_cam = sum(abs(math.remainder(b - a, 2 * math.pi)) for a, b in zip(th_cam, th_cam[1:]))
+            kin_ratio = d_load / d_cam
+            stat_ratio = sum(abs(m["cam_belt_arm_px"] / m["load_belt_arm_px"]) for m in prof["poses"]) / len(prof["poses"])
+            self.assertLess(abs(kin_ratio - stat_ratio) / stat_ratio, 0.20,
+                            f"{path.name}: kinematic ratio {kin_ratio:.3f} disagrees with static {stat_ratio:.3f}")

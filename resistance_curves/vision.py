@@ -9,9 +9,15 @@ Use absolute [x,y] coordinates on each provided 1000 by 1000 padded image. Origi
 Do not infer mass, use published resistance values, or calculate force. Identify the SAME moving parts throughout.
 lever: one rigid rotating arm. Each pose needs pivot (fixed axle center), plates (center of mass
 of the actual stacked plates at their hub midpoint — NEVER the tip or middle of an empty protruding loading pin), and grip (center of hand/pad contact on that arm).
+For a chain pulling directly on a rigid lever, place grip at the chain anchor and supply pull_toward
+at a second point along the taut line toward the lifter. If two distinct stations carry plates on the
+same lever, mark secondary_plates at the second stack's hub and record secondary_plate_fraction
+(the fraction of total modeled plate mass at that station) at the observation level.
 belt_cam: two fixed axles coupled by one taut, directly connecting belt span. Each pose needs pivot
 (load axle), plates, belt_load and belt_cam (two distinct points ON THE SAME straight belt span,
-ordered from load side toward hand side), cam_pivot (output axle), grip (output contact center).
+ordered from load side toward hand side), cam_pivot (output axle), grip (rigid output contact or
+handle-mount pin on the cam arm; if a handle yoke pivots freely on that pin, place grip at the
+rigid mounting pin and supply pull_toward at the hand contact).
 Use the straight line tangent to the cam, not the outer cam radius. Check that belt tension lifts the load.
 sled: plates and contact surface translate together along one straight fixed rail. Use rail_low and rail_high
 (two widely separated points on its centerline, ordered low to high). Exclude leg presses with moving seats

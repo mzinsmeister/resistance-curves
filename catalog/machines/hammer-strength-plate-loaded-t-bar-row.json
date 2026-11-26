@@ -1,0 +1,111 @@
+{
+  "name": "Plate-Loaded T-Bar Row (PL-TBR)",
+  "manufacturer": "Hammer Strength",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 20.0,
+  "source": "Life Fitness / Hammer Strength demonstration, 24.720\u201325.650 s (https://www.youtube.com/watch?v=aToycVISitY&t=24s). Front horn only, with no band load. Shared workarm, combined tangential force across both hands.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "In the fixed near-level side shot, the upper bearing on the rear upright is the axle of the long black beam. Both occupied grips and the loaded front horn are welded to that beam. The raised triangular bracket carries the unused alternative rear loading horns and moves with the same beam. The four visible front plates are nearly edge-on. Their combined center of mass is marked where the sleeve axis crosses the thickness midpoint of the stack. The occupied near grip represents the projection of the bilateral hand contacts on the shared workarm. Gravity turns the beam clockwise, pulling the grips down and forward against the counterclockwise lift. The modeled force is combined tangential demand across both hands. An equal split gives half per hand. The side shot starts just after the bar begins moving and ends after the top is reached. The observed range defines the fit, with slight perspective and partly obscured grip centers limiting precision. The 20 kg reference normalizes added mass on the front horn.",
+    "image_sources": [
+      "aToycVISitY @ 24.720 s",
+      "aToycVISitY @ 24.940 s",
+      "aToycVISitY @ 25.150 s",
+      "aToycVISitY @ 25.370 s",
+      "aToycVISitY @ 25.650 s"
+    ],
+    "poses": [
+      {
+        "pivot": [
+          91,
+          694
+        ],
+        "plates": [
+          858,
+          440
+        ],
+        "grip": [
+          755,
+          388
+        ]
+      },
+      {
+        "pivot": [
+          89,
+          694
+        ],
+        "plates": [
+          847,
+          409
+        ],
+        "grip": [
+          742,
+          360
+        ]
+      },
+      {
+        "pivot": [
+          88,
+          694
+        ],
+        "plates": [
+          830,
+          378
+        ],
+        "grip": [
+          724,
+          333
+        ]
+      },
+      {
+        "pivot": [
+          88,
+          694
+        ],
+        "plates": [
+          815,
+          350
+        ],
+        "grip": [
+          709,
+          306
+        ]
+      },
+      {
+        "pivot": [
+          88,
+          694
+        ],
+        "plates": [
+          804,
+          333
+        ],
+        "grip": [
+          699,
+          291
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 18.1,
+    "source": "Hammer Strength Plate Loaded Series owner's manual, p. 60, lists 40 lb (18.1 kg) for the single shared PL-TBR workarm. Finish resistance was not specified.",
+    "url": "https://kb.cybexintl.com/Owners_Manuals/Strength/Hammer_Strength_Plate_Loaded_Owners_Manual_1000420-0001.pdf#page=60"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      1.04534995968,
+      -0.0640902874363
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.002904
+  }
+}

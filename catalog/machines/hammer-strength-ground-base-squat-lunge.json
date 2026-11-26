@@ -1,0 +1,127 @@
+{
+  "name": "Hammer Strength Ground Base Squat Lunge",
+  "manufacturer": "Hammer Strength",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 20.0,
+  "source": "Bilateral stiff-legged deadlift, near lower grip and loaded lower horn, 44.25\u201345.20 s (https://www.youtube.com/watch?v=5jJI8vQw-Jg&t=44s). Each hand lifts one workarm. The 20 kg per workarm is illustrative because the filmed plate markings are unreadable.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Bilateral stiff-legged deadlift using the low handles and lower loading horns. In this fixed near-side view, the level floor and background lines indicate vertical gravity. The near lower plate stack and handle weldment rotate about the dark center axle on the triangular base. The upper moving horn is empty. The upper horizontal bar is the alternate handle. The near hand lifts the lower handle, and gravity on the near moving plates produces a downward tangential reaction at that same hand. The far workarm loads the other hand independently. The plate mark follows the center of the loaded stack's face and hub. At the first pose the subtitle crosses the hub, so its center is recovered from the visible upper and lower rim and checked against the hub and rim relationship in the five later poses. The glove and plate partly overlap the lower handle, so contact is estimated at the wrapped hand. Plate markings are unreadable, and 20 kg is an illustrative added load per workarm. The curve applies to the filmed range and grip.",
+    "inputs": [
+      "5jJI8vQw-Jg-44.25s.jpg",
+      "5jJI8vQw-Jg-44.43s.jpg",
+      "5jJI8vQw-Jg-44.55s.jpg",
+      "5jJI8vQw-Jg-44.66s.jpg",
+      "5jJI8vQw-Jg-44.78s.jpg",
+      "5jJI8vQw-Jg-45.20s.jpg"
+    ],
+    "poses": [
+      {
+        "pivot": [
+          226,
+          597
+        ],
+        "plates": [
+          653,
+          781
+        ],
+        "grip": [
+          777,
+          697
+        ]
+      },
+      {
+        "pivot": [
+          226,
+          597
+        ],
+        "plates": [
+          667,
+          733
+        ],
+        "grip": [
+          781,
+          641
+        ]
+      },
+      {
+        "pivot": [
+          226,
+          597
+        ],
+        "plates": [
+          678,
+          687
+        ],
+        "grip": [
+          791,
+          599
+        ]
+      },
+      {
+        "pivot": [
+          226,
+          597
+        ],
+        "plates": [
+          684,
+          650
+        ],
+        "grip": [
+          790,
+          557
+        ]
+      },
+      {
+        "pivot": [
+          226,
+          597
+        ],
+        "plates": [
+          686,
+          612
+        ],
+        "grip": [
+          782,
+          516
+        ]
+      },
+      {
+        "pivot": [
+          226,
+          597
+        ],
+        "plates": [
+          685,
+          560
+        ],
+        "grip": [
+          778,
+          452
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 20.0,
+    "source": "Life Fitness lists 45 lb (20 kg) unloaded starting resistance for GB-SL without a workarm qualifier. This single-workarm estimate treats the value as applying to one workarm.",
+    "url": "https://www.lifefitness.com/en-us/catalog/strength-training/plate-loaded/plate-loaded-squat-lunge"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.75249320775,
+      0.14282976213,
+      -0.0762965083466
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.0001125
+  }
+}

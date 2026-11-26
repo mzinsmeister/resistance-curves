@@ -4,10 +4,10 @@
   "movement": "elbow-flexion",
   "kind": "Photo estimate",
   "plate_kg": 31.7514659,
-  "source": "Five level near-side frames (frames 2-6 at 4 fps from t=17.0 s) from Hammer Strength's official Plate-Loaded Seated Biceps (PL-BI) demonstration video (https://www.youtube.com/watch?v=B27-cHMnlPE&t=17s). Two plates (45 lb + 25 lb, 31.75 kg total) rest on the shared lower loading arm coupled by a single taut flat belt to the upper shaped cam. Force represents combined tangential handle force across both hands on the coupled workarm; sensitivity to the pivoting handle yoke and an independent conservation-of-work check (0.79 kgf/kg) are documented in observation evidence.",
+  "source": "Five level near-side frames (frames 2-6 at 4 fps from t=17.0 s) from Hammer Strength's official Plate-Loaded Seated Biceps (PL-BI) demonstration video (https://www.youtube.com/watch?v=B27-cHMnlPE&t=17s). Two plates (45 lb + 25 lb, 31.75 kg total) rest on the shared lower loading arm coupled by a single taut flat belt to the upper shaped cam (CAM2). The handle yoke pivots freely on the rigid cam-arm mounting pin (R = 200.4 px about the cam axle) and acts as a two-force link along mount -> hand (pull_toward), giving the exact cam moment arm r_mount * sin(alpha) and exact elbow moment arm to the handle force line; force represents combined handle force across both hands.",
   "observation": {
     "mechanism": "belt_cam",
-    "evidence": "Five level near-side frames (frames 2-6 at 4 fps from t=17.0s, cropped 1080x1080 and resized to 1000x1000) from Hammer Strength's official Plate-Loaded Seated Biceps (PL-BI) demonstration video. The added plates (45 lb + 25 lb = 31.75 kg on the single shared lower loading horn) rotate on the lower load arm around the fixed frame bearing (pivot, near [530, 621]). A single taut flat belt connects the load-arm clevis (belt_load) directly upward to the upper shaped cam (belt_cam), which rotates around the upper cam axle (cam_pivot, near [452, 357], verified to <1.4 px residual by circular-arc fit to the rigid cam-arm rocker pin and matching the center of the circular cam housing). Both hands lift the coupled pivoting handle assembly (grip, marked at the hand contact center on the grip bar); force is total combined tangential hand force across both hands. Camera drift across the five frames is 1-3 px and tracked per frame. Uncertainty: pivot and cam_pivot +/-3 px, belt centerline +/-3-4 px (flat belt edges are brightly lit), plate COM +/-6 px, hand contact +/-6-8 px. Sensitivity check: because the handle yoke pivots freely on the rigid cam-arm rocker pin (R = 200 px around cam_pivot), placing grip at the rocker pin instead of the hand yields 0.70-0.83 kgf/kg (travel-weighted mean 0.77 kgf/kg) compared to 0.62-0.91 kgf/kg (mean 0.81 kgf/kg) at the hand, both closely matching the independent conservation-of-work check over the same five frames (0.79 kgf/kg along the hand path, 0.73 kgf/kg along the handle cap). Anatomical elbow landmarks are omitted because the lifter's elbow is partially occluded behind the black cam housing and the 45 lb plate rim is clipped at the left edge in pose 5.",
+    "evidence": "Five level near-side frames (frames 2-6 at 4 fps from t=17.0s, cropped 1080x1080 and resized to 1000x1000) from Hammer Strength's official Plate-Loaded Seated Biceps (PL-BI) demonstration video. The added plates (45 lb + 25 lb = 31.75 kg on the single shared lower loading horn) are marked at their mass-weighted center of mass along the loading sleeve (64.3% 45 lb, 35.7% 25 lb) rotating around the fixed lower bearing (pivot, near [530, 621]). A single taut flat belt connects the visible lower-arm clevis bolt (belt_load, radius 246-253 px from pivot) upward along the measured centerline between the two bright belt edges to the upper shaped cam (belt_cam), which rotates around the upper cam axle (cam_pivot, near [452, 357], verified to <1.4 px residual by circular-arc fit to the rigid cam-arm handle mount). Because the handle yoke pivots freely on the rigid cam-arm mounting pin (grip, R = 200.4 +/- 1.4 px about cam_pivot), it behaves as a two-force link transmitting force along mount -> hand (pull_toward). The exact cam moment arm is moment_arm(cam_pivot, mount, hand) = r_mount * sin(alpha) (178-201 px, with alpha = 63-88 deg), giving combined handle force 0.84 -> 0.86 -> 0.81 -> 0.73 -> 0.67 kgf/kg (forearm-tangential component 0.79 -> 0.83 -> 0.80 -> 0.73 -> 0.66 kgf/kg, matching direct conservation of work at the hand 0.76-0.84 kgf/kg and kinematic d(theta_load)/d(theta_cam) within 1-4%). The lifter's elbow joint center (near [529, 358]) is constrained to <0.7 px residual by circular-arc fits to both the hand (R = 256.5 px) and handle cap (R = 277.6 px), yielding 53.5-133.6 deg elbow flexion and exact elbow moment arm distance from the elbow to the mount -> hand force line (0.39-0.42 m using the 25 lb plate 0.343 m reference, cross-checked against the 45 lb 0.450 m plate in poses 1-3; ~7-10% near-side arm-plane perspective uncertainty).",
     "poses": [
       {
         "pivot": [
@@ -16,11 +16,11 @@
         ],
         "plates": [
           186,
-          855
+          835
         ],
         "belt_load": [
-          334.5,
-          740
+          324,
+          756
         ],
         "belt_cam": [
           363,
@@ -31,6 +31,32 @@
           357
         ],
         "grip": [
+          375,
+          541
+        ],
+        "joint": [
+          529,
+          359
+        ],
+        "proximal": [
+          575,
+          195
+        ],
+        "distal": [
+          292,
+          449
+        ],
+        "scale_start": [
+          92,
+          892
+        ],
+        "scale_end": [
+          238,
+          744
+        ],
+        "scale_m": 0.343,
+        "scale_source": "Hammer Strength 25 lb urethane plate outer diameter (0.343 m / 13.5 in), calibrated directly against the stacked 45 lb Olympic plate (0.450 m) visible in poses 1-3 (206 px vs 270 px; ~7-10% near-side arm-plane perspective uncertainty noted in evidence)",
+        "pull_toward": [
           292,
           449
         ]
@@ -41,15 +67,15 @@
           620
         ],
         "plates": [
-          163,
-          815
+          160,
+          799
         ],
         "belt_load": [
-          319,
-          710
+          307,
+          728
         ],
         "belt_cam": [
-          356.5,
+          360,
           400
         ],
         "cam_pivot": [
@@ -57,6 +83,32 @@
           356
         ],
         "grip": [
+          330,
+          515
+        ],
+        "joint": [
+          529,
+          358
+        ],
+        "proximal": [
+          575,
+          194
+        ],
+        "distal": [
+          277,
+          403
+        ],
+        "scale_start": [
+          64,
+          845
+        ],
+        "scale_end": [
+          224,
+          712
+        ],
+        "scale_m": 0.343,
+        "scale_source": "Hammer Strength 25 lb urethane plate outer diameter (0.343 m / 13.5 in), calibrated directly against the stacked 45 lb Olympic plate (0.450 m) visible in poses 1-3 (206 px vs 270 px; ~7-10% near-side arm-plane perspective uncertainty noted in evidence)",
+        "pull_toward": [
           277,
           403
         ]
@@ -67,15 +119,15 @@
           619
         ],
         "plates": [
-          120,
-          727
+          115,
+          700
         ],
         "belt_load": [
-          293.5,
-          650
+          284,
+          672
         ],
         "belt_cam": [
-          352.5,
+          358.5,
           400
         ],
         "cam_pivot": [
@@ -83,6 +135,32 @@
           355
         ],
         "grip": [
+          257,
+          404
+        ],
+        "joint": [
+          529,
+          357
+        ],
+        "proximal": [
+          575,
+          193
+        ],
+        "distal": [
+          284,
+          283
+        ],
+        "scale_start": [
+          15,
+          726
+        ],
+        "scale_end": [
+          204,
+          636
+        ],
+        "scale_m": 0.343,
+        "scale_source": "Hammer Strength 25 lb urethane plate outer diameter (0.343 m / 13.5 in), calibrated directly against the stacked 45 lb Olympic plate (0.450 m) visible in poses 1-3 (206 px vs 270 px; ~7-10% near-side arm-plane perspective uncertainty noted in evidence)",
+        "pull_toward": [
           284,
           283
         ]
@@ -93,12 +171,12 @@
           619
         ],
         "plates": [
-          105,
-          626
+          101,
+          601
         ],
         "belt_load": [
-          283.5,
-          600
+          276,
+          617
         ],
         "belt_cam": [
           352,
@@ -109,6 +187,32 @@
           355
         ],
         "grip": [
+          268,
+          275
+        ],
+        "joint": [
+          528,
+          357
+        ],
+        "proximal": [
+          574,
+          193
+        ],
+        "distal": [
+          341,
+          182
+        ],
+        "scale_start": [
+          1,
+          598
+        ],
+        "scale_end": [
+          205,
+          562
+        ],
+        "scale_m": 0.343,
+        "scale_source": "Hammer Strength 25 lb urethane plate outer diameter (0.343 m / 13.5 in), calibrated directly against the stacked 45 lb Olympic plate (0.450 m) visible in poses 1-3 (206 px vs 270 px; ~7-10% near-side arm-plane perspective uncertainty noted in evidence)",
+        "pull_toward": [
           341,
           182
         ]
@@ -119,15 +223,15 @@
           618
         ],
         "plates": [
-          103,
-          575
+          106,
+          563
         ],
         "belt_load": [
-          285.5,
-          580
+          278,
+          585
         ],
         "belt_cam": [
-          351,
+          349,
           400
         ],
         "cam_pivot": [
@@ -135,6 +239,32 @@
           354
         ],
         "grip": [
+          313,
+          207
+        ],
+        "joint": [
+          528,
+          356
+        ],
+        "proximal": [
+          574,
+          192
+        ],
+        "distal": [
+          396,
+          134
+        ],
+        "scale_start": [
+          1,
+          540
+        ],
+        "scale_end": [
+          207,
+          536
+        ],
+        "scale_m": 0.343,
+        "scale_source": "Hammer Strength 25 lb urethane plate outer diameter (0.343 m / 13.5 in), calibrated directly against the stacked 45 lb Olympic plate (0.450 m) visible in poses 1-3 (206 px vs 270 px; ~7-10% near-side arm-plane perspective uncertainty noted in evidence)",
+        "pull_toward": [
           396,
           134
         ]
@@ -267,44 +397,17 @@
     ]
   },
   "base_resistance": {
-    "starting_kgf": 2,
-    "source": "Hammer Strength lists 2 kg starting resistance per workarm for the PL-BI. The full unloaded curve is unknown. The default holds this force constant across the stroke.",
+    "starting_kgf": 1.8,
+    "source": "Hammer Strength PL-BI placard and specification list 4 lb (1.8 kg) starting resistance for the shared workarm (0.9 kg per arm bilaterally). Held constant across the stroke because the unloaded arm curve is unreported.",
     "url": "https://shop.lifefitness.com/products/hammer-strength-plate-loaded-seated-biceps"
   },
   "resistance_curve": {
-    "type": "pchip",
-    "knots": [
-      0.0,
-      0.14042386558226058,
-      0.5015696107529897,
-      0.8260622385820433,
-      1.0
-    ],
+    "type": "polynomial",
     "coefficients": [
-      [
-        0.857913722911,
-        0.532520155949,
-        0.75026424693,
-        -12.5637772019
-      ],
-      [
-        0.9126975345,
-        0.0,
-        -0.434991283147,
-        0.29626319364
-      ],
-      [
-        0.869918104113,
-        -0.198269010773,
-        -2.49107197977,
-        4.17675034253
-      ],
-      [
-        0.685992232673,
-        -0.495559381454,
-        0.295174308127,
-        -0.171378260192
-      ]
+      0.840468447897,
+      0.177760162878,
+      -0.643971870473,
+      0.297225711241
     ],
     "input": "stroke_fraction",
     "domain": [
@@ -313,6 +416,6 @@
     ],
     "output": "kgf_per_kg",
     "sample_count": 5,
-    "max_sample_error_kgf_per_kg": 0.0
+    "max_sample_error_kgf_per_kg": 0.003751
   }
 }

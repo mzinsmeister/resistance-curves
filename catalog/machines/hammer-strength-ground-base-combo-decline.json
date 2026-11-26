@@ -1,0 +1,127 @@
+{
+  "name": "Hammer Strength Ground Base Combo Decline",
+  "manufacturer": "Hammer Strength",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 20.0,
+  "source": "One-arm decline press, 20.10\u201320.85 s (https://www.youtube.com/watch?v=X2ayrv7mSP8&t=20s). The near hand works against the rear loaded horn of one workarm. The 20 kg per workarm is illustrative because the filmed plate markings are unreadable. Bearing location was checked against page 7 of the Hammer Strength GB-CD parts manual (https://s3-us-west-2.amazonaws.com/files-hydra/Life%20Fitness/Diagrams/Manuals/PM+GB-CD+Ground+Base+Combo+Decline.pdf).",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Fixed near-side view of the demonstrated one-arm decline press. The lower press handle, welded upper and lower crossmembers, and rear loaded horn form one rigid workarm turning about the bearing between the two visible flange fasteners on the upright. The Hammer Strength GB-CD parts diagram shows one welded movement arm and the shaft supported by two flange-mounted bearings. The rear plate hub rises as the palm presses the handle forward and down. Gravity produces an opposing tangential reaction at that same hand. The unused workarm and the frame storage plates remain stationary. The camera is slightly off the axle line. The hub center is estimated from the plate rim and hub through some midstroke motion blur. The plate's marking is illegible, so 20 kg is a reference load on one workarm. Travel covers the demonstrated press.",
+    "inputs": [
+      "X2ayrv7mSP8-20.10s.jpg",
+      "X2ayrv7mSP8-20.33s.jpg",
+      "X2ayrv7mSP8-20.46s.jpg",
+      "X2ayrv7mSP8-20.57s.jpg",
+      "X2ayrv7mSP8-20.68s.jpg",
+      "X2ayrv7mSP8-20.85s.jpg"
+    ],
+    "poses": [
+      {
+        "pivot": [
+          372,
+          250
+        ],
+        "plates": [
+          192,
+          472
+        ],
+        "grip": [
+          762,
+          467
+        ]
+      },
+      {
+        "pivot": [
+          372,
+          250
+        ],
+        "plates": [
+          180,
+          451
+        ],
+        "grip": [
+          744,
+          500
+        ]
+      },
+      {
+        "pivot": [
+          372,
+          250
+        ],
+        "plates": [
+          160,
+          429
+        ],
+        "grip": [
+          714,
+          536
+        ]
+      },
+      {
+        "pivot": [
+          372,
+          250
+        ],
+        "plates": [
+          145,
+          407
+        ],
+        "grip": [
+          681,
+          572
+        ]
+      },
+      {
+        "pivot": [
+          372,
+          250
+        ],
+        "plates": [
+          138,
+          395
+        ],
+        "grip": [
+          669,
+          586
+        ]
+      },
+      {
+        "pivot": [
+          372,
+          250
+        ],
+        "plates": [
+          136,
+          388
+        ],
+        "grip": [
+          659,
+          599
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 0.9,
+    "source": "Life Fitness lists 2 lb (0.9 kg) unloaded starting resistance for GB-CD. The estimate applies that value to the single workarm used in the documented one-arm press.",
+    "url": "https://www.lifefitness.com/en-us/catalog/strength-training/plate-loaded/plate-loaded-combo-decline"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.390504881676,
+      0.18235803359,
+      -0.0331436973584
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 101,
+    "max_sample_error_kgf_per_kg": 0.0001718
+  }
+}

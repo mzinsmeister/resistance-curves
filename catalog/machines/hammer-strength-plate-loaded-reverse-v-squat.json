@@ -1,0 +1,133 @@
+{
+  "name": "Plate-Loaded Reverse V-Squat (PL-RVSQ)",
+  "manufacturer": "Hammer Strength",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 20.0,
+  "source": "Hammer Strength Coaches Perspective, 111.500\u2013112.100 s (https://www.youtube.com/watch?v=pfConTS7wF4&t=111s), as hosted by Fitness Brands (https://www.fitnessbrands.com/produkt/hammer-strength-plate-loaded-reverse-v-squat/). Bilateral reverse stance with combined shoulder-pad force on the shared workarm. Plate-only curve uses a 45:25 lower-to-upper loading split.",
+  "observation": {
+    "mechanism": "lever",
+    "secondary_plate_fraction": 0.35714285714285715,
+    "evidence": "Fixed side shot of the bilateral reverse squat, facing into the PL-RVSQ with the extension platform installed and both feet on the inclined main platform. The two shoulder pads, both loaded weight stations and the horizontal rear rails move as a single linked workarm about the bearing at the top of the right support. The near bearing is marked at its square mount. The lower 45 lb plate and smaller upper plate rise together. At each station the center is marked at the plate hub face, adjusted into the installed plate thickness where the horn is visible. Two larger plates on the fixed storage uprights stay still. The green loop beneath the foot platform stays slack and stationary without a visible connection to the workarm. The moving pads rise clockwise and gravity pulls them down and back toward the bottom. The contact landmark follows the underside of the near shoulder pad at the shoulder, with total tangential force across both pads on the shared workarm. The smaller plate size is consistent with 25 lb. The fit normalizes to 20 kg total added plates with a 25:45 split between the upper and lower stations, assuming equal left and right station loading. The footage and labels resolve the lower hub more clearly than the upper one. The estimate applies to the observed travel and that loading split.",
+    "image_sources": [
+      "Coaches Perspective on the Plate Loaded Reverse V-Squat @ 111.500 s",
+      "Coaches Perspective on the Plate Loaded Reverse V-Squat @ 111.730 s",
+      "Coaches Perspective on the Plate Loaded Reverse V-Squat @ 111.830 s",
+      "Coaches Perspective on the Plate Loaded Reverse V-Squat @ 111.930 s",
+      "Coaches Perspective on the Plate Loaded Reverse V-Squat @ 112.100 s"
+    ],
+    "poses": [
+      {
+        "pivot": [
+          799,
+          540
+        ],
+        "plates": [
+          573,
+          706
+        ],
+        "secondary_plates": [
+          622,
+          552
+        ],
+        "grip": [
+          349,
+          373
+        ]
+      },
+      {
+        "pivot": [
+          799,
+          540
+        ],
+        "plates": [
+          553,
+          677
+        ],
+        "secondary_plates": [
+          624,
+          531
+        ],
+        "grip": [
+          378,
+          327
+        ]
+      },
+      {
+        "pivot": [
+          799,
+          540
+        ],
+        "plates": [
+          543,
+          658
+        ],
+        "secondary_plates": [
+          627,
+          517
+        ],
+        "grip": [
+          398,
+          299
+        ]
+      },
+      {
+        "pivot": [
+          799,
+          540
+        ],
+        "plates": [
+          534,
+          635
+        ],
+        "secondary_plates": [
+          632,
+          500
+        ],
+        "grip": [
+          433,
+          260
+        ]
+      },
+      {
+        "pivot": [
+          799,
+          540
+        ],
+        "plates": [
+          524,
+          589
+        ],
+        "secondary_plates": [
+          643,
+          472
+        ],
+        "grip": [
+          481,
+          206
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 34,
+    "source": "Life Fitness lists 75 lb (34 kg) in the PL-RVSQ product specifications under 'Starting Resistance (per arm)'. The modeled pads and left and right horns are coupled on one rotating assembly, so the catalog uses 34 kgf once as a nominal unloaded starting force. The owner's manual, p. 52, gives 29.9/38.1 kg without identifying the corresponding settings. The exact unloaded force for the filmed setup and the finish force are unverified.",
+    "url": "https://www.lifefitness.com/en-eu/catalog/strength-training/plate-loaded/reverse-v-squat"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.434385369566,
+      0.153901213442,
+      -0.0841367456668
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 5,
+    "max_sample_error_kgf_per_kg": 0.0001954
+  }
+}

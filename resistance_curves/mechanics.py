@@ -38,7 +38,7 @@ def tangential_force(tension, cam_arm, grip_radius):
     return tension * abs(cam_arm) / grip_radius
 
 
-def _measure(kind, points, rail_3d=None, up="y"):
+def _measure(kind, points, rail_3d=None, up="y", secondary_fraction=0):
     if kind == "sled":
         if rail_3d is not None:
             low, high = rail_3d["rail_low"], rail_3d["rail_high"]
@@ -67,6 +67,17 @@ def _measure(kind, points, rail_3d=None, up="y"):
               "gravity_arm_px": gravity_arm, "grip_radius_px": radius}
     if kind == "lever":
         result.update(radius_ratio=dist(pivot, plates) / radius, force_ratio=abs(gravity_arm) / radius)
+        if "secondary_plates" in points:
+            secondary = points["secondary_plates"]
+            gravity_arm += secondary_fraction * (secondary[0] - plates[0])
+            result.update(gravity_arm_px=gravity_arm, force_ratio=abs(gravity_arm) / radius,
+                          secondary_radius_ratio=dist(pivot, secondary) / radius,
+                          secondary_load_angle_deg=direction(pivot, secondary))
+        if "pull_toward" in points:
+            pull_arm = moment_arm(pivot, grip, points["pull_toward"])
+            if abs(pull_arm) < 5 or gravity_arm * pull_arm > 0:
+                raise ValueError("The pull line must supply an opposing moment about the pivot.")
+            result.update(pull_arm_px=pull_arm, force_ratio=-gravity_arm / pull_arm)
     else:
         start, end = points["belt_load"], points["belt_cam"]
         load_arm = moment_arm(pivot, start, end)
@@ -77,16 +88,22 @@ def _measure(kind, points, rail_3d=None, up="y"):
         if tension_ratio < 0:
             raise ValueError("These landmarks would require the belt to push. Check the belt span and pivots.")
         result.update(load_belt_arm_px=load_arm, cam_belt_arm_px=cam_arm,
+                      load_radius_px=dist(pivot, plates),
                       tension_per_plate_weight=tension_ratio,
                       force_ratio=tangential_force(tension_ratio, cam_arm, radius))
+        if "pull_toward" in points:
+            pull_arm = moment_arm(axis, grip, points["pull_toward"])
+            if abs(pull_arm) < 5 or cam_arm * pull_arm <= 0:
+                raise ValueError("The pull line must supply an opposing moment about the cam pivot.")
+            result.update(pull_arm_px=pull_arm, force_ratio=tension_ratio * cam_arm / pull_arm)
     return result
 
 
-def _points(pose, kind):
+def _points(pose, kind, extra_fields=()):
     if not isinstance(pose, dict):
         raise ValueError("Each pose must contain named landmark coordinates.")
     points = {}
-    for field in FIELDS[kind]:
+    for field in (*FIELDS[kind], *extra_fields):
         pair = pose.get(field)
         if not (isinstance(pair, (list, tuple)) and len(pair) == 2 and
                 all(type(n) in (int, float) and 0 <= n <= 1000 for n in pair)):
@@ -120,7 +137,18 @@ def estimate(observation, plate_kg=None):
     metric_poses = model.get("world_m", [None] * len(poses))
     if len(metric_poses) != len(poses):
         raise ValueError("Each model pose requires its own metric landmarks.")
-    measured = [_measure(kind, _points(p, kind), metric, model.get("up", "y"))
+    extra_fields = tuple(key for key in ("pull_toward", "secondary_plates")
+                         if any(isinstance(pose, dict) and key in pose for pose in poses))
+    secondary_fraction = observation.get("secondary_plate_fraction", 0)
+    if "secondary_plates" in extra_fields:
+        if type(secondary_fraction) not in (int, float) or not 0 < secondary_fraction < 1:
+            raise ValueError("Give the fraction of added mass on the secondary loading station.")
+    if "secondary_plates" in extra_fields and (kind != "lever" or static_model):
+        raise ValueError("Secondary plate stacks require multiple poses of a rigid lever.")
+    if "pull_toward" in extra_fields and (kind not in ("lever", "belt_cam") or static_model):
+        raise ValueError("Pull lines require multiple poses of a rigid lever or belt cam.")
+    measured = [_measure(kind, _points(p, kind, extra_fields), metric, model.get("up", "y"),
+                         secondary_fraction)
                 for p, metric in zip(poses, metric_poses)]
     if any("joint" in pose for pose in poses):
         from .anatomy import joint_geometry
@@ -150,13 +178,28 @@ def estimate(observation, plate_kg=None):
             m["travel_pct"] = (position / travel[-1]) * 100
         curve = [(m["travel_pct"], m["force_ratio"]) for m in measured]
         if kind == "lever":
-            ratios = [m["radius_ratio"] for m in measured]
-            offsets = [m["load_angle_deg"] - m["grip_angle_deg"] for m in measured]
-            if max(ratios) > 1.15 * min(ratios) or any(abs(remainder(o - offsets[0], 360)) > 8 for o in offsets):
-                raise ValueError("Landmarks disagree with one rigid lever. Check projection and pivot selection.")
-            ratio = sum(ratios) / len(ratios)
-            start = measured[0]["load_angle_deg"]
-            curve = [(i, ratio * abs(cos(radians(start + travel[-1] * i / 100)))) for i in range(101)]
+            prefixes = ("", "secondary_") if "secondary_plates" in extra_fields else ("",)
+            for prefix in prefixes:
+                ratios = [m[prefix + "radius_ratio"] for m in measured]
+                offsets = [m[prefix + "load_angle_deg"] - m["grip_angle_deg"] for m in measured]
+                if max(ratios) > 1.15 * min(ratios) or any(abs(remainder(o - offsets[0], 360)) > 8 for o in offsets):
+                    raise ValueError("Landmarks disagree with one rigid lever. Check projection and pivot selection.")
+            if not extra_fields:
+                ratio = sum(m["radius_ratio"] for m in measured) / len(measured)
+                start = measured[0]["load_angle_deg"]
+                curve = [(i, ratio * abs(cos(radians(start + travel[-1] * i / 100)))) for i in range(101)]
+        elif kind == "belt_cam":
+            grip_radii = [m["grip_radius_px"] for m in measured]
+            if max(grip_radii) > 1.15 * min(grip_radii):
+                raise ValueError(
+                    "Cam-to-grip radius varies too much across poses. If the handle pivots on a cam arm, "
+                    "mark grip at the rigid handle mount and pull_toward at the hand."
+                )
+            load_radii = [m["load_radius_px"] for m in measured]
+            if max(load_radii) > 1.15 * min(load_radii):
+                raise ValueError(
+                    "Load-pivot-to-plates radius varies too much across poses. Check plate hub COM and camera obliquity."
+                )
     if plate_kg is not None:
         for m in measured:
             m["contact_force_kgf"] = m["force_ratio"] * plate_kg

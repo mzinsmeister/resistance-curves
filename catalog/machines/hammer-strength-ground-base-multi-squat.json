@@ -1,0 +1,152 @@
+{
+  "name": "Hammer Strength Ground Base Multi-Squat",
+  "manufacturer": "Hammer Strength",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 31.7514659,
+  "source": "Hammer Strength demonstration, 20.50\u201320.90 s (https://www.youtube.com/watch?v=2UNUAQ_FKD0&t=20s). Lower-handle bilateral deadlift. Each hand lifts one workarm. The model uses 45 lb on the lower horn and an estimated 25 lb on the upper horn, for 70 lb per workarm.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "Near-side lower-handle deadlift from the deepest visible position to the first standing peak in one fixed, nearly axle-on shot. The dark circular axle between the two frame-flange bolts stays fixed while the near hand and the plate hubs on both moving horns rotate with the welded workarm. The marks are the center of the single plate on each horn. Gravity on both plates loads the axle through the rigid arm and produces a downward tangential reaction at the same-side hand, opposite the lift. Each hand supports its own workarm. The low hub next to the frame foot stays still and is plate storage. The lower plate is marked 45 lb. The smaller upper plate is treated as 25 lb based on its size and faint markings, leaving some uncertainty in the load split. Grip centers are estimated within the visible hand wraps where the large plate partly covers the fingers. Perspective and hand placement limit precision.",
+    "inputs": [
+      "2UNUAQ_FKD0-20.50s.jpg",
+      "2UNUAQ_FKD0-20.56s.jpg",
+      "2UNUAQ_FKD0-20.61s.jpg",
+      "2UNUAQ_FKD0-20.69s.jpg",
+      "2UNUAQ_FKD0-20.77s.jpg",
+      "2UNUAQ_FKD0-20.90s.jpg"
+    ],
+    "poses": [
+      {
+        "pivot": [
+          705,
+          637
+        ],
+        "plates": [
+          312,
+          705
+        ],
+        "grip": [
+          211,
+          672
+        ],
+        "secondary_plates": [
+          439,
+          484
+        ]
+      },
+      {
+        "pivot": [
+          705,
+          637
+        ],
+        "plates": [
+          309,
+          684
+        ],
+        "grip": [
+          207,
+          648
+        ],
+        "secondary_plates": [
+          448,
+          473
+        ]
+      },
+      {
+        "pivot": [
+          705,
+          637
+        ],
+        "plates": [
+          305,
+          642
+        ],
+        "grip": [
+          196,
+          608
+        ],
+        "secondary_plates": [
+          467,
+          445
+        ]
+      },
+      {
+        "pivot": [
+          705,
+          637
+        ],
+        "plates": [
+          308,
+          592
+        ],
+        "grip": [
+          198,
+          545
+        ],
+        "secondary_plates": [
+          493,
+          417
+        ]
+      },
+      {
+        "pivot": [
+          705,
+          637
+        ],
+        "plates": [
+          310,
+          571
+        ],
+        "grip": [
+          200,
+          519
+        ],
+        "secondary_plates": [
+          505,
+          407
+        ]
+      },
+      {
+        "pivot": [
+          705,
+          637
+        ],
+        "plates": [
+          319,
+          532
+        ],
+        "grip": [
+          209,
+          471
+        ],
+        "secondary_plates": [
+          532,
+          386
+        ]
+      }
+    ],
+    "secondary_plate_fraction": 0.35714285714285715
+  },
+  "base_resistance": {
+    "starting_kgf": 20.0,
+    "source": "Life Fitness lists 45 lb (20 kg) unloaded starting resistance per workarm for GB-MSQ.",
+    "url": "https://shop.lifefitness.com/products/hammer-strength-ground-base-multi-squat"
+  },
+  "resistance_curve": {
+    "type": "polynomial",
+    "coefficients": [
+      0.701970826095,
+      -0.0709020069843,
+      -0.0385177422248
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 6,
+    "max_sample_error_kgf_per_kg": 0.003835
+  }
+}

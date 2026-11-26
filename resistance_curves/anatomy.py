@@ -2,7 +2,7 @@
 
 from math import acos, degrees, dist, hypot, isfinite
 
-from .mechanics import vector
+from .mechanics import moment_arm, vector
 
 LANDMARKS = ("joint", "proximal", "distal", "scale_start", "scale_end")
 
@@ -22,8 +22,12 @@ def joint_geometry(pose, axis_key):
         raise ValueError("Anatomical landmarks or scale reference too close to resolve.")
     cos_angle = sum(a * b for a, b in zip(u, v)) / (hypot(*u) * hypot(*v))
     angle = 180 - degrees(acos(max(-1, min(1, cos_angle))))
-    radial = vector(pose[axis_key], pose["grip"])
-    contact = vector(pose["joint"], pose["grip"])
-    # Perpendicular distance to the tangent equals the radial projection.
-    arm = abs(sum(a * b for a, b in zip(radial, contact))) / hypot(*radial)
+    if "pull_toward" in pose:
+        # Exact perpendicular distance from joint center to the line of action grip -> pull_toward.
+        arm = abs(moment_arm(pose["joint"], pose["grip"], pose["pull_toward"]))
+    else:
+        radial = vector(pose[axis_key], pose["grip"])
+        contact = vector(pose["joint"], pose["grip"])
+        # Perpendicular distance to the tangent equals the radial projection.
+        arm = abs(sum(a * b for a, b in zip(radial, contact))) / hypot(*radial)
     return {"angle_deg": angle, "joint_arm_m": arm * length / span}

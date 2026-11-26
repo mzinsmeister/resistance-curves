@@ -1,0 +1,181 @@
+{
+  "name": "Hammer Strength Plate-Loaded Belt Squat",
+  "manufacturer": "Hammer Strength",
+  "movement": "compound",
+  "kind": "Photo estimate",
+  "plate_kg": 81.6466266,
+  "source": "Hammer Strength side-view demonstration and attachment close-up, https://www.youtube.com/watch?v=z4EPh7rwzfY (19\u201320 s and 27.20\u201328.35 s). Life Fitness NZ workarm and pivot detail, https://www.youtube.com/watch?v=9VkyyiEuJkc (32.35 s). Anchor 3, approximately 180 lb distributed equally across the two moving loading stations, total force along the waist-belt chain shared by the lifter\u2019s legs. The near shin partly obscures the anchor and pull line.",
+  "observation": {
+    "mechanism": "lever",
+    "evidence": "The waist belt tensions a chain clipped directly to the workarm. The close-up at 20 s of z4EPh7rwzfY shows the hook in the second hole from the free end (anchor 3, counting from the pivot). The chain lifts the black cross-connected workarm and both fore-aft loading stations about one fixed transverse axle. The upper rear mounting center is identified by following the bare workarm to its axle in Life Fitness NZ 9VkyyiEuJkc at 32.35 s. The upper and lower 45 lb plates on the rear frame are storage and remain stationary. The loading close-up at 19 s shows the long and short horns loaded on both sides. The two points mark the near-side hub centers at those stations, with one 45 lb plate per horn assumed from the visible thickness. The curve uses the combined plate mass shared equally between stations. All chain tension reaches the same bilateral waist belt. The lower legs partly cover the clip in the side view, so the anchor center is located using the neighboring holes and the setup close-up. The pull line follows the projected belt-to-anchor span, estimated where the shin blocks the taut segment and where unloaded links hang alongside it. Tilting the estimated pull directions by 10 degrees either way changes sampled belt tension by up to 3.2 kgf at 180 lb and can erase the slight start-to-finish increase. Mild side-view perspective and an unmeasured lateral chain component limit precision.",
+    "secondary_plate_fraction": 0.5,
+    "inputs": [
+      "https://www.youtube.com/watch?v=z4EPh7rwzfY#t=27.20s (z4EPh7rwzfY-27.20.jpg)",
+      "https://www.youtube.com/watch?v=z4EPh7rwzfY#t=27.76s (z4EPh7rwzfY-27.76.jpg)",
+      "https://www.youtube.com/watch?v=z4EPh7rwzfY#t=27.90s (z4EPh7rwzfY-27.90.jpg)",
+      "https://www.youtube.com/watch?v=z4EPh7rwzfY#t=28.02s (z4EPh7rwzfY-28.02.jpg)",
+      "https://www.youtube.com/watch?v=z4EPh7rwzfY#t=28.35s (z4EPh7rwzfY-28.35.jpg)"
+    ],
+    "poses": [
+      {
+        "pivot": [
+          873,
+          628
+        ],
+        "plates": [
+          485,
+          759
+        ],
+        "secondary_plates": [
+          598,
+          718
+        ],
+        "grip": [
+          273,
+          750
+        ],
+        "pull_toward": [
+          236,
+          655
+        ]
+      },
+      {
+        "pivot": [
+          877,
+          631
+        ],
+        "plates": [
+          482,
+          728
+        ],
+        "secondary_plates": [
+          598,
+          696
+        ],
+        "grip": [
+          272,
+          723
+        ],
+        "pull_toward": [
+          252,
+          610
+        ]
+      },
+      {
+        "pivot": [
+          878,
+          632
+        ],
+        "plates": [
+          480,
+          714
+        ],
+        "secondary_plates": [
+          598,
+          685
+        ],
+        "grip": [
+          270,
+          711
+        ],
+        "pull_toward": [
+          264,
+          620
+        ]
+      },
+      {
+        "pivot": [
+          880,
+          633
+        ],
+        "plates": [
+          477,
+          701
+        ],
+        "secondary_plates": [
+          597,
+          674
+        ],
+        "grip": [
+          269,
+          693
+        ],
+        "pull_toward": [
+          284,
+          605
+        ]
+      },
+      {
+        "pivot": [
+          880,
+          635
+        ],
+        "plates": [
+          475,
+          688
+        ],
+        "secondary_plates": [
+          596,
+          665
+        ],
+        "grip": [
+          268,
+          665
+        ],
+        "pull_toward": [
+          285,
+          580
+        ]
+      }
+    ]
+  },
+  "base_resistance": {
+    "starting_kgf": 30,
+    "source": "Hammer Strength PL-BSQ specifications, anchor 3 (66 lb / 30 kg), total unloaded resistance at the waist-belt anchor.",
+    "url": "https://www.lifefitness.com/en-us/catalog/strength-training/plate-loaded/hammer-strength-plate-loaded-belt-squat"
+  },
+  "resistance_curve": {
+    "type": "pchip",
+    "knots": [
+      0.0,
+      0.3277220853987093,
+      0.47084258789155053,
+      0.6774435657145851,
+      1.0
+    ],
+    "coefficients": [
+      [
+        0.549415516685,
+        0.0,
+        0.0157071810132,
+        -0.00699693703437
+      ],
+      [
+        0.55085621795,
+        0.00804073006808,
+        0.100883954239,
+        -0.0148255214584
+      ],
+      [
+        0.554030002975,
+        0.0360068197782,
+        1.39983231008,
+        -4.7687341585
+      ],
+      [
+        0.579166124682,
+        0.00377483590338,
+        -0.00685821660913,
+        0.0020808385344
+      ]
+    ],
+    "input": "stroke_fraction",
+    "domain": [
+      0,
+      1
+    ],
+    "output": "kgf_per_kg",
+    "sample_count": 5,
+    "max_sample_error_kgf_per_kg": 0.0
+  }
+}
